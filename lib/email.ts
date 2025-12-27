@@ -1,7 +1,14 @@
 import { Resend } from 'resend'
 import type { ApplicationFormData, ContactFormData } from '@/types'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Lazy initialization to avoid build-time errors
+function getResend() {
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    throw new Error('RESEND_API_KEY is not configured')
+  }
+  return new Resend(apiKey)
+}
 
 export async function sendApplicationEmail(data: ApplicationFormData) {
   const contactEmail = process.env.CONTACT_EMAIL || 'hello@provenai.io'
@@ -43,6 +50,7 @@ Terms Accepted:
 `
 
   try {
+    const resend = getResend()
     await resend.emails.send({
       from: 'ProvenAI <noreply@provenai.io>',
       to: contactEmail,
@@ -72,6 +80,7 @@ ${data.message}
 `
 
   try {
+    const resend = getResend()
     await resend.emails.send({
       from: 'ProvenAI <noreply@provenai.io>',
       to: contactEmail,

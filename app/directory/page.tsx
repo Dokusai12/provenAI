@@ -11,6 +11,7 @@ import { CompanyType } from '@/types'
 import Breadcrumbs from '@/components/ux/Breadcrumbs'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import AnimatedButton from '@/components/animations/AnimatedButton'
+import ProvenAIBadge from '@/components/ProvenAIBadge'
 import { motion } from 'framer-motion'
 
 // This will be replaced with real data later

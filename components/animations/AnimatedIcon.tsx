@@ -47,7 +47,7 @@ export default function AnimatedIcon({
       hover: { 
         y: -8,
         transition: { 
-          type: 'spring',
+          type: 'spring' as const,
           stiffness: 400,
           damping: 10,
         },
