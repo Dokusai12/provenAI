@@ -12,6 +12,11 @@ export const defaultMetadata: Metadata = {
   keywords: ['AI certification', 'AI verification', 'AI companies', 'AI agencies', 'stop AI washing'],
   authors: [{ name: 'ProvenAI' }],
   creator: 'ProvenAI',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
