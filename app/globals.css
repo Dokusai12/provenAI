@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* Performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* GPU acceleration for animations */
+[class*="animate"],
+[class*="motion"] {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Mobile touch targets - ensure minimum 44px */
+button,
+a,
+input[type="button"],
+input[type="submit"],
+input[type="checkbox"],
+input[type="radio"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Focus indicators for accessibility */
+*:focus-visible {
+  outline: 2px solid rgb(0, 0, 0);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@theme {
+  --color-primary-black: #000000;
+  --color-primary-white: #FFFFFF;
+  --color-gray-dark: #1A1A1A;
+  --color-gray-medium: #2A2A2A;
+  --color-gray-light: #CCCCCC;
+  --color-gray-subtle: #808080;
+  --color-gray-very-light: #FAFAFA;
+  --color-gray-very-light-alt: #F5F5F5;
+}
+
+* {
+  border-color: rgb(42 42 42);
+}
+
+body {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.grid-background {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.grid-equal-rows {
+  grid-auto-rows: 1fr;
+}
+
