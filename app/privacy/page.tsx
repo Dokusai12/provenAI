@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Card from '@/components/ui/Card'
 import Breadcrumbs from '@/components/ux/Breadcrumbs'
 import ScrollReveal from '@/components/animations/ScrollReveal'
+import { DISPLAY_EMAIL, CONTACT_EMAIL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | ProvenAI',
@@ -137,7 +138,7 @@ export default function PrivacyPage() {
                 <li><strong>Withdraw consent:</strong> Withdraw consent for marketing communications</li>
               </ul>
               <p className="text-body text-gray-dark">
-                To exercise these rights, please contact us at <a href="mailto:hello@provenai.io" className="underline">hello@provenai.io</a>.
+                To exercise these rights, please contact us at <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{DISPLAY_EMAIL}</a>.
               </p>
             </Card>
 
@@ -184,7 +185,7 @@ export default function PrivacyPage() {
                 If you have questions about this Privacy Policy or wish to exercise your rights, please contact us:
               </p>
               <p className="text-body text-gray-dark">
-                <strong>Email:</strong> <a href="mailto:hello@provenai.io" className="underline">hello@provenai.io</a>
+                <strong>Email:</strong> <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{DISPLAY_EMAIL}</a>
               </p>
             </Card>
           </div>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Card from '@/components/ui/Card'
 import Breadcrumbs from '@/components/ux/Breadcrumbs'
 import ScrollReveal from '@/components/animations/ScrollReveal'
+import { DISPLAY_EMAIL, CONTACT_EMAIL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'Terms of Service | ProvenAI',
@@ -239,7 +240,7 @@ export default function TermsPage() {
                 For questions about these Terms, please contact us:
               </p>
               <p className="text-body text-gray-dark">
-                <strong>Email:</strong> <a href="mailto:hello@provenai.io" className="underline">hello@provenai.io</a>
+                <strong>Email:</strong> <a href={`mailto:${CONTACT_EMAIL}`} className="underline">{DISPLAY_EMAIL}</a>
               </p>
             </Card>
           </div>

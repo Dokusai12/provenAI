@@ -1,5 +1,6 @@
 import { Resend } from 'resend'
 import type { ApplicationFormData, ContactFormData } from '@/types'
+import { CONTACT_EMAIL } from './constants'
 
 // Lazy initialization to avoid build-time errors
 function getResend() {
@@ -11,7 +12,7 @@ function getResend() {
 }
 
 export async function sendApplicationEmail(data: ApplicationFormData) {
-  const contactEmail = process.env.CONTACT_EMAIL || 'hello@provenai.io'
+  const contactEmail = process.env.CONTACT_EMAIL || CONTACT_EMAIL
 
   const emailContent = `
 New Certification Application
@@ -67,7 +68,7 @@ Terms Accepted:
 }
 
 export async function sendContactEmail(data: ContactFormData) {
-  const contactEmail = process.env.CONTACT_EMAIL || 'hello@provenai.io'
+  const contactEmail = process.env.CONTACT_EMAIL || CONTACT_EMAIL
 
   const emailContent = `
 New Contact Form Submission

@@ -11,6 +11,7 @@ import Button from '@/components/ui/Button'
 import Breadcrumbs from '@/components/ux/Breadcrumbs'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import AnimatedButton from '@/components/animations/AnimatedButton'
+import { DISPLAY_EMAIL, CONTACT_EMAIL } from '@/lib/constants'
 
 const subjectOptions = [
   { value: 'General Inquiry', label: 'General Inquiry' },
@@ -49,7 +50,7 @@ export default function ContactPage() {
 
       setSubmitSuccess(true)
     } catch (error) {
-      setSubmitError('Failed to send message. Please try again or email us directly at hello@provenai.io')
+      setSubmitError(`Failed to send message. Please try again or email us directly at ${DISPLAY_EMAIL}`)
     } finally {
       setIsSubmitting(false)
     }
@@ -155,8 +156,8 @@ export default function ContactPage() {
             <div className="space-y-2">
               <p className="text-body">
                 Email:{' '}
-                <a href="mailto:hello@provenai.io" className="underline">
-                  hello@provenai.io
+                <a href={`mailto:${CONTACT_EMAIL}`} className="underline">
+                  {DISPLAY_EMAIL}
                 </a>
               </p>
               <p className="text-body">

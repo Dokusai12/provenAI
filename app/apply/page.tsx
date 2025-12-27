@@ -11,6 +11,7 @@ import Select from '@/components/ui/Select'
 import Checkbox from '@/components/ui/Checkbox'
 import Button from '@/components/ui/Button'
 import CertificationTiers from '@/components/CertificationTiers'
+import { DISPLAY_EMAIL, CONTACT_EMAIL } from '@/lib/constants'
 
 const companyTypeOptions = [
   { value: 'AI Agency', label: 'AI Agency' },
@@ -65,7 +66,7 @@ export default function ApplyPage() {
 
       setSubmitSuccess(true)
     } catch (error) {
-      setSubmitError('Failed to submit application. Please try again or contact hello@provenai.io')
+      setSubmitError(`Failed to submit application. Please try again or contact ${DISPLAY_EMAIL}`)
     } finally {
       setIsSubmitting(false)
     }
@@ -82,8 +83,8 @@ export default function ApplyPage() {
             </p>
             <p className="text-body text-gray-subtle">
               If you have any questions, please contact us at{' '}
-              <a href="mailto:hello@provenai.io" className="underline">
-                hello@provenai.io
+              <a href={`mailto:${CONTACT_EMAIL}`} className="underline">
+                {DISPLAY_EMAIL}
               </a>
             </p>
           </Card>

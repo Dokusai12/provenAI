@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { DISPLAY_EMAIL, CONTACT_EMAIL } from '@/lib/constants'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -33,10 +34,10 @@ export default function Footer() {
           {/* Contact & Social */}
           <div className="flex flex-col items-center md:items-end space-y-2 text-small">
             <a
-              href="mailto:hello@provenai.io"
+              href={`mailto:${CONTACT_EMAIL}`}
               className="hover:text-primary-black transition-colors"
             >
-              hello@provenai.io
+              {DISPLAY_EMAIL}
             </a>
             <a
               href="https://linkedin.com/company/provenai"

@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/ux/Breadcrumbs'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import StaggerContainer from '@/components/animations/StaggerContainer'
 import AnimatedCard from '@/components/animations/AnimatedCard'
+import { DISPLAY_EMAIL, CONTACT_EMAIL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'About ProvenAI | Stop AI Washing',
@@ -139,8 +140,8 @@ export default function AboutPage() {
           <div className="space-y-4 text-body text-gray-light">
             <p>
               Email us at{' '}
-              <a href="mailto:hello@provenai.io" className="underline text-primary-white">
-                hello@provenai.io
+              <a href={`mailto:${CONTACT_EMAIL}`} className="underline text-primary-white">
+                {DISPLAY_EMAIL}
               </a>
             </p>
             <p>
