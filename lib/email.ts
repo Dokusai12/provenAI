@@ -58,9 +58,10 @@ Terms Accepted:
 
   try {
     const resend = getResend()
+    console.log('Sending application email to:', contactEmail)
     
-    // Send email directly - Resend will throw if there's an error
-    await resend.emails.send({
+    // Send email and check response
+    const result = await resend.emails.send({
       from: 'ProvenAI <onboarding@resend.dev>',
       to: contactEmail,
       replyTo: data.email,
@@ -68,13 +69,29 @@ Terms Accepted:
       text: emailContent,
     })
 
-    console.log('Application email sent successfully to:', contactEmail)
-    return { success: true }
+    console.log('Resend API response:', JSON.stringify(result, null, 2))
+
+    // Check if Resend returned an error in the response
+    if (result.error) {
+      console.error('Resend API returned error:', result.error)
+      const errorMessage = result.error.message || JSON.stringify(result.error) || 'Failed to send email'
+      return { success: false, error: errorMessage }
+    }
+
+    // Verify we got a successful response
+    if (!result.data || !result.data.id) {
+      console.error('Unexpected response format from Resend:', result)
+      return { success: false, error: 'Unexpected response from email service' }
+    }
+
+    console.log('✅ Application email sent successfully! ID:', result.data.id, 'to:', contactEmail)
+    return { success: true, emailId: result.data.id }
   } catch (error: any) {
-    console.error('Error sending application email:', error)
+    console.error('❌ Exception sending application email:', error)
     console.error('Error details:', {
       message: error?.message,
       name: error?.name,
+      stack: error?.stack,
       to: contactEmail,
     })
     const errorMessage = error?.message || error?.toString() || 'Failed to send email'
@@ -125,9 +142,10 @@ ${data.message}
   try {
     const resend = getResend()
     console.log('Sending email to:', contactEmail)
+    console.log('From address: ProvenAI <onboarding@resend.dev>')
     
-    // Send email directly - Resend will throw if there's an error
-    await resend.emails.send({
+    // Send email and check response
+    const result = await resend.emails.send({
       from: 'ProvenAI <onboarding@resend.dev>',
       to: contactEmail,
       replyTo: data.email,
@@ -136,13 +154,29 @@ ${data.message}
       text: emailContent,
     })
 
-    console.log('Email sent successfully to:', contactEmail)
-    return { success: true }
+    console.log('Resend API response:', JSON.stringify(result, null, 2))
+
+    // Check if Resend returned an error in the response
+    if (result.error) {
+      console.error('Resend API returned error:', result.error)
+      const errorMessage = result.error.message || JSON.stringify(result.error) || 'Failed to send email'
+      return { success: false, error: errorMessage }
+    }
+
+    // Verify we got a successful response
+    if (!result.data || !result.data.id) {
+      console.error('Unexpected response format from Resend:', result)
+      return { success: false, error: 'Unexpected response from email service' }
+    }
+
+    console.log('✅ Email sent successfully! ID:', result.data.id, 'to:', contactEmail)
+    return { success: true, emailId: result.data.id }
   } catch (error: any) {
-    console.error('Error sending contact email:', error)
+    console.error('❌ Exception sending contact email:', error)
     console.error('Error details:', {
       message: error?.message,
       name: error?.name,
+      stack: error?.stack,
       to: contactEmail,
     })
     const errorMessage = error?.message || error?.toString() || 'Failed to send email'
