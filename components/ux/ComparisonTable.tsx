@@ -5,12 +5,22 @@ import ScrollReveal from '@/components/animations/ScrollReveal'
 
 const comparisonData = [
   {
-    feature: 'Technical Verification',
+    feature: 'Safety & Compliance Verification',
     certified: true,
     nonCertified: false,
   },
   {
-    feature: 'Verified AI Capabilities',
+    feature: 'EU AI Act Readiness',
+    certified: true,
+    nonCertified: false,
+  },
+  {
+    feature: 'Verified Claims',
+    certified: true,
+    nonCertified: false,
+  },
+  {
+    feature: 'Risk Management Assessment',
     certified: true,
     nonCertified: false,
   },
@@ -20,22 +30,12 @@ const comparisonData = [
     nonCertified: false,
   },
   {
-    feature: 'Customer Trust',
+    feature: 'Reduced Procurement Risk',
     certified: true,
     nonCertified: false,
   },
   {
-    feature: 'Stand Out from Scammers',
-    certified: true,
-    nonCertified: false,
-  },
-  {
-    feature: 'Marketing Rights',
-    certified: true,
-    nonCertified: false,
-  },
-  {
-    feature: 'Annual Review',
+    feature: 'Annual Compliance Review',
     certified: true,
     nonCertified: false,
   },

@@ -12,19 +12,19 @@ const steps = [
   {
     number: 1,
     title: 'Apply',
-    description: 'Submit your application with company information, technical details, and supporting materials.',
+    description: 'Submit your application with company information, safety and compliance documentation, and governance materials.',
     Icon: FileIcon,
   },
   {
     number: 2,
     title: 'Verify',
-    description: 'Our team reviews your application, audits technical capabilities, and verifies your claims.',
+    description: 'Our team reviews your application, audits safety practices, compliance posture, and verifies your claims against recognized standards.',
     Icon: SearchIcon,
   },
   {
     number: 3,
     title: 'Certified',
-    description: 'Receive your ProvenAI certification, badge, and get listed in our verified directory.',
+    description: 'Receive your ProvenAI certification, badge, and get listed in our verified directory with demonstrated compliance and safety posture.',
     Icon: CheckBadgeIcon,
   },
 ]

@@ -8,8 +8,8 @@ import AnimatedCard from '@/components/animations/AnimatedCard'
 import { DISPLAY_EMAIL, CONTACT_EMAIL } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'About ProvenAI | Stop AI Washing',
-  description: 'Learn about ProvenAI\'s mission to verify legitimate AI companies and stop AI washing in the industry.',
+  title: 'About ProvenAI | AI Safety & Compliance Assurance',
+  description: 'Learn about ProvenAI\'s mission to verify AI safety, compliance, and risk assurance aligned with ISO 42001, NIST AI RMF, and EU AI Act.',
 }
 
 export default function AboutPage() {
@@ -29,17 +29,18 @@ export default function AboutPage() {
       <section className="py-12 bg-primary-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
-            <h2 className="text-h2 font-bold mb-6">Our Mission: Stop AI Washing</h2>
+            <h2 className="text-h2 font-bold mb-6">Our Mission: AI Safety & Compliance Assurance</h2>
             <div className="space-y-4 text-body text-gray-subtle mb-8">
               <p>
-                AI is transforming industries, but trust is broken. Every company claims to be "AI-powered," 
-                but many are just rebranding basic automation or wrapping ChatGPT APIs. There's no way for 
-                buyers to know who's legitimate and who's not.
+                AI is transforming industries, but compliance and safety verification are fragmented. Companies 
+                need to demonstrate EU AI Act readiness, proper risk management, and governance maturity, but 
+                lack standardized verification processes. Buyers need assurance of AI safety and compliance posture.
               </p>
               <p>
-                We created ProvenAI to solve this problem. We verify legitimate AI companies through technical 
-                audits, portfolio reviews, and transparent standards. Our certification helps legitimate AI 
-                businesses stand out from scammers and gives buyers confidence in their choices.
+                We created ProvenAI to solve this problem. We verify AI safety, compliance, and risk assurance 
+                through comprehensive audits aligned with ISO 42001, NIST AI RMF, and EU AI Act requirements. 
+                Our certification helps AI companies demonstrate regulatory readiness and gives buyers confidence 
+                in procurement decisions.
               </p>
             </div>
           </ScrollReveal>
@@ -63,16 +64,19 @@ export default function AboutPage() {
             <h2 className="text-h2 font-bold mb-6 text-primary-white">Why This Matters</h2>
             <div className="space-y-4 text-body text-gray-light">
               <p>
-                <strong className="text-primary-white">For Buyers:</strong> Wasted time and money on fake 
-                AI companies that don't deliver. No way to verify technical claims before making decisions.
+                <strong className="text-primary-white">For Buyers:</strong> Procurement risk from unverified 
+                compliance posture. No standardized way to assess AI safety, governance, or EU AI Act readiness 
+                before making vendor decisions.
               </p>
               <p>
-                <strong className="text-primary-white">For Legitimate AI Companies:</strong> Lost business 
-                to scammers who make false claims. Difficulty standing out in a crowded, unverified market.
+                <strong className="text-primary-white">For AI Companies:</strong> Difficulty demonstrating 
+                compliance and safety maturity. Need to show EU AI Act readiness, proper risk management, 
+                and governance to win enterprise deals.
               </p>
               <p>
-                <strong className="text-primary-white">For the Industry:</strong> AI washing erodes trust 
-                and slows adoption. We need verification to build a healthy, trustworthy AI ecosystem.
+                <strong className="text-primary-white">For the Industry:</strong> Fragmented compliance landscape 
+                slows AI adoption. We need standardized verification aligned with recognized standards to build 
+                a trustworthy, compliant AI ecosystem.
               </p>
             </div>
           </Card>
@@ -88,31 +92,32 @@ export default function AboutPage() {
           <StaggerContainer staggerDelay={0.1}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <AnimatedCard revealDirection="up">
-                <h3 className="text-h3 font-bold mb-3">Technical Verification</h3>
+                <h3 className="text-h3 font-bold mb-3">Safety & Compliance Verification</h3>
                 <p className="text-body text-gray-subtle">
-                  We verify technical capabilities by people who actually understand AI. Not just checking 
-                  boxes—we review code, models, and implementations.
+                  We verify AI safety, compliance, and risk management practices by experts who understand 
+                  ISO 42001, NIST AI RMF, and EU AI Act requirements. Not just checking boxes—we assess 
+                  governance, risk management, and compliance maturity.
                 </p>
               </AnimatedCard>
               <AnimatedCard revealDirection="up" revealDelay={0.1}>
-                <h3 className="text-h3 font-bold mb-3">Transparent Standards</h3>
+                <h3 className="text-h3 font-bold mb-3">Recognized Standards</h3>
                 <p className="text-body text-gray-subtle">
-                  Our certification criteria are public and clear. No hidden requirements or opaque processes. 
-                  See exactly what we verify on our <Link href="/standards" className="underline">Standards page</Link>.
+                  Our certification criteria are aligned with ISO 42001, NIST AI RMF, and EU AI Act requirements. 
+                  Public, transparent standards. See exactly what we verify on our <Link href="/standards" className="underline">Standards page</Link>.
                 </p>
               </AnimatedCard>
               <AnimatedCard revealDirection="up" revealDelay={0.2}>
                 <h3 className="text-h3 font-bold mb-3">Affordable Pricing</h3>
                 <p className="text-body text-gray-subtle">
-                  Starting at £2,500/year, our certification is accessible to SMBs. Compare that to enterprise 
-                  certifications that cost £50,000+ and exclude most legitimate AI companies.
+                  Starting at £2,500/year, our compliance certification is accessible to SMBs. Compare that to 
+                  enterprise certifications that cost £50,000+ and exclude most AI companies.
                 </p>
               </AnimatedCard>
               <AnimatedCard revealDirection="up" revealDelay={0.3}>
                 <h3 className="text-h3 font-bold mb-3">Annual Renewals</h3>
                 <p className="text-body text-gray-subtle">
                   Certification isn't a one-time stamp. We review companies annually to ensure they maintain 
-                  their standards and continue to deliver legitimate AI solutions.
+                  their safety, compliance, and governance standards in an evolving regulatory landscape.
                 </p>
               </AnimatedCard>
             </div>
@@ -158,10 +163,10 @@ export default function AboutPage() {
       <section className="py-12 bg-primary-white border-t border-gray-medium">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Card>
-            <h2 className="text-h2 font-bold mb-4">Built by Engineers and AI Practitioners</h2>
+            <h2 className="text-h2 font-bold mb-4">Built by Compliance and AI Safety Experts</h2>
             <p className="text-body text-gray-subtle">
-              ProvenAI is built by people who understand AI technology and the challenges facing the industry. 
-              We're backed by industry experts who share our mission to stop AI washing.
+              ProvenAI is built by people who understand AI safety, compliance, and risk management. 
+              We're backed by industry experts who share our mission to build a trustworthy, compliant AI ecosystem.
             </p>
           </Card>
         </div>

@@ -3,10 +3,11 @@
 import { motion } from 'framer-motion'
 import Card from '@/components/ui/Card'
 import CheckCircleIcon from '@/components/icons/CheckCircleIcon'
-import CodeBracketIcon from '@/components/icons/CodeBracketIcon'
 import BriefcaseIcon from '@/components/icons/BriefcaseIcon'
 import EyeIcon from '@/components/icons/EyeIcon'
 import ShieldCheckIcon from '@/components/icons/ShieldCheckIcon'
+import GearIcon from '@/components/icons/GearIcon'
+import FileIcon from '@/components/icons/FileIcon'
 import Breadcrumbs from '@/components/ux/Breadcrumbs'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import StaggerContainer from '@/components/animations/StaggerContainer'
@@ -14,29 +15,34 @@ import AnimatedCard from '@/components/animations/AnimatedCard'
 
 const criteria = [
   {
-    title: 'Technical Expertise',
-    description: 'At least one team member with demonstrable AI/ML experience. Credentials: work history, projects, portfolio, or technical background. Not just "completed online course" - real experience.',
-    Icon: CheckCircleIcon,
-  },
-  {
-    title: 'AI Implementation',
-    description: 'Evidence of actual AI technology use (not just ChatGPT API wrapper). Documentation of: models used, frameworks, platforms, or custom development. Clear distinction between AI and traditional automation.',
-    Icon: CodeBracketIcon,
-  },
-  {
-    title: 'Client Work',
-    description: 'Minimum 3 real client projects or case studies. Verifiable results and testimonials. Cannot be all internal/theoretical work.',
-    Icon: BriefcaseIcon,
-  },
-  {
-    title: 'Transparent Claims',
-    description: 'Marketing claims match technical capabilities. No exaggerated "AI-powered" statements for basic automation. Clear about limitations and capabilities.',
+    title: 'Truth-in-Marketing',
+    description: 'Marketing claims match actual capabilities and technical reality. Verification that statements about AI capabilities, performance, and use cases are accurate and supported by evidence. Clear distinction between marketing language and actual implementation.',
     Icon: EyeIcon,
   },
   {
-    title: 'Business Legitimacy',
-    description: 'Registered business entity. Professional online presence. Client references available. Transparent pricing and process.',
+    title: 'Data Handling & Privacy',
+    description: 'Secure data practices, privacy compliance, and customer data protection. Evidence of data governance procedures, privacy policies, secure storage, access controls, and compliance with relevant data protection regulations.',
     Icon: ShieldCheckIcon,
+  },
+  {
+    title: 'Model Monitoring & Evaluation',
+    description: 'Error handling, performance tracking, and quality assurance processes. Evidence of ongoing monitoring, evaluation metrics, error detection and response procedures, and continuous improvement practices.',
+    Icon: GearIcon,
+  },
+  {
+    title: 'Security Posture',
+    description: 'Basic security controls, access management, and vulnerability handling. Assessment of security practices, authentication/authorization mechanisms, vulnerability management, and incident response capabilities.',
+    Icon: CheckCircleIcon,
+  },
+  {
+    title: 'Risk Management',
+    description: 'Aligned with NIST AI Risk Management Framework and ISO 42001 principles. Evidence of structured risk assessment processes, risk categorization, mitigation strategies, and ongoing risk management practices.',
+    Icon: BriefcaseIcon,
+  },
+  {
+    title: 'Governance & Accountability',
+    description: 'Incident response, human oversight, and rollback procedures. Evidence of governance structures, accountability mechanisms, incident response plans, human-in-the-loop processes, and ability to rollback or disable AI systems when needed.',
+    Icon: FileIcon,
   },
 ]
 
@@ -44,22 +50,22 @@ const processSteps = [
   {
     step: '1',
     title: 'Submit Application',
-    description: 'Complete the application form with company information, technical details, and supporting materials.',
+    description: 'Complete the application form with company information, safety and compliance documentation, governance materials, and supporting evidence.',
   },
   {
     step: '2',
     title: 'Provide Documentation',
-    description: 'Submit technical documentation, portfolio links, and team credentials for review.',
+    description: 'Submit safety documentation, compliance evidence, risk management frameworks, governance policies, and supporting materials for review.',
   },
   {
     step: '3',
     title: 'Verification Call',
-    description: '30-60 minute call to discuss technical capabilities, client work, and answer questions.',
+    description: '30-60 minute call to discuss safety practices, compliance posture, risk management, governance, and answer questions.',
   },
   {
     step: '4',
     title: 'Review Period',
-    description: 'Our team reviews your application against certification criteria (5-7 business days).',
+    description: 'Our team reviews your application against safety, compliance, and risk management criteria (5-7 business days).',
   },
   {
     step: '5',
@@ -79,7 +85,7 @@ export default function StandardsPage() {
             <ScrollReveal direction="fade">
               <h1 className="text-h1 font-bold mb-4">Certification Standards</h1>
               <p className="text-body-lg text-gray-subtle">
-                What we verify to certify legitimate AI companies
+                AI safety, compliance, and risk assurance verification criteria
               </p>
             </ScrollReveal>
           </div>
@@ -116,7 +122,7 @@ export default function StandardsPage() {
               <ul className="space-y-4 text-body text-gray-light">
                 <li className="flex items-start">
                   <span className="text-2xl mr-3" aria-hidden="true">•</span>
-                  <span>Must meet <strong className="text-primary-white">4 out of 5 criteria</strong></span>
+                  <span>Must meet <strong className="text-primary-white">5 out of 6 criteria</strong></span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-2xl mr-3" aria-hidden="true">•</span>
@@ -124,7 +130,7 @@ export default function StandardsPage() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-2xl mr-3" aria-hidden="true">•</span>
-                  <span>Criteria may evolve as AI industry standards develop</span>
+                  <span>Criteria aligned with ISO 42001, NIST AI RMF, and EU AI Act requirements</span>
                 </li>
               </ul>
             </Card>

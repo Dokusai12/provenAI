@@ -13,27 +13,33 @@ const features: TierFeature[] = [
   { name: 'Certificate', basic: true, standard: true, premium: true },
   { name: 'Directory Listing', basic: true, standard: true, premium: true },
   { name: 'Annual Review', basic: true, standard: true, premium: true },
+  { name: 'Truth-in-Marketing Verification', basic: true, standard: true, premium: true },
+  { name: 'Basic Security & Data Handling Review', basic: true, standard: true, premium: true },
   { name: 'Featured Listing', basic: false, standard: true, premium: true },
-  { name: 'Marketing Support', basic: false, standard: true, premium: true },
-  { name: 'Quarterly Reviews', basic: false, standard: false, premium: true },
-  { name: 'Priority Support', basic: false, standard: false, premium: true },
+  { name: 'Governance Review', basic: false, standard: true, premium: true },
+  { name: 'Risk Management Assessment', basic: false, standard: true, premium: true },
+  { name: 'EU AI Act Compliance Mapping', basic: false, standard: true, premium: true },
+  { name: 'Quarterly Compliance Reviews', basic: false, standard: false, premium: true },
+  { name: 'Ongoing Monitoring Support', basic: false, standard: false, premium: true },
+  { name: 'Priority Audit Scheduling', basic: false, standard: false, premium: true },
+  { name: 'Dedicated Compliance Advisor', basic: false, standard: false, premium: true },
 ]
 
 const tiers: { tier: CertificationTier; price: string; description: string }[] = [
   {
     tier: 'Basic',
     price: '£2,500/year',
-    description: 'Essential certification',
+    description: 'AI Safety & Compliance Certification with truth-in-marketing verification and basic security review',
   },
   {
     tier: 'Standard',
     price: '£5,000/year',
-    description: 'Enhanced visibility',
+    description: 'Enhanced with detailed governance review, risk assessment, and EU AI Act compliance mapping',
   },
   {
     tier: 'Premium',
     price: '£10,000/year',
-    description: 'Full support package',
+    description: 'Full support package with quarterly reviews, ongoing monitoring, and dedicated compliance advisor',
   },
 ]
 

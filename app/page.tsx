@@ -14,6 +14,7 @@ import ShieldCheckIcon from '@/components/icons/ShieldCheckIcon'
 import EyeIcon from '@/components/icons/EyeIcon'
 import CheckCircleIcon from '@/components/icons/CheckCircleIcon'
 import FileIcon from '@/components/icons/FileIcon'
+import BriefcaseIcon from '@/components/icons/BriefcaseIcon'
 import FAQ from '@/components/FAQ'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import StaggerContainer from '@/components/animations/StaggerContainer'
@@ -50,7 +51,7 @@ export default function HomePage() {
           </ScrollReveal>
           <ScrollReveal direction="fade" delay={0.3}>
             <TextReveal
-              text="Stop AI Washing. Certify Real AI."
+              text="AI Safety & Compliance Certification"
               mode="word"
               delay={0.4}
               as="h1"
@@ -63,8 +64,8 @@ export default function HomePage() {
             transition={{ delay: 0.5, duration: 0.6 }}
           >
             <div className="mb-6">
-              <p className="text-body text-gray-dark max-w-2xl mx-auto leading-relaxed font-medium">
-                Objective audits. Anonymous auditors ensure no conflicts of interest.
+              <p className="text-body-lg text-gray-dark max-w-2xl mx-auto leading-relaxed font-medium">
+                Verify AI claims, ensure safety, demonstrate compliance. Built for the EU AI Act era.
               </p>
             </div>
           </motion.div>
@@ -74,7 +75,7 @@ export default function HomePage() {
             transition={{ delay: 0.6, duration: 0.6 }}
           >
             <p className="text-body-lg text-gray-dark mb-6 max-w-2xl mx-auto leading-relaxed">
-              ProvenAI verifies legitimate AI companies. Get certified to stand out from scammers.
+              ProvenAI provides AI safety and compliance certification. Get certified to demonstrate EU AI Act readiness and reduce risk.
             </p>
           </motion.div>
           <motion.div
@@ -83,7 +84,7 @@ export default function HomePage() {
             transition={{ delay: 0.7, duration: 0.6 }}
           >
             <p className="text-body text-gray-dark mb-6 max-w-2xl mx-auto leading-relaxed">
-              Affordable certification for SMBs. Transparent standards. Technical verification by AI experts.
+              Affordable compliance certification for SMBs. Aligned with ISO 42001 and NIST AI RMF. Technical verification by compliance experts.
             </p>
           </motion.div>
           <motion.div
@@ -139,55 +140,19 @@ export default function HomePage() {
           <div className="max-w-4xl">
             <ScrollReveal direction="left">
               <h2 className="text-h2-lg text-left md:text-left mb-6 font-bold tracking-tight">
-                AI Is Everywhere. Trust Is Nowhere.
+                AI Is Everywhere. Trust & Compliance Aren't.
               </h2>
               <div className="w-16 h-1 bg-primary-black mb-8"></div>
             </ScrollReveal>
             <ScrollReveal direction="fade" delay={0.2}>
               <p className="text-body text-gray-dark text-left mb-8 max-w-3xl leading-relaxed">
-                The AI industry is flooded with companies claiming to use AI, but many are just rebranding basic automation or wrapping ChatGPT APIs. Buyers have no way to verify who's legitimate.
+                Companies are deploying AI systems with unverified claims, insufficient safety controls, and unclear compliance posture. The EU AI Act creates mandatory requirements, but there's no standardized way to verify AI safety, governance, and regulatory readiness.
               </p>
-            </ScrollReveal>
-            <ScrollReveal direction="fade" delay={0.3}>
-              <Card variant="minimal" className="mb-8">
-                <h3 className="text-h3 font-bold mb-3">Real Example:</h3>
-                <p className="text-body text-gray-dark">
-                  A marketing agency rebranded their email automation tool as "AI-powered lead generation" 
-                  and charged 3x the price. Clients discovered it was just basic email sequences with no 
-                  actual AI technology.
-                </p>
-              </Card>
             </ScrollReveal>
           </div>
           <StaggerContainer staggerDelay={0.15}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <AnimatedCard variant="minimal" revealDirection="up" enable3DTilt>
-                <div className="mb-6">
-                  <AnimatedIcon animation="rotate">
-                    <div className="w-16 h-16 rounded-full bg-gray-very-light-alt flex items-center justify-center border border-gray-medium">
-                      <svg
-                        className="w-8 h-8"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                        />
-                      </svg>
-                    </div>
-                  </AnimatedIcon>
-                </div>
-                <h3 className="text-h3 font-bold mb-4">Fake AI Agencies</h3>
-                <p className="text-body text-gray-dark leading-relaxed">
-                  Companies rebranding basic automation as AI, misleading clients with false claims about their capabilities.
-                </p>
-              </AnimatedCard>
-
-              <AnimatedCard variant="minimal" revealDirection="up" revealDelay={0.15} enable3DTilt>
                 <div className="mb-6">
                   <AnimatedIcon animation="rotate">
                     <div className="w-16 h-16 rounded-full bg-gray-very-light-alt flex items-center justify-center border border-gray-medium">
@@ -207,13 +172,13 @@ export default function HomePage() {
                     </div>
                   </AnimatedIcon>
                 </div>
-                <h3 className="text-h3 font-bold mb-4">Exaggerated Claims</h3>
+                <h3 className="text-h3 font-bold mb-4">Unverified Claims</h3>
                 <p className="text-body text-gray-dark leading-relaxed">
-                  Everyone claims to be <Tooltip content="Companies use 'AI-powered' as a marketing term without actual AI implementation" position="top">"AI-powered"</Tooltip> with no verification, making it impossible to identify legitimate providers.
+                  Companies exaggerate AI capabilities with no accountability. Marketing claims don't match technical reality, creating procurement risk for buyers.
                 </p>
               </AnimatedCard>
 
-              <AnimatedCard variant="minimal" revealDirection="up" revealDelay={0.3} enable3DTilt>
+              <AnimatedCard variant="minimal" revealDirection="up" revealDelay={0.15} enable3DTilt>
                 <div className="mb-6">
                   <AnimatedIcon animation="rotate">
                     <div className="w-16 h-16 rounded-full bg-gray-very-light-alt flex items-center justify-center border border-gray-medium">
@@ -233,9 +198,35 @@ export default function HomePage() {
                     </div>
                   </AnimatedIcon>
                 </div>
-                <h3 className="text-h3 font-bold mb-4">Zero Verification</h3>
+                <h3 className="text-h3 font-bold mb-4">Compliance Risk</h3>
                 <p className="text-body text-gray-dark leading-relaxed">
-                  No way to tell who's legitimate. Buyers waste time and money on companies that don't deliver real AI solutions.
+                  The EU AI Act creates mandatory requirements for AI systems. Companies need to demonstrate compliance, but lack standardized verification processes.
+                </p>
+              </AnimatedCard>
+
+              <AnimatedCard variant="minimal" revealDirection="up" revealDelay={0.3} enable3DTilt>
+                <div className="mb-6">
+                  <AnimatedIcon animation="rotate">
+                    <div className="w-16 h-16 rounded-full bg-gray-very-light-alt flex items-center justify-center border border-gray-medium">
+                      <svg
+                        className="w-8 h-8"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                        />
+                      </svg>
+                    </div>
+                  </AnimatedIcon>
+                </div>
+                <h3 className="text-h3 font-bold mb-4">Safety Concerns</h3>
+                <p className="text-body text-gray-dark leading-relaxed">
+                  No verification of data handling, model monitoring, or risk management practices. Buyers can't assess AI safety posture or governance maturity.
                 </p>
               </AnimatedCard>
             </div>
@@ -244,7 +235,7 @@ export default function HomePage() {
             <div className="mt-8 text-center">
               <Link href="/apply">
                 <AnimatedButton variant="primary" size="lg">
-                  Get Certified to Stand Out
+                  Get Certified for Compliance
                 </AnimatedButton>
               </Link>
             </div>
@@ -310,6 +301,134 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* What We Verify Section */}
+      <section className="py-20 bg-gray-very-light border-t border-gray-medium">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="fade">
+            <div className="text-center mb-12">
+              <h2 className="text-h2-lg font-bold mb-6">We Verify AI Safety, Claims & Compliance</h2>
+              <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
+              <p className="text-body-lg text-gray-dark max-w-3xl mx-auto mb-4">
+                Our certification covers six critical pillars of AI safety, compliance, and risk management.
+              </p>
+            </div>
+          </ScrollReveal>
+          <StaggerContainer staggerDelay={0.1}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <AnimatedCard revealDirection="up">
+                <div className="mb-4">
+                  <EyeIcon className="w-12 h-12 text-primary-black" />
+                </div>
+                <h3 className="text-h3 font-bold mb-3">Truth-in-Marketing</h3>
+                <p className="text-body text-gray-subtle">
+                  Claims match actual capabilities and technical reality. Marketing statements are verified against implementation evidence.
+                </p>
+              </AnimatedCard>
+              <AnimatedCard revealDirection="up" revealDelay={0.1}>
+                <div className="mb-4">
+                  <ShieldCheckIcon className="w-12 h-12 text-primary-black" />
+                </div>
+                <h3 className="text-h3 font-bold mb-3">Data Handling & Privacy</h3>
+                <p className="text-body text-gray-subtle">
+                  Secure data practices, privacy compliance, and customer data protection. Verification of data governance and handling procedures.
+                </p>
+              </AnimatedCard>
+              <AnimatedCard revealDirection="up" revealDelay={0.2}>
+                <div className="mb-4">
+                  <GearIcon className="w-12 h-12 text-primary-black" />
+                </div>
+                <h3 className="text-h3 font-bold mb-3">Model Monitoring & Evaluation</h3>
+                <p className="text-body text-gray-subtle">
+                  Error handling, performance tracking, and quality assurance. Evidence of ongoing monitoring and evaluation processes.
+                </p>
+              </AnimatedCard>
+              <AnimatedCard revealDirection="up" revealDelay={0.3}>
+                <div className="mb-4">
+                  <CheckCircleIcon className="w-12 h-12 text-primary-black" />
+                </div>
+                <h3 className="text-h3 font-bold mb-3">Security Posture</h3>
+                <p className="text-body text-gray-subtle">
+                  Basic security controls, access management, and vulnerability handling. Assessment of security practices and safeguards.
+                </p>
+              </AnimatedCard>
+              <AnimatedCard revealDirection="up" revealDelay={0.4}>
+                <div className="mb-4">
+                  <BriefcaseIcon className="w-12 h-12 text-primary-black" />
+                </div>
+                <h3 className="text-h3 font-bold mb-3">Risk Management</h3>
+                <p className="text-body text-gray-subtle">
+                  Aligned with NIST AI Risk Management Framework and ISO 42001 principles. Structured risk assessment and mitigation processes.
+                </p>
+              </AnimatedCard>
+              <AnimatedCard revealDirection="up" revealDelay={0.5}>
+                <div className="mb-4">
+                  <FileIcon className="w-12 h-12 text-primary-black" />
+                </div>
+                <h3 className="text-h3 font-bold mb-3">Governance & Accountability</h3>
+                <p className="text-body text-gray-subtle">
+                  Incident response, human oversight, and rollback procedures. Evidence of governance structures and accountability mechanisms.
+                </p>
+              </AnimatedCard>
+            </div>
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Standards Alignment Section */}
+      <section className="py-20 bg-primary-white border-t border-gray-medium">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="fade">
+            <div className="text-center mb-12">
+              <h2 className="text-h2-lg font-bold mb-6">Built on Recognized Standards</h2>
+              <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
+              <p className="text-body-lg text-gray-dark max-w-3xl mx-auto mb-4">
+                ProvenAI certification is aligned with internationally recognized standards and frameworks.
+              </p>
+            </div>
+          </ScrollReveal>
+          <StaggerContainer staggerDelay={0.1}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <AnimatedCard revealDirection="up">
+                <div className="mb-4">
+                  <FileIcon className="w-12 h-12 text-primary-black" />
+                </div>
+                <h3 className="text-h3 font-bold mb-3">ISO/IEC 42001</h3>
+                <p className="text-body text-gray-subtle">
+                  AI Management System standard. Certification criteria mapped to ISO 42001 requirements for AI governance.
+                </p>
+              </AnimatedCard>
+              <AnimatedCard revealDirection="up" revealDelay={0.1}>
+                <div className="mb-4">
+                  <ShieldCheckIcon className="w-12 h-12 text-primary-black" />
+                </div>
+                <h3 className="text-h3 font-bold mb-3">NIST AI RMF</h3>
+                <p className="text-body text-gray-subtle">
+                  Aligned with NIST AI Risk Management Framework. Structured approach to identifying, measuring, and managing AI risks.
+                </p>
+              </AnimatedCard>
+              <AnimatedCard revealDirection="up" revealDelay={0.2}>
+                <div className="mb-4">
+                  <CheckCircleIcon className="w-12 h-12 text-primary-black" />
+                </div>
+                <h3 className="text-h3 font-bold mb-3">EU AI Act</h3>
+                <p className="text-body text-gray-subtle">
+                  Compliance readiness for EU AI Act requirements. Verification of risk categorization, governance, and safety measures.
+                </p>
+              </AnimatedCard>
+              <AnimatedCard revealDirection="up" revealDelay={0.3}>
+                <div className="mb-4">
+                  <EyeIcon className="w-12 h-12 text-primary-black" />
+                </div>
+                <h3 className="text-h3 font-bold mb-3">Transparent Criteria</h3>
+                <p className="text-body text-gray-subtle">
+                  All certification criteria are publicly available. Measurable, objective standards with no hidden requirements.
+                </p>
+              </AnimatedCard>
+            </div>
+          </StaggerContainer>
+        </div>
+      </section>
+
       {/* How It Works Section */}
       <HowItWorks />
 
@@ -323,7 +442,7 @@ export default function HomePage() {
               </h2>
               <div className="w-16 h-1 bg-primary-white mx-auto mb-8"></div>
               <p className="text-body-lg text-gray-light text-center mb-12 max-w-3xl mx-auto leading-relaxed">
-                ProvenAI provides rigorous technical verification to certify legitimate AI companies. Our transparent process ensures only companies with real AI capabilities receive certification.
+                ProvenAI provides rigorous safety and compliance verification to certify AI companies. Our transparent process ensures only companies with verified safety, compliance, and governance practices receive certification.
               </p>
             </div>
           </ScrollReveal>
@@ -340,7 +459,7 @@ export default function HomePage() {
                 <div className="pt-6 md:pt-8">
                   <h3 className="text-h3 font-bold mb-4 text-primary-white">Apply</h3>
                   <p className="text-body text-gray-light leading-relaxed">
-                    Companies submit credentials and portfolio demonstrating their AI capabilities and client work.
+                    Companies submit credentials and documentation demonstrating their safety, compliance, and governance practices.
                   </p>
                 </div>
               </AnimatedCard>
@@ -356,7 +475,7 @@ export default function HomePage() {
                 <div className="pt-6 md:pt-8">
                   <h3 className="text-h3 font-bold mb-4 text-primary-white">Verify</h3>
                   <p className="text-body text-gray-light leading-relaxed">
-                    We audit technical capabilities, review client work, and verify that claims match reality.
+                    We audit safety practices, review compliance posture, assess risk management, and verify that claims match technical and governance reality.
                   </p>
                 </div>
               </AnimatedCard>
@@ -372,7 +491,7 @@ export default function HomePage() {
                 <div className="pt-6 md:pt-8">
                   <h3 className="text-h3 font-bold mb-4 text-primary-white">Certified</h3>
                   <p className="text-body text-gray-light leading-relaxed">
-                    Legitimate companies receive the ProvenAI seal and get listed in our verified directory.
+                    Companies with verified safety and compliance practices receive the ProvenAI seal and get listed in our verified directory.
                   </p>
                 </div>
               </AnimatedCard>
@@ -458,20 +577,24 @@ export default function HomePage() {
                 <ul className="space-y-6">
                   {[
                     { 
-                      title: 'Stand Out from Scammers',
-                      description: 'Differentiate your legitimate AI business from companies making false claims'
+                      title: 'Demonstrate EU AI Act Readiness',
+                      description: 'Show compliance with EU AI Act requirements and demonstrate regulatory readiness'
                     },
                     { 
-                      title: 'Build Customer Trust',
-                      description: 'Show customers you have verified technical capabilities and real AI expertise'
+                      title: 'Stand Out with Verified Safety & Compliance',
+                      description: 'Differentiate your AI business with verified safety, compliance, and risk management practices'
                     },
                     { 
-                      title: 'Prove Technical Legitimacy',
-                      description: 'Demonstrate your team has actual AI/ML experience, not just marketing claims'
+                      title: 'Reduce Customer Due Diligence Burden',
+                      description: 'Provide customers with pre-verified compliance posture, streamlining procurement processes'
                     },
                     { 
-                      title: 'Get Featured in Directory',
-                      description: 'Be discoverable by buyers looking for verified AI providers'
+                      title: 'Prove Claims Are Accurate and Verifiable',
+                      description: 'Demonstrate that marketing claims match technical capabilities through independent verification'
+                    },
+                    { 
+                      title: 'Show Proper Risk Management & Governance',
+                      description: 'Evidence of structured risk management, governance frameworks, and accountability mechanisms'
                     },
                   ].map((benefit, index) => (
                     <motion.li
@@ -515,20 +638,24 @@ export default function HomePage() {
                 <ul className="space-y-6">
                   {[
                     { 
-                      title: 'Find Verified AI Providers',
-                      description: 'Browse our directory of certified companies with proven AI capabilities'
+                      title: 'Verify AI Safety & Compliance Posture',
+                      description: 'Assess AI safety, compliance, and risk management practices before procurement decisions'
                     },
                     { 
-                      title: 'Avoid Fake AI Companies',
-                      description: 'Skip companies that rebrand automation as AI or make false claims'
+                      title: 'Reduce Procurement Risk',
+                      description: 'Minimize risk by choosing vendors with verified compliance and safety practices'
                     },
                     { 
-                      title: 'Trust Technical Claims',
-                      description: 'Know that certified companies have verified technical expertise'
+                      title: 'Trust Verified Claims and Capabilities',
+                      description: 'Know that marketing claims are independently verified against technical reality'
                     },
                     { 
-                      title: 'Make Informed Decisions',
-                      description: 'Compare verified providers with confidence in their capabilities'
+                      title: 'Ensure Data Handling Meets Standards',
+                      description: 'Verify that data handling, privacy, and security practices meet compliance requirements'
+                    },
+                    { 
+                      title: 'Streamline Vendor Due Diligence',
+                      description: 'Access pre-verified compliance information, reducing time spent on vendor assessments'
                     },
                   ].map((benefit, index) => (
                     <motion.li
@@ -597,19 +724,19 @@ export default function HomePage() {
               {[
                 {
                   title: 'Affordable Pricing',
-                  description: 'Starting at £2,500/year for SMBs, compared to £50,000+ enterprise certifications',
+                  description: 'Starting at £2,500/year for SMBs—affordable compliance certification compared to £50,000+ enterprise programs',
                 },
                 {
-                  title: 'Technical Verification',
-                  description: 'Audited by AI experts who understand real AI implementation, not just checkboxes',
+                  title: 'Safety & Compliance Verification',
+                  description: 'Audited by compliance and safety experts who understand AI risk management, governance, and regulatory requirements',
                 },
                 {
                   title: 'Transparent Standards',
-                  description: 'Public criteria so you know exactly what we verify—no hidden requirements',
+                  description: 'Public criteria aligned with ISO 42001, NIST AI RMF, and EU AI Act—no hidden requirements',
                 },
                 {
                   title: 'Annual Renewals',
-                  description: 'Ongoing verification ensures certified companies maintain their standards',
+                  description: 'Ongoing compliance monitoring ensures certified companies maintain safety, governance, and regulatory readiness',
                 },
               ].map((item, index) => (
                 <AnimatedCard
@@ -677,10 +804,10 @@ export default function HomePage() {
               <h3 className="text-h3 font-bold mb-6 text-gray-subtle">Before Certification</h3>
               <ul className="space-y-4">
                 {[
-                  'Lost in a sea of "AI-powered" claims',
-                  'No way to prove technical legitimacy',
-                  'Competing with fake AI companies',
-                  'Buyers can\'t verify your capabilities',
+                  'Unverified compliance posture',
+                  'No way to demonstrate EU AI Act readiness',
+                  'Procurement risk concerns from buyers',
+                  'Limited evidence of safety and governance',
                 ].map((item) => (
                   <li key={item} className="flex items-start">
                     <span className="text-xl mr-3 text-gray-subtle">✗</span>
@@ -693,10 +820,10 @@ export default function HomePage() {
               <h3 className="text-h3 font-bold mb-6 text-primary-black">After Certification</h3>
               <ul className="space-y-4">
                 {[
-                  'Stand out with verified ProvenAI badge',
-                  'Proven technical legitimacy',
-                  'Featured in verified directory',
-                  'Buyers trust your capabilities',
+                  'Stand out with verified ProvenAI compliance badge',
+                  'Demonstrated EU AI Act readiness',
+                  'Reduced buyer procurement risk',
+                  'Verified safety, compliance, and governance',
                 ].map((item) => (
                   <li key={item} className="flex items-start">
                     <span className="text-xl mr-3 text-primary-black">✓</span>
@@ -726,19 +853,19 @@ export default function HomePage() {
               {[
                 {
                   question: 'What makes ProvenAI different from other certifications?',
-                  answer: 'ProvenAI focuses specifically on verifying AI capabilities, not just general business practices. We use technical audits by AI experts, require evidence of real AI implementation, and offer affordable pricing for SMBs starting at £2,500/year—unlike enterprise certifications that cost £50,000+.',
+                  answer: 'ProvenAI focuses specifically on AI safety, compliance, and risk assurance. We verify compliance with recognized standards (ISO 42001, NIST AI RMF, EU AI Act), assess safety and governance practices, and offer affordable pricing for SMBs starting at £2,500/year—unlike enterprise certifications that cost £50,000+. Our certification helps companies demonstrate EU AI Act readiness and reduce procurement risk.',
+                },
+                {
+                  question: 'What standards does ProvenAI align with?',
+                  answer: 'ProvenAI certification is aligned with ISO/IEC 42001 (AI Management System), the NIST AI Risk Management Framework, and EU AI Act compliance requirements. Our certification criteria map to these recognized standards, ensuring verified companies demonstrate proper AI governance, risk management, and regulatory readiness.',
                 },
                 {
                   question: 'Why are your auditors anonymous?',
-                  answer: 'We keep auditors anonymous to maintain complete objectivity and eliminate conflicts of interest. This ensures every certification decision is based solely on technical merit against our published standards, not relationships, business connections, or external pressure. By removing the ability to influence auditors based on who they are, we guarantee that all companies are evaluated fairly and consistently. This commitment to objective verification is what makes ProvenAI certification credible and trustworthy.',
-                },
-                {
-                  question: 'How long does certification take?',
-                  answer: 'The application process typically takes 5-7 business days after you submit all required documentation and complete the verification call.',
+                  answer: 'We keep auditors anonymous to maintain complete objectivity and eliminate conflicts of interest. This ensures every certification decision is based solely on compliance and safety merit against our published standards, not relationships, business connections, or external pressure. This commitment to objective verification is what makes ProvenAI certification credible and trustworthy.',
                 },
                 {
                   question: 'Can startups or small companies get certified?',
-                  answer: 'Absolutely. ProvenAI is designed specifically for SMBs, including startups. As long as you meet our criteria—including having at least one team member with demonstrable AI experience and evidence of real AI implementation—you can be certified regardless of company size.',
+                  answer: 'Absolutely. ProvenAI is designed specifically for SMBs, including startups. As long as you meet our criteria—including proper safety, compliance, and governance practices—you can be certified regardless of company size. Compliance readiness matters more than company size.',
                 },
               ].map((item, index) => (
                 <Card key={index} variant="minimal">
@@ -765,31 +892,35 @@ export default function HomePage() {
             items={[
               {
                 question: 'What makes ProvenAI different from other certifications?',
-                answer: 'ProvenAI focuses specifically on verifying AI capabilities, not just general business practices. We use technical audits by AI experts, require evidence of real AI implementation, and offer affordable pricing for SMBs starting at £2,500/year—unlike enterprise certifications that cost £50,000+.',
+                answer: 'ProvenAI focuses specifically on AI safety, compliance, and risk assurance. We verify compliance with recognized standards (ISO 42001, NIST AI RMF, EU AI Act), assess safety and governance practices, and offer affordable pricing for SMBs starting at £2,500/year—unlike enterprise certifications that cost £50,000+. Our certification helps companies demonstrate EU AI Act readiness and reduce procurement risk.',
+              },
+              {
+                question: 'What standards does ProvenAI align with?',
+                answer: 'ProvenAI certification is aligned with ISO/IEC 42001 (AI Management System), the NIST AI Risk Management Framework, and EU AI Act compliance requirements. Our certification criteria map to these recognized standards, ensuring verified companies demonstrate proper AI governance, risk management, and regulatory readiness.',
               },
               {
                 question: 'Why are your auditors anonymous?',
-                answer: 'We keep auditors anonymous to maintain complete objectivity and eliminate conflicts of interest. This ensures every certification decision is based solely on technical merit against our published standards, not relationships, business connections, or external pressure. By removing the ability to influence auditors based on who they are, we guarantee that all companies are evaluated fairly and consistently. This commitment to objective verification is what makes ProvenAI certification credible and trustworthy.',
+                answer: 'We keep auditors anonymous to maintain complete objectivity and eliminate conflicts of interest. This ensures every certification decision is based solely on compliance and safety merit against our published standards, not relationships, business connections, or external pressure. This commitment to objective verification is what makes ProvenAI certification credible and trustworthy.',
               },
               {
                 question: 'How long does certification take?',
-                answer: 'The application process typically takes 5-7 business days after you submit all required documentation and complete the verification call. This includes our review of your technical capabilities, client work, and technical documentation.',
+                answer: 'The application process typically takes 5-7 business days after you submit all required documentation and complete the verification call. This includes our review of your safety, compliance, governance practices, and risk management documentation.',
               },
               {
                 question: 'What if my company doesn\'t pass certification?',
-                answer: 'If your company doesn\'t meet the criteria, we provide detailed feedback on what needs improvement. You can reapply once you\'ve addressed the feedback. We\'re transparent about our standards so you know exactly what we\'re looking for.',
+                answer: 'If your company doesn\'t meet the criteria, we provide detailed feedback on what needs improvement. You can reapply once you\'ve addressed the feedback. We\'re transparent about our standards so you know exactly what we\'re looking for in terms of safety, compliance, and governance.',
               },
               {
                 question: 'Do I need to renew my certification?',
-                answer: 'Yes, certification is valid for one year and requires annual renewal. This ensures certified companies maintain their standards and continue to deliver legitimate AI solutions. The renewal process is streamlined and typically faster than the initial certification.',
+                answer: 'Yes, certification is valid for one year and requires annual renewal. This ensures certified companies maintain their safety, compliance, and governance standards. Ongoing monitoring ensures continued regulatory readiness and risk management maturity.',
               },
               {
                 question: 'What documentation do I need to provide?',
-                answer: 'You\'ll need to provide company information, technical documentation showing AI implementation, portfolio links or case studies of client work, team credentials demonstrating AI/ML experience, and references. See our Standards page for detailed requirements.',
+                answer: 'You\'ll need to provide company information, safety and compliance documentation, risk management frameworks, governance policies, data handling procedures, and evidence of monitoring and evaluation processes. See our Standards page for detailed requirements.',
               },
               {
                 question: 'Can startups or small companies get certified?',
-                answer: 'Absolutely. ProvenAI is designed specifically for SMBs, including startups. As long as you meet our criteria—including having at least one team member with demonstrable AI experience and evidence of real AI implementation—you can be certified regardless of company size.',
+                answer: 'Absolutely. ProvenAI is designed specifically for SMBs, including startups. As long as you meet our criteria—including proper safety, compliance, and governance practices—you can be certified regardless of company size. Compliance readiness matters more than company size.',
               },
             ]}
             />
