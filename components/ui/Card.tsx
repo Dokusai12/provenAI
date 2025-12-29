@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion, HTMLMotionProps } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
-export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CardProps extends Omit<HTMLMotionProps<'div'>, 'children'> {
   children: React.ReactNode
   variant?: 'default' | 'elevated' | 'minimal' | 'featured'
 }
@@ -38,7 +38,7 @@ export default function Card({
           ? { backgroundColor: '#f5f5f5' }
           : variant === 'featured'
           ? { boxShadow: '0 25px 50px rgba(0,0,0,0.2)' }
-          : {}
+          : undefined
       }
       whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.2 }}

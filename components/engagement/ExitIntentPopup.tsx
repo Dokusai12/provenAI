@@ -7,8 +7,15 @@ import Card from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
 import Link from 'next/link'
 
+interface Offer {
+  title: string
+  description: string
+  cta: string
+  value: string
+}
+
 interface ExitIntentPopupProps {
-  offers?: string[]
+  offers?: Offer[]
 }
 
 const defaultOffers = [

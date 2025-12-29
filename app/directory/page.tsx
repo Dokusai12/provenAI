@@ -14,7 +14,6 @@ import AnimatedButton from '@/components/animations/AnimatedButton'
 import ProvenAIBadge from '@/components/ProvenAIBadge'
 import { motion } from 'framer-motion'
 import VendorAssessment from '@/components/tools/VendorAssessment'
-import Card from '@/components/ui/Card'
 
 // This will be replaced with real data later
 const companies: any[] = []
