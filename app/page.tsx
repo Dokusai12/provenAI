@@ -30,6 +30,7 @@ import BackToTop from '@/components/ux/BackToTop'
 import Tooltip from '@/components/ux/Tooltip'
 import ProgressIndicator from '@/components/animations/ProgressIndicator'
 import Breadcrumbs from '@/components/ux/Breadcrumbs'
+import EarlyAdopterModal from '@/components/ux/EarlyAdopterModal'
 
 export default function HomePage() {
   return (
@@ -984,6 +985,9 @@ export default function HomePage() {
       {/* Floating CTA and Back to Top */}
       <FloatingCTA />
       <BackToTop />
+      
+      {/* Early Adopter Modal */}
+      <EarlyAdopterModal />
     </>
   )
 }
