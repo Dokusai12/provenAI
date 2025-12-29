@@ -75,16 +75,7 @@ export default function HomePage() {
             transition={{ delay: 0.6, duration: 0.6 }}
           >
             <p className="text-body-lg text-gray-dark mb-6 max-w-2xl mx-auto leading-relaxed">
-              ProvenAI provides AI safety and compliance certification. Get certified to demonstrate EU AI Act readiness and reduce risk.
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-          >
-            <p className="text-body text-gray-dark mb-6 max-w-2xl mx-auto leading-relaxed">
-              Affordable compliance certification for SMBs. Aligned with ISO 42001 and NIST AI RMF. Technical verification by compliance experts.
+              Get certified to demonstrate EU AI Act readiness. Aligned with ISO 42001 and NIST AI RMF. Starting at £2,500/year.
             </p>
           </motion.div>
           <motion.div
