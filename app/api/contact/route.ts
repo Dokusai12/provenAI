@@ -4,8 +4,17 @@ import type { ContactFormData } from '@/types'
 
 export async function POST(request: Request) {
   console.log('=== Contact Form API Called ===')
-  console.log('RESEND_API_KEY:', process.env.RESEND_API_KEY ? 'SET' : 'NOT SET')
-  console.log('CONTACT_EMAIL:', process.env.CONTACT_EMAIL || 'NOT SET')
+  
+  // More detailed environment variable checking
+  const resendApiKey = process.env.RESEND_API_KEY
+  const contactEmail = process.env.CONTACT_EMAIL
+  
+  console.log('Environment check:')
+  console.log('- RESEND_API_KEY exists:', !!resendApiKey)
+  console.log('- RESEND_API_KEY length:', resendApiKey?.length || 0)
+  console.log('- RESEND_API_KEY starts with "re_":', resendApiKey?.startsWith('re_') || false)
+  console.log('- CONTACT_EMAIL:', contactEmail || 'NOT SET')
+  console.log('- All env vars:', Object.keys(process.env).filter(k => k.includes('RESEND') || k.includes('CONTACT')))
   
   try {
     let data: ContactFormData
@@ -30,11 +39,17 @@ export async function POST(request: Request) {
       )
     }
 
-    // Check if Resend API key is configured
-    if (!process.env.RESEND_API_KEY) {
-      console.error('RESEND_API_KEY not configured')
+    // Check if Resend API key is configured (check for both undefined and empty string)
+    if (!resendApiKey || resendApiKey.trim() === '') {
+      console.error('❌ RESEND_API_KEY not configured or empty')
+      console.error('This means the environment variable is not set in Vercel.')
+      console.error('Please go to Vercel Dashboard → Settings → Environment Variables')
+      console.error('And add: RESEND_API_KEY = re_ZtbdUFUT_CkYUAqgpYk3n9rwpp8tZxvQP')
       return NextResponse.json(
-        { error: 'Email service is not configured. Please contact support.' },
+        { 
+          error: 'Email service is not configured. Please contact support.',
+          details: 'RESEND_API_KEY environment variable is missing. Please configure it in Vercel dashboard.'
+        },
         { status: 500 }
       )
     }

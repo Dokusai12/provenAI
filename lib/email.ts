@@ -5,8 +5,9 @@ import { CONTACT_EMAIL } from './constants'
 // Lazy initialization to avoid build-time errors
 function getResend() {
   const apiKey = process.env.RESEND_API_KEY
-  if (!apiKey) {
+  if (!apiKey || apiKey.trim() === '') {
     console.error('RESEND_API_KEY is missing from environment variables')
+    console.error('Available env vars:', Object.keys(process.env).filter(k => k.includes('RESEND')))
     throw new Error('RESEND_API_KEY is not configured')
   }
   try {
