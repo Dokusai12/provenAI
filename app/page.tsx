@@ -34,8 +34,8 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center grid-background">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-12 pb-24">
+      <section className="relative min-h-[80vh] flex items-start justify-center grid-background pt-16 pb-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
           <ScrollReveal direction="fade" delay={0.1}>
             <div className="flex justify-center mb-4">
               <Image
@@ -57,25 +57,42 @@ export default function HomePage() {
               className="text-h1-lg md:text-h1-lg font-bold mb-6 tracking-tight leading-tight block"
             />
           </ScrollReveal>
-          <ScrollReveal direction="fade" delay={0.5}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.6 }}
+          >
             <div className="mb-6">
               <p className="text-body text-gray-dark max-w-2xl mx-auto leading-relaxed font-medium">
                 Objective audits. Anonymous auditors ensure no conflicts of interest.
               </p>
             </div>
-          </ScrollReveal>
-          <ScrollReveal direction="up" delay={0.6}>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+          >
             <p className="text-body-lg text-gray-dark mb-6 max-w-2xl mx-auto leading-relaxed">
               ProvenAI verifies legitimate AI companies. Get certified to stand out from scammers.
             </p>
-          </ScrollReveal>
-          <ScrollReveal direction="up" delay={0.7}>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+          >
             <p className="text-body text-gray-dark mb-6 max-w-2xl mx-auto leading-relaxed">
               Affordable certification for SMBs. Transparent standards. Technical verification by AI experts.
             </p>
-          </ScrollReveal>
-          <ScrollReveal direction="up" delay={0.75}>
-            <div className="flex flex-wrap items-center justify-center gap-4 mb-10 max-w-2xl mx-auto">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.75, duration: 0.6 }}
+            className="mb-10"
+          >
+            <div className="flex flex-wrap items-center justify-center gap-4 max-w-2xl mx-auto">
               <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-very-light border border-gray-medium">
                 <ShieldCheckIcon className="w-5 h-5 text-primary-black" />
                 <span className="text-small font-medium text-gray-dark">Anonymous Auditors</span>
@@ -89,8 +106,12 @@ export default function HomePage() {
                 <span className="text-small font-medium text-gray-dark">Expert Review</span>
               </div>
             </div>
-          </ScrollReveal>
-          <ScrollReveal direction="up" delay={0.8}>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+          >
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/apply">
                 <AnimatedButton variant="primary" size="lg">
@@ -108,7 +129,7 @@ export default function HomePage() {
                 </AnimatedButton>
               </Link>
             </div>
-          </ScrollReveal>
+          </motion.div>
         </div>
       </section>
 
