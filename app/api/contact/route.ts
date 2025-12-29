@@ -32,11 +32,10 @@ export async function POST(request: Request) {
 
     // Check if Resend API key is configured
     if (!process.env.RESEND_API_KEY) {
-      console.warn('RESEND_API_KEY not configured, skipping email send')
-      // Return success in development to allow testing
+      console.error('RESEND_API_KEY not configured')
       return NextResponse.json(
-        { success: true, message: 'Email service not configured (development mode)' },
-        { status: 200 }
+        { error: 'Email service is not configured. Please contact support.' },
+        { status: 500 }
       )
     }
 
