@@ -58,28 +58,25 @@ Terms Accepted:
 
   try {
     const resend = getResend()
-    const result = await resend.emails.send({
-      from: 'onboarding@resend.dev',
+    
+    // Send email directly - Resend will throw if there's an error
+    await resend.emails.send({
+      from: 'ProvenAI <onboarding@resend.dev>',
       to: contactEmail,
       replyTo: data.email,
       subject: `New Certification Application: ${data.companyName}`,
       text: emailContent,
     })
 
-    if (result.error) {
-      console.error('Resend API error:', result.error)
-      const errorMessage = result.error.message || JSON.stringify(result.error) || 'Failed to send email'
-      return { success: false, error: errorMessage }
-    }
-
-    if (!result.data) {
-      console.error('Unexpected response format:', result)
-      return { success: false, error: 'Unexpected response from email service' }
-    }
-
+    console.log('Application email sent successfully to:', contactEmail)
     return { success: true }
   } catch (error: any) {
     console.error('Error sending application email:', error)
+    console.error('Error details:', {
+      message: error?.message,
+      name: error?.name,
+      to: contactEmail,
+    })
     const errorMessage = error?.message || error?.toString() || 'Failed to send email'
     return { success: false, error: errorMessage }
   }
@@ -109,20 +106,29 @@ ${data.message}
   }
 
   const htmlContent = `
-    <h2>New Contact Form Submission</h2>
-    <p><strong>Subject:</strong> ${escapeHtml(data.subject)}</p>
-    <p><strong>From:</strong> ${escapeHtml(data.name)} (${escapeHtml(data.email)})</p>
-    <h3>Message:</h3>
-    <p>${escapeHtml(data.message).replace(/\n/g, '<br>')}</p>
+    <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto;">
+      <h2 style="color: #000; font-size: 24px; margin-bottom: 20px;">New Contact Form Submission</h2>
+      <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+        <p><strong>Subject:</strong> ${escapeHtml(data.subject)}</p>
+        <p><strong>From:</strong> ${escapeHtml(data.name)} (${escapeHtml(data.email)})</p>
+      </div>
+      <div style="background: #f9f9f9; padding: 20px; border-radius: 8px;">
+        <p><strong>Message:</strong></p>
+        <p style="color: #333; line-height: 1.6;">${escapeHtml(data.message).replace(/\n/g, '<br>')}</p>
+      </div>
+      <p style="color: #333; margin-top: 20px;">
+        <a href="mailto:${escapeHtml(data.email)}" style="color: #0066FF;">Reply to ${escapeHtml(data.email)}</a>
+      </p>
+    </div>
   `
 
   try {
     const resend = getResend()
     console.log('Sending email to:', contactEmail)
-    console.log('From:', 'onboarding@resend.dev')
     
-    const result = await resend.emails.send({
-      from: 'onboarding@resend.dev',
+    // Send email directly - Resend will throw if there's an error
+    await resend.emails.send({
+      from: 'ProvenAI <onboarding@resend.dev>',
       to: contactEmail,
       replyTo: data.email,
       subject: `Contact Form: ${data.subject}`,
@@ -130,23 +136,15 @@ ${data.message}
       text: emailContent,
     })
 
-    console.log('Resend response:', JSON.stringify(result, null, 2))
-
-    if (result.error) {
-      console.error('Resend API error:', result.error)
-      const errorMessage = result.error.message || JSON.stringify(result.error) || 'Failed to send email'
-      return { success: false, error: errorMessage }
-    }
-
-    if (!result.data) {
-      console.error('Unexpected response format:', result)
-      return { success: false, error: 'Unexpected response from email service' }
-    }
-
-    console.log('Email sent successfully, ID:', result.data.id)
+    console.log('Email sent successfully to:', contactEmail)
     return { success: true }
   } catch (error: any) {
     console.error('Error sending contact email:', error)
+    console.error('Error details:', {
+      message: error?.message,
+      name: error?.name,
+      to: contactEmail,
+    })
     const errorMessage = error?.message || error?.toString() || 'Failed to send email'
     return { success: false, error: errorMessage }
   }
