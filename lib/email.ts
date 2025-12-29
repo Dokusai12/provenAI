@@ -90,7 +90,10 @@ ${data.message}
 
   try {
     const resend = getResend()
-    await resend.emails.send({
+    console.log('Sending email to:', contactEmail)
+    console.log('From:', 'onboarding@resend.dev')
+    
+    const result = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: contactEmail,
       replyTo: data.email,
@@ -99,10 +102,25 @@ ${data.message}
       text: emailContent,
     })
 
+    console.log('Resend response:', JSON.stringify(result, null, 2))
+
+    if (result.error) {
+      console.error('Resend API error:', result.error)
+      const errorMessage = result.error.message || JSON.stringify(result.error) || 'Failed to send email'
+      return { success: false, error: errorMessage }
+    }
+
+    if (!result.data) {
+      console.error('Unexpected response format:', result)
+      return { success: false, error: 'Unexpected response from email service' }
+    }
+
+    console.log('Email sent successfully, ID:', result.data.id)
     return { success: true }
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error sending contact email:', error)
-    return { success: false, error: 'Failed to send email' }
+    const errorMessage = error?.message || error?.toString() || 'Failed to send email'
+    return { success: false, error: errorMessage }
   }
 }
 
