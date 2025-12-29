@@ -4,7 +4,7 @@ export interface ValidationResult {
 }
 
 // URL validation with auto-fix
-export function validateUrl(value: string): ValidationResult {
+export function validateUrl(value: string | undefined): ValidationResult {
   if (!value || value.trim() === '') {
     return { isValid: false, message: 'URL is required' }
   }
@@ -25,7 +25,7 @@ export function validateUrl(value: string): ValidationResult {
 }
 
 // Email validation with domain check
-export function validateEmail(value: string): ValidationResult {
+export function validateEmail(value: string | undefined): ValidationResult {
   if (!value || value.trim() === '') {
     return { isValid: false, message: 'Email is required' }
   }
@@ -45,7 +45,7 @@ export function validateEmail(value: string): ValidationResult {
 }
 
 // Year validation
-export function validateYear(value: string): ValidationResult {
+export function validateYear(value: string | undefined): ValidationResult {
   if (!value || value.trim() === '') {
     return { isValid: true } // Optional field
   }
@@ -69,7 +69,7 @@ export function validateYear(value: string): ValidationResult {
 }
 
 // Phone number validation (basic)
-export function validatePhone(value: string): ValidationResult {
+export function validatePhone(value: string | undefined): ValidationResult {
   if (!value || value.trim() === '') {
     return { isValid: true } // Optional field
   }
@@ -90,7 +90,7 @@ export function validatePhone(value: string): ValidationResult {
 }
 
 // LinkedIn URL validation
-export function validateLinkedInUrl(value: string): ValidationResult {
+export function validateLinkedInUrl(value: string | undefined): ValidationResult {
   if (!value || value.trim() === '') {
     return { isValid: false, message: 'LinkedIn profiles are required' }
   }
@@ -162,27 +162,29 @@ export const validationRules = {
   },
   website: {
     required: 'Website is required',
-    validate: (value: string) => {
+    validate: (value: string | undefined) => {
+      if (!value) return 'Website is required'
       const result = validateUrl(value)
       return result.isValid || result.message
     },
   },
   email: {
     required: 'Email is required',
-    validate: (value: string) => {
+    validate: (value: string | undefined) => {
+      if (!value) return 'Email is required'
       const result = validateEmail(value)
       return result.isValid || result.message
     },
   },
   phone: {
-    validate: (value: string) => {
+    validate: (value: string | undefined) => {
       if (!value || value.trim() === '') return true
       const result = validatePhone(value)
       return result.isValid || result.message
     },
   },
   yearFounded: {
-    validate: (value: string) => {
+    validate: (value: string | undefined) => {
       if (!value || value.trim() === '') return true
       const result = validateYear(value)
       return result.isValid || result.message
@@ -232,7 +234,8 @@ export const validationRules = {
   },
   linkedInProfiles: {
     required: 'LinkedIn profiles are required',
-    validate: (value: string) => {
+    validate: (value: string | undefined) => {
+      if (!value) return 'LinkedIn profiles are required'
       const result = validateLinkedInUrl(value)
       return result.isValid || result.message
     },
