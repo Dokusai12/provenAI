@@ -8,7 +8,17 @@ export async function POST(request: Request) {
   console.log('CONTACT_EMAIL:', process.env.CONTACT_EMAIL || 'NOT SET')
   
   try {
-    const data: ContactFormData = await request.json()
+    let data: ContactFormData
+    try {
+      data = await request.json()
+    } catch (jsonError) {
+      console.error('Failed to parse JSON:', jsonError)
+      return NextResponse.json(
+        { error: 'Invalid request format' },
+        { status: 400 }
+      )
+    }
+    
     console.log('Form data received:', { name: data.name, email: data.email, subject: data.subject })
 
     // Basic validation

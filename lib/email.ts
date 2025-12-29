@@ -6,9 +6,15 @@ import { CONTACT_EMAIL } from './constants'
 function getResend() {
   const apiKey = process.env.RESEND_API_KEY
   if (!apiKey) {
+    console.error('RESEND_API_KEY is missing from environment variables')
     throw new Error('RESEND_API_KEY is not configured')
   }
-  return new Resend(apiKey)
+  try {
+    return new Resend(apiKey)
+  } catch (error) {
+    console.error('Failed to initialize Resend:', error)
+    throw error
+  }
 }
 
 export async function sendApplicationEmail(data: ApplicationFormData) {
@@ -52,7 +58,7 @@ Terms Accepted:
 
   try {
     const resend = getResend()
-    await resend.emails.send({
+    const result = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: contactEmail,
       replyTo: data.email,
@@ -60,10 +66,22 @@ Terms Accepted:
       text: emailContent,
     })
 
+    if (result.error) {
+      console.error('Resend API error:', result.error)
+      const errorMessage = result.error.message || JSON.stringify(result.error) || 'Failed to send email'
+      return { success: false, error: errorMessage }
+    }
+
+    if (!result.data) {
+      console.error('Unexpected response format:', result)
+      return { success: false, error: 'Unexpected response from email service' }
+    }
+
     return { success: true }
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error sending application email:', error)
-    return { success: false, error: 'Failed to send email' }
+    const errorMessage = error?.message || error?.toString() || 'Failed to send email'
+    return { success: false, error: errorMessage }
   }
 }
 
@@ -80,12 +98,22 @@ Message:
 ${data.message}
 `
 
+  // Escape HTML to prevent XSS
+  const escapeHtml = (text: string) => {
+    return text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;')
+  }
+
   const htmlContent = `
     <h2>New Contact Form Submission</h2>
-    <p><strong>Subject:</strong> ${data.subject}</p>
-    <p><strong>From:</strong> ${data.name} (${data.email})</p>
+    <p><strong>Subject:</strong> ${escapeHtml(data.subject)}</p>
+    <p><strong>From:</strong> ${escapeHtml(data.name)} (${escapeHtml(data.email)})</p>
     <h3>Message:</h3>
-    <p>${data.message.replace(/\n/g, '<br>')}</p>
+    <p>${escapeHtml(data.message).replace(/\n/g, '<br>')}</p>
   `
 
   try {
