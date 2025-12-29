@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { sendContactEmail } from '@/lib/email'
+import { sendContactEmail, sendContactConfirmationEmail } from '@/lib/email'
 import type { ContactFormData } from '@/types'
 
 export async function POST(request: Request) {
@@ -55,7 +55,7 @@ export async function POST(request: Request) {
     }
 
     console.log('Calling sendContactEmail...')
-    // Send email
+    // Send email to admin
     const result = await sendContactEmail(data)
     console.log('sendContactEmail result:', result)
 
@@ -65,6 +65,16 @@ export async function POST(request: Request) {
         { error: result.error || 'Failed to send message' },
         { status: 500 }
       )
+    }
+
+    // Send confirmation email to user
+    console.log('Sending confirmation email to user...')
+    const confirmationResult = await sendContactConfirmationEmail(data)
+    if (confirmationResult.success) {
+      console.log('✅ Confirmation email sent successfully!')
+    } else {
+      console.warn('⚠️ Failed to send confirmation email (non-critical):', confirmationResult.error)
+      // Don't fail the request if confirmation email fails
     }
 
     console.log('✅ Email sent successfully!')

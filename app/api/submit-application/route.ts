@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { sendApplicationEmail } from '@/lib/email'
+import { sendApplicationEmail, sendApplicationConfirmationEmail } from '@/lib/email'
 import type { ApplicationFormData } from '@/types'
 
 export async function POST(request: Request) {
@@ -59,7 +59,7 @@ export async function POST(request: Request) {
     }
 
     console.log('Calling sendApplicationEmail...')
-    // Send email
+    // Send email to admin
     const result = await sendApplicationEmail(data)
     console.log('sendApplicationEmail result:', result)
 
@@ -69,6 +69,16 @@ export async function POST(request: Request) {
         { error: result.error || 'Failed to send application' },
         { status: 500 }
       )
+    }
+
+    // Send confirmation email to user
+    console.log('Sending confirmation email to user...')
+    const confirmationResult = await sendApplicationConfirmationEmail(data)
+    if (confirmationResult.success) {
+      console.log('✅ Confirmation email sent successfully!')
+    } else {
+      console.warn('⚠️ Failed to send confirmation email (non-critical):', confirmationResult.error)
+      // Don't fail the request if confirmation email fails
     }
 
     console.log('✅ Application submitted successfully!')
