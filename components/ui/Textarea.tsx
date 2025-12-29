@@ -1,21 +1,55 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
 
 interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string
   error?: string
   helperText?: string
+  showSuccess?: boolean
+  maxLength?: number
+  autoResize?: boolean
 }
 
 export default function Textarea({
   label,
   error,
   helperText,
+  showSuccess,
+  maxLength,
+  autoResize = false,
   className,
   id,
+  value,
+  onChange,
+  rows = 4,
   ...props
 }: TextareaProps) {
   const textareaId = id || `textarea-${Math.random().toString(36).substr(2, 9)}`
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const [isFocused, setIsFocused] = useState(false)
+  const [isTouched, setIsTouched] = useState(false)
+  const currentValue = typeof value === 'string' ? value : ''
+  const charCount = maxLength ? currentValue.length : undefined
+  const isValid = showSuccess && !error && isTouched && currentValue.length > 0
+
+  // Auto-resize functionality
+  useEffect(() => {
+    if (autoResize && textareaRef.current) {
+      textareaRef.current.style.height = 'auto'
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`
+    }
+  }, [currentValue, autoResize])
+
+  const handleBlur = (e: React.FocusEvent<HTMLTextAreaElement>) => {
+    setIsFocused(false)
+    setIsTouched(true)
+    props.onBlur?.(e)
+  }
+
+  const handleFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
+    setIsFocused(true)
+    props.onFocus?.(e)
+  }
 
   return (
     <div className="w-full">
@@ -25,34 +59,114 @@ export default function Textarea({
           className="block text-sm font-medium mb-2"
         >
           {label}
-          {props.required && <span className="text-primary-black ml-1">*</span>}
+          {props.required && <span className="text-red-500 ml-1">*</span>}
         </label>
       )}
-      <textarea
-        id={textareaId}
-        className={cn(
-          'w-full px-4 py-3 border border-gray-medium rounded-lg',
-          'bg-primary-white text-primary-black',
-          'focus:outline-none focus:ring-2 focus:ring-primary-black focus:border-transparent',
-          'disabled:bg-gray-light disabled:cursor-not-allowed',
-          'resize-y min-h-[100px]',
-          error && 'border-red-500 focus:ring-red-500',
-          className
+      <div className="relative">
+        <textarea
+          ref={textareaRef}
+          id={textareaId}
+          className={cn(
+            'w-full px-4 py-3 border rounded-lg transition-all',
+            'bg-primary-white text-primary-black',
+            'focus:outline-none focus:ring-2 focus:border-transparent',
+            'disabled:bg-gray-light disabled:cursor-not-allowed',
+            'resize-y',
+            autoResize ? 'overflow-hidden' : '',
+            !autoResize && `min-h-[${rows * 24 + 24}px]`,
+            error
+              ? 'border-red-500 focus:ring-red-500'
+              : isValid
+              ? 'border-green-500 focus:ring-green-500'
+              : isFocused
+              ? 'border-primary-black focus:ring-primary-black'
+              : 'border-gray-medium',
+            className
+          )}
+          aria-invalid={error ? 'true' : 'false'}
+          aria-describedby={
+            error
+              ? `${textareaId}-error`
+              : helperText
+              ? `${textareaId}-helper`
+              : maxLength
+              ? `${textareaId}-char-count`
+              : undefined
+          }
+          value={value}
+          onChange={onChange}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
+          maxLength={maxLength}
+          rows={autoResize ? undefined : rows}
+          {...props}
+        />
+        {isValid && (
+          <div className="absolute right-3 top-3">
+            <svg
+              className="w-5 h-5 text-green-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          </div>
         )}
-        aria-invalid={error ? 'true' : 'false'}
-        aria-describedby={error ? `${textareaId}-error` : helperText ? `${textareaId}-helper` : undefined}
-        {...props}
-      />
-      {error && (
-        <p id={`${textareaId}-error`} className="mt-1 text-sm text-red-500" role="alert">
-          {error}
-        </p>
-      )}
-      {helperText && !error && (
-        <p id={`${textareaId}-helper`} className="mt-1 text-sm text-gray-subtle">
-          {helperText}
-        </p>
-      )}
+        {error && (
+          <div className="absolute right-3 top-3">
+            <svg
+              className="w-5 h-5 text-red-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </div>
+        )}
+      </div>
+      <div className="mt-1 flex items-center justify-between">
+        <div>
+          {error && (
+            <p id={`${textareaId}-error`} className="text-sm text-red-500" role="alert">
+              {error}
+            </p>
+          )}
+          {helperText && !error && (
+            <p id={`${textareaId}-helper`} className="text-sm text-gray-subtle">
+              {helperText}
+            </p>
+          )}
+        </div>
+        {maxLength && (
+          <p
+            id={`${textareaId}-char-count`}
+            className={cn(
+              'text-xs ml-2',
+              charCount && charCount > maxLength * 0.9
+                ? 'text-orange-500'
+                : charCount && charCount > maxLength
+                ? 'text-red-500'
+                : 'text-gray-subtle'
+            )}
+          >
+            {charCount || 0}/{maxLength}
+          </p>
+        )}
+      </div>
     </div>
   )
 }
