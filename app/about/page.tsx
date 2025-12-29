@@ -120,6 +120,40 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Audit Integrity Section */}
+      <section className="py-12 bg-gray-very-light border-t border-gray-medium">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="fade">
+            <Card>
+              <h2 className="text-h2 font-bold mb-6">Maintaining Objectivity Through Anonymous Audits</h2>
+              <div className="space-y-4 text-body text-gray-subtle">
+                <p>
+                  Our auditing process is designed to ensure complete objectivity and eliminate conflicts of interest. 
+                  For this reason, we keep our auditors anonymous—not because we have anything to hide, but because 
+                  maintaining distance between auditors and applicants prevents bias and ensures every certification 
+                  decision is based solely on technical merit.
+                </p>
+                <p>
+                  <strong className="text-primary-black">Why anonymous auditors?</strong> By keeping auditor identities 
+                  confidential, we eliminate any possibility of:
+                </p>
+                <ul className="list-disc list-inside space-y-2 ml-4">
+                  <li>Preferential treatment based on relationships</li>
+                  <li>Pressure to approve familiar companies</li>
+                  <li>Conflicts of interest from prior business relationships</li>
+                  <li>Influence attempts that could compromise standards</li>
+                </ul>
+                <p>
+                  This approach ensures every company is evaluated against the same rigorous technical standards, 
+                  regardless of who they know or what relationships they might have. Our commitment to objective 
+                  verification is what makes ProvenAI certification credible and trustworthy.
+                </p>
+              </div>
+            </Card>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Team Section */}
       <section className="py-12 bg-primary-white border-t border-gray-medium">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

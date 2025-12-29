@@ -10,6 +10,10 @@ import BuildingIcon from '@/components/icons/BuildingIcon'
 import CodeIcon from '@/components/icons/CodeIcon'
 import HandshakeIcon from '@/components/icons/HandshakeIcon'
 import GearIcon from '@/components/icons/GearIcon'
+import ShieldCheckIcon from '@/components/icons/ShieldCheckIcon'
+import EyeIcon from '@/components/icons/EyeIcon'
+import CheckCircleIcon from '@/components/icons/CheckCircleIcon'
+import FileIcon from '@/components/icons/FileIcon'
 import FAQ from '@/components/FAQ'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import StaggerContainer from '@/components/animations/StaggerContainer'
@@ -53,15 +57,38 @@ export default function HomePage() {
               className="text-h1-lg md:text-h1-lg font-bold mb-6 tracking-tight leading-tight block"
             />
           </ScrollReveal>
+          <ScrollReveal direction="fade" delay={0.5}>
+            <div className="mb-6">
+              <p className="text-body text-gray-dark max-w-2xl mx-auto leading-relaxed font-medium">
+                Objective audits. Anonymous auditors ensure no conflicts of interest.
+              </p>
+            </div>
+          </ScrollReveal>
           <ScrollReveal direction="up" delay={0.6}>
             <p className="text-body-lg text-gray-dark mb-6 max-w-2xl mx-auto leading-relaxed">
               ProvenAI verifies legitimate AI companies. Get certified to stand out from scammers.
             </p>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.7}>
-            <p className="text-body text-gray-dark mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-body text-gray-dark mb-6 max-w-2xl mx-auto leading-relaxed">
               Affordable certification for SMBs. Transparent standards. Technical verification by AI experts.
             </p>
+          </ScrollReveal>
+          <ScrollReveal direction="up" delay={0.75}>
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-10 max-w-2xl mx-auto">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-very-light border border-gray-medium">
+                <ShieldCheckIcon className="w-5 h-5 text-primary-black" />
+                <span className="text-small font-medium text-gray-dark">Anonymous Auditors</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-very-light border border-gray-medium">
+                <EyeIcon className="w-5 h-5 text-primary-black" />
+                <span className="text-small font-medium text-gray-dark">Public Standards</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-very-light border border-gray-medium">
+                <CheckCircleIcon className="w-5 h-5 text-primary-black" />
+                <span className="text-small font-medium text-gray-dark">Expert Review</span>
+              </div>
+            </div>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.8}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -200,6 +227,64 @@ export default function HomePage() {
                 </AnimatedButton>
               </Link>
             </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Trust & Transparency Section */}
+      <section className="py-20 bg-primary-white border-t border-gray-medium">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="fade">
+            <div className="text-center mb-12">
+              <h2 className="text-h2-lg font-bold mb-6">Rigorous Verification You Can Trust</h2>
+              <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
+              <p className="text-body-lg text-gray-dark max-w-3xl mx-auto mb-4">
+                Our certification process is built on transparency and objectivity. Here's how we ensure every audit is credible:
+              </p>
+            </div>
+          </ScrollReveal>
+          <StaggerContainer staggerDelay={0.1}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <AnimatedCard revealDirection="up">
+                <div className="mb-4">
+                  <ShieldCheckIcon className="w-12 h-12 text-primary-black" />
+                </div>
+                <h3 className="text-h3 font-bold mb-3">Anonymous Auditors</h3>
+                <p className="text-body text-gray-subtle">
+                  Auditors remain anonymous to maintain objectivity—no conflicts of interest, no preferential treatment. 
+                  Every company is evaluated solely on technical merit against our published standards.
+                </p>
+              </AnimatedCard>
+              <AnimatedCard revealDirection="up" revealDelay={0.1}>
+                <div className="mb-4">
+                  <FileIcon className="w-12 h-12 text-primary-black" />
+                </div>
+                <h3 className="text-h3 font-bold mb-3">Public Standards</h3>
+                <p className="text-body text-gray-subtle">
+                  Our certification criteria are fully transparent and publicly available. No hidden requirements, 
+                  no opaque processes. See exactly what we verify on our Standards page.
+                </p>
+              </AnimatedCard>
+              <AnimatedCard revealDirection="up" revealDelay={0.2}>
+                <div className="mb-4">
+                  <CheckCircleIcon className="w-12 h-12 text-primary-black" />
+                </div>
+                <h3 className="text-h3 font-bold mb-3">Expert Review</h3>
+                <p className="text-body text-gray-subtle">
+                  Every application is reviewed by AI experts who actually understand the technology. Not just 
+                  checking boxes—we dive into code, models, and implementations.
+                </p>
+              </AnimatedCard>
+            </div>
+          </StaggerContainer>
+          <ScrollReveal direction="fade" delay={0.4}>
+            <Card variant="minimal" className="max-w-3xl mx-auto">
+              <p className="text-body text-gray-dark text-center">
+                <strong>We keep auditors anonymous to maintain objectivity—no conflicts of interest in audits.</strong> 
+                This ensures every certification decision is based solely on technical merit, not relationships or 
+                business connections. Transparency in standards, objectivity in execution.
+              </p>
+            </Card>
           </ScrollReveal>
         </div>
       </section>
@@ -623,6 +708,10 @@ export default function HomePage() {
                   answer: 'ProvenAI focuses specifically on verifying AI capabilities, not just general business practices. We use technical audits by AI experts, require evidence of real AI implementation, and offer affordable pricing for SMBs starting at £2,500/year—unlike enterprise certifications that cost £50,000+.',
                 },
                 {
+                  question: 'Why are your auditors anonymous?',
+                  answer: 'We keep auditors anonymous to maintain complete objectivity and eliminate conflicts of interest. This ensures every certification decision is based solely on technical merit against our published standards, not relationships, business connections, or external pressure. By removing the ability to influence auditors based on who they are, we guarantee that all companies are evaluated fairly and consistently. This commitment to objective verification is what makes ProvenAI certification credible and trustworthy.',
+                },
+                {
                   question: 'How long does certification take?',
                   answer: 'The application process typically takes 5-7 business days after you submit all required documentation and complete the verification call.',
                 },
@@ -656,6 +745,10 @@ export default function HomePage() {
               {
                 question: 'What makes ProvenAI different from other certifications?',
                 answer: 'ProvenAI focuses specifically on verifying AI capabilities, not just general business practices. We use technical audits by AI experts, require evidence of real AI implementation, and offer affordable pricing for SMBs starting at £2,500/year—unlike enterprise certifications that cost £50,000+.',
+              },
+              {
+                question: 'Why are your auditors anonymous?',
+                answer: 'We keep auditors anonymous to maintain complete objectivity and eliminate conflicts of interest. This ensures every certification decision is based solely on technical merit against our published standards, not relationships, business connections, or external pressure. By removing the ability to influence auditors based on who they are, we guarantee that all companies are evaluated fairly and consistently. This commitment to objective verification is what makes ProvenAI certification credible and trustworthy.',
               },
               {
                 question: 'How long does certification take?',
