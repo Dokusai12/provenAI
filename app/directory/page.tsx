@@ -98,7 +98,7 @@ export default function DirectoryPage() {
                 <ScrollReveal direction="up" delay={0.3}>
                   <h2 className="text-h2 font-bold mb-4">First certified companies coming soon</h2>
                   <p className="text-body text-gray-subtle mb-8 max-w-2xl mx-auto">
-                    Launching beta certifications in February 2025. Be among the first verified AI companies.
+                    Be among the first verified AI companies.
                   </p>
                 </ScrollReveal>
                 <ScrollReveal direction="up" delay={0.4}>
