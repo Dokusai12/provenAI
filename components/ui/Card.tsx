@@ -1,4 +1,7 @@
+'use client'
+
 import React from 'react'
+import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -20,20 +23,29 @@ export default function Card({
   }
 
   return (
-    <div
+    <motion.div
       className={cn(
         'rounded-lg p-6 transition-all duration-300',
-        variant === 'default' && 'hover:shadow-md hover:-translate-y-1',
-        variant === 'elevated' && 'hover:shadow-xl',
-        variant === 'minimal' && 'hover:bg-gray-very-light-alt',
-        variant === 'featured' && 'hover:shadow-2xl',
         variants[variant],
         className
       )}
+      whileHover={
+        variant === 'default'
+          ? { y: -4, boxShadow: '0 10px 25px rgba(0,0,0,0.1)' }
+          : variant === 'elevated'
+          ? { boxShadow: '0 20px 40px rgba(0,0,0,0.15)' }
+          : variant === 'minimal'
+          ? { backgroundColor: '#f5f5f5' }
+          : variant === 'featured'
+          ? { boxShadow: '0 25px 50px rgba(0,0,0,0.2)' }
+          : {}
+      }
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.2 }}
       {...props}
     >
       {children}
-    </div>
+    </motion.div>
   )
 }
 

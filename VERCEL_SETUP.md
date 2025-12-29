@@ -68,3 +68,4 @@ If you see `RESEND_API_KEY exists: false`, the variable is not set correctly.
 2. Verify the API key is correct and active in Resend dashboard
 3. Make sure you're checking the correct deployment (Production vs Preview)
 
+

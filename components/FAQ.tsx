@@ -1,22 +1,35 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Card from './ui/Card'
+import Input from './ui/Input'
 import { cn } from '@/lib/utils'
 
 interface FAQItem {
   question: string
   answer: string
+  category?: string
 }
 
 interface FAQProps {
   items: FAQItem[]
   className?: string
+  enableSearch?: boolean
 }
 
-export default function FAQ({ items, className }: FAQProps) {
+export default function FAQ({ items, className, enableSearch = true }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const filteredItems = useMemo(() => {
+    if (!searchQuery.trim()) return items
+    const query = searchQuery.toLowerCase()
+    return items.filter(item => 
+      item.question.toLowerCase().includes(query) ||
+      item.answer.toLowerCase().includes(query)
+    )
+  }, [items, searchQuery])
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index)
@@ -24,7 +37,29 @@ export default function FAQ({ items, className }: FAQProps) {
 
   return (
     <div className={cn('space-y-4', className)}>
-      {items.map((item, index) => (
+      {enableSearch && (
+        <div className="mb-6">
+          <Input
+            type="text"
+            placeholder="Search FAQs..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          {searchQuery && (
+            <p className="text-sm text-gray-subtle mt-2">
+              {filteredItems.length} result{filteredItems.length !== 1 ? 's' : ''} found
+            </p>
+          )}
+        </div>
+      )}
+      {filteredItems.length === 0 ? (
+        <Card className="text-center py-8">
+          <p className="text-body text-gray-subtle">No FAQs found matching your search.</p>
+        </Card>
+      ) : (
+        filteredItems.map((item, index) => {
+          const originalIndex = items.indexOf(item)
+          return (
         <motion.div
           key={index}
           initial={{ opacity: 0, y: 20 }}
@@ -69,7 +104,9 @@ export default function FAQ({ items, className }: FAQProps) {
             </AnimatePresence>
           </Card>
         </motion.div>
-      ))}
+          )
+        })
+      )}
     </div>
   )
 }

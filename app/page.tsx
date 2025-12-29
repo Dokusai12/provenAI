@@ -31,6 +31,15 @@ import Tooltip from '@/components/ux/Tooltip'
 import ProgressIndicator from '@/components/animations/ProgressIndicator'
 import Breadcrumbs from '@/components/ux/Breadcrumbs'
 import EarlyAdopterModal from '@/components/ux/EarlyAdopterModal'
+import StickyCTABar from '@/components/engagement/StickyCTABar'
+import ExitIntentPopup from '@/components/engagement/ExitIntentPopup'
+import PreScreeningQuiz from '@/components/tools/PreScreeningQuiz'
+import ComplianceGapAnalysis from '@/components/tools/ComplianceGapAnalysis'
+import ROICalculator from '@/components/tools/ROICalculator'
+import StandardsMapper from '@/components/tools/StandardsMapper'
+import AnimatedCounter from '@/components/animations/AnimatedCounter'
+import BeforeAfterScenarios from '@/components/widgets/BeforeAfterScenarios'
+import CertificationDemo from '@/components/widgets/CertificationDemo'
 
 export default function HomePage() {
   return (
@@ -116,9 +125,9 @@ export default function HomePage() {
                   View Directory
                 </AnimatedButton>
               </Link>
-              <Link href="#pricing">
+              <Link href="/resources#quiz">
                 <AnimatedButton variant="secondary" size="lg">
-                  View Pricing
+                  Take Readiness Quiz
                 </AnimatedButton>
               </Link>
             </div>
@@ -224,7 +233,14 @@ export default function HomePage() {
             </div>
           </StaggerContainer>
           <ScrollReveal direction="up" delay={0.5}>
-            <div className="mt-8 text-center">
+            <div className="mt-12 text-center">
+              <div className="max-w-3xl mx-auto mb-8">
+                <h3 className="text-h3 font-bold mb-4">Assess Your Compliance Readiness</h3>
+                <p className="text-body text-gray-subtle mb-6">
+                  Use our free gap analysis tool to identify areas where you need to strengthen your compliance posture.
+                </p>
+                <ComplianceGapAnalysis />
+              </div>
               <Link href="/apply">
                 <AnimatedButton variant="primary" size="lg">
                   Get Certified for Compliance
@@ -376,6 +392,16 @@ export default function HomePage() {
               <p className="text-body-lg text-gray-dark max-w-3xl mx-auto mb-4">
                 ProvenAI certification is aligned with internationally recognized standards and frameworks.
               </p>
+              <div className="flex items-center justify-center gap-8 mt-8">
+                <div className="text-center">
+                  <AnimatedCounter value={3} className="text-4xl font-bold text-primary-black" />
+                  <p className="text-body text-gray-subtle mt-2">Standards Aligned</p>
+                </div>
+                <div className="text-center">
+                  <AnimatedCounter value={6} className="text-4xl font-bold text-primary-black" />
+                  <p className="text-body text-gray-subtle mt-2">Certification Criteria</p>
+                </div>
+              </div>
             </div>
           </ScrollReveal>
           <StaggerContainer staggerDelay={0.1}>
@@ -418,6 +444,24 @@ export default function HomePage() {
               </AnimatedCard>
             </div>
           </StaggerContainer>
+          <ScrollReveal direction="fade" delay={0.4}>
+            <div className="mt-12">
+              <div className="text-center mb-6">
+                <h3 className="text-h3 font-bold mb-2">See How Our Criteria Map to Standards</h3>
+                <p className="text-body text-gray-subtle">
+                  Explore the interactive standards mapping tool
+                </p>
+              </div>
+              <StandardsMapper />
+              <div className="text-center mt-6">
+                <Link href="/resources">
+                  <Button variant="secondary">
+                    View All Tools & Resources
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -688,8 +732,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Comparison Table Section */}
+      {/* Before/After Scenarios */}
       <section className="py-20 bg-primary-white border-t border-gray-medium">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="fade">
+            <div className="text-center mb-12">
+              <h2 className="text-h2-lg font-bold mb-6">The Impact of Certification</h2>
+              <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
+              <p className="text-body-lg text-gray-dark max-w-3xl mx-auto">
+                See how ProvenAI certification transforms your business operations
+              </p>
+            </div>
+          </ScrollReveal>
+          <BeforeAfterScenarios />
+        </div>
+      </section>
+
+      {/* Comparison Table Section */}
+      <section className="py-20 bg-gray-very-light border-t border-gray-medium">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
             <h2 className="text-h2-lg text-center mb-6 font-bold">Certified vs Non-Certified</h2>
@@ -703,6 +763,21 @@ export default function HomePage() {
       <div id="pricing">
         <PricingSection />
       </div>
+
+      {/* ROI Calculator Section */}
+      <section className="py-12 bg-gray-very-light border-t border-gray-medium">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="fade">
+            <div className="text-center mb-8">
+              <h3 className="text-h2 font-bold mb-2">Calculate Your ROI</h3>
+              <p className="text-body text-gray-subtle max-w-2xl mx-auto">
+                Estimate potential savings and time saved with ProvenAI certification
+              </p>
+            </div>
+            <ROICalculator />
+          </ScrollReveal>
+        </div>
+      </section>
 
       {/* Why Choose ProvenAI Section */}
       <section className="py-20 bg-gray-very-light border-t border-gray-medium">
@@ -743,6 +818,22 @@ export default function HomePage() {
               ))}
             </div>
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Certification Demo Section */}
+      <section className="py-20 bg-primary-white border-t border-gray-medium">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="fade">
+            <div className="text-center mb-12">
+              <h2 className="text-h2-lg font-bold mb-6">See Certification in Action</h2>
+              <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
+              <p className="text-body-lg text-gray-dark max-w-3xl mx-auto">
+                Preview what you'll receive as a ProvenAI certified company
+              </p>
+            </div>
+          </ScrollReveal>
+          <CertificationDemo />
         </div>
       </section>
 
@@ -985,9 +1076,13 @@ export default function HomePage() {
       {/* Floating CTA and Back to Top */}
       <FloatingCTA />
       <BackToTop />
+      <StickyCTABar />
       
       {/* Early Adopter Modal */}
       <EarlyAdopterModal />
+      
+      {/* Exit Intent Popup */}
+      <ExitIntentPopup />
     </>
   )
 }

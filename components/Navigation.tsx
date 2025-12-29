@@ -11,6 +11,7 @@ import StaggerContainer from './animations/StaggerContainer'
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/standards', label: 'Standards' },
+  { href: '/resources', label: 'Resources' },
   { href: '/directory', label: 'Directory' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },

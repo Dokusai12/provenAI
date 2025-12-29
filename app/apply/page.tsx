@@ -15,6 +15,12 @@ import {
 } from '@/components/forms/StepComponents'
 import { DISPLAY_EMAIL, CONTACT_EMAIL } from '@/lib/constants'
 import { validationRules } from '@/lib/validation'
+import PreScreeningQuiz from '@/components/tools/PreScreeningQuiz'
+import ChecklistGenerator from '@/components/tools/ChecklistGenerator'
+import TimelineSimulator from '@/components/tools/TimelineSimulator'
+import ScrollReveal from '@/components/animations/ScrollReveal'
+import Button from '@/components/ui/Button'
+import Link from 'next/link'
 
 const steps = [
   {
@@ -187,11 +193,37 @@ export default function ApplyPage() {
                 </p>
               </div>
             )}
-            <div className="bg-gray-dark text-primary-white p-4 rounded-lg">
+            <div className="bg-gray-dark text-primary-white p-4 rounded-lg mb-6">
               <p className="text-body font-medium">
                 Beta applications: Free certification for first 15 companies (normally £2,500/year)
               </p>
             </div>
+          </div>
+        </section>
+
+        {/* Pre-Screening Tools */}
+        <section className="py-12 bg-gray-very-light border-t border-gray-medium">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ScrollReveal direction="fade">
+              <div className="text-center mb-8">
+                <h2 className="text-h2 font-bold mb-2">Prepare for Your Application</h2>
+                <p className="text-body text-gray-subtle">
+                  Use these tools to assess your readiness and prepare your documents
+                </p>
+              </div>
+              <div className="space-y-12">
+                <PreScreeningQuiz />
+                <ChecklistGenerator />
+                <TimelineSimulator />
+              </div>
+              <div className="text-center mt-8">
+                <Link href="/resources">
+                  <Button variant="secondary">
+                    Explore All Tools & Resources
+                  </Button>
+                </Link>
+              </div>
+            </ScrollReveal>
           </div>
         </section>
 

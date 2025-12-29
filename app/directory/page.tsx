@@ -13,6 +13,8 @@ import ScrollReveal from '@/components/animations/ScrollReveal'
 import AnimatedButton from '@/components/animations/AnimatedButton'
 import ProvenAIBadge from '@/components/ProvenAIBadge'
 import { motion } from 'framer-motion'
+import VendorAssessment from '@/components/tools/VendorAssessment'
+import Card from '@/components/ui/Card'
 
 // This will be replaced with real data later
 const companies: any[] = []
@@ -73,6 +75,21 @@ export default function DirectoryPage() {
                 />
               </motion.div>
             </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Vendor Assessment Tool */}
+      <section className="py-12 bg-gray-very-light border-t border-gray-medium">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="fade">
+            <div className="text-center mb-8">
+              <h2 className="text-h2 font-bold mb-2">Assess Vendor Compliance</h2>
+              <p className="text-body text-gray-subtle max-w-2xl mx-auto">
+                For buyers: Use our assessment tool to evaluate vendor AI compliance based on ProvenAI standards
+              </p>
+            </div>
+            <VendorAssessment />
           </ScrollReveal>
         </div>
       </section>

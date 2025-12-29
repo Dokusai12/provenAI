@@ -88,7 +88,7 @@ export default function FormProgress({
       </div>
 
       {/* Progress Info */}
-      <div className="flex items-center justify-between text-sm">
+      <div className="flex items-center justify-between text-sm mb-3">
         <span className="text-gray-subtle">
           Step {currentStep} of {totalSteps}
         </span>
@@ -103,7 +103,30 @@ export default function FormProgress({
           )}
         </div>
       </div>
+
+      {/* Encouragement Messages */}
+      {(() => {
+        const getEncouragementMessage = () => {
+          if (progress >= 90) return { text: "🎉 Almost there! Just review and submit.", color: "text-green-600" }
+          if (progress >= 70) return { text: "💪 You're doing great! Keep going!", color: "text-primary-black" }
+          if (progress >= 50) return { text: "✨ Halfway there! You've got this.", color: "text-primary-black" }
+          if (progress >= 25) return { text: "🚀 Great start! Keep it up.", color: "text-primary-black" }
+          return { text: "👋 Let's get started!", color: "text-primary-black" }
+        }
+        const message = getEncouragementMessage()
+        return (
+          <motion.div
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            key={currentStep}
+            className={`text-sm font-medium ${message.color}`}
+          >
+            {message.text}
+          </motion.div>
+        )
+      })()}
     </div>
   )
 }
+
 
