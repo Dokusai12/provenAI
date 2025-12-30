@@ -17,11 +17,11 @@ const comparisonData = [
     },
   },
   {
-    feature: 'EU AI Act Readiness',
+    feature: 'EU AI Act Compliance',
     certified: true,
     nonCertified: false,
     description: {
-      certified: 'Demonstrated compliance readiness aligned with EU AI Act requirements',
+      certified: 'Demonstrated compliance with EU AI Act requirements and regulatory adherence',
       nonCertified: 'Unknown or unverified compliance status',
     },
   },
@@ -133,20 +133,21 @@ export default function ComparisonTable() {
                 return (
                   <motion.tr
                     key={row.feature}
-                    className={`cursor-pointer transition-all ${
+                    className={`cursor-pointer transition-all duration-200 ${
                       index !== comparisonData.length - 1 ? 'border-b border-gray-medium' : ''
                     } ${isHovered ? 'bg-gray-very-light' : ''}`}
                     onMouseEnter={() => setHoveredRow(index)}
                     onMouseLeave={() => setHoveredRow(null)}
                     onClick={() => setExpandedRow(isExpanded ? null : index)}
                     whileHover={{ backgroundColor: '#f5f5f5' }}
+                    transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                   >
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-2">
                         <span className="text-body text-gray-dark font-medium">{row.feature}</span>
                         <motion.span
                           animate={{ rotate: isExpanded ? 180 : 0 }}
-                          transition={{ duration: 0.3 }}
+                          transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                           className="text-gray-subtle"
                         >
                           ▼
@@ -158,7 +159,7 @@ export default function ComparisonTable() {
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                             className="overflow-hidden mt-3"
                           >
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-3 border-t border-gray-medium">
@@ -182,6 +183,7 @@ export default function ComparisonTable() {
                           aria-label="Included"
                           whileHover={{ scale: 1.2 }}
                           whileTap={{ scale: 0.9 }}
+                          transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                         >
                           ✓
                         </motion.span>
@@ -196,6 +198,7 @@ export default function ComparisonTable() {
                           aria-label="Included"
                           whileHover={{ scale: 1.2 }}
                           whileTap={{ scale: 0.9 }}
+                          transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                         >
                           ✓
                         </motion.span>

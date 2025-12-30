@@ -54,6 +54,15 @@ const getLineType = (line: string): 'header' | 'subheader' | 'bullet' | 'subbull
   return 'text'
 }
 
+// Brand colors
+const COLORS = {
+  black: [0, 0, 0],
+  darkGray: [26, 26, 26],
+  mediumGray: [42, 42, 42],
+  lightGray: [245, 245, 245],
+  white: [255, 255, 255],
+}
+
 const pdfContents: Record<string, PDFContent> = {
   'eu-ai-act-compliance-checklist': {
     title: 'EU AI Act Compliance Checklist',
@@ -387,13 +396,11 @@ const pdfContents: Record<string, PDFContent> = {
 export const downloadPDFGuide = async (guideKey: string) => {
   const guide = pdfContents[guideKey]
   if (!guide) {
-    console.error(`Guide not found: ${guideKey}`)
     throw new Error(`Guide not found: ${guideKey}`)
   }
 
   const JsPDF = await getJsPDF()
   if (!JsPDF) {
-    console.error('jsPDF not available')
     throw new Error('PDF generation not available')
   }
 
@@ -401,42 +408,93 @@ export const downloadPDFGuide = async (guideKey: string) => {
   const pageWidth = doc.internal.pageSize.getWidth()
   const pageHeight = doc.internal.pageSize.getHeight()
   const margin = 20
-  const leftMargin = margin
-  const bulletIndent = 8
-  const subBulletIndent = 16
+  const headerHeight = 25
+  const footerHeight = 20
+  const contentTop = margin + headerHeight
+  const contentBottom = pageHeight - footerHeight
   const maxWidth = pageWidth - 2 * margin
-  let yPosition = margin
+  let yPosition = contentTop
+  let pageNumber = 1
 
-  // Helper function to add new page if needed
+  // Add header and footer to each page
+  const addHeaderFooter = (pageNum: number, totalPages: number) => {
+    // Header with brand bar
+    doc.setFillColor(...COLORS.black)
+    doc.rect(0, 0, pageWidth, 3, 'F')
+    
+    // ProvenAI branding
+    doc.setTextColor(...COLORS.darkGray)
+    doc.setFontSize(10)
+    doc.setFont('helvetica', 'bold')
+    doc.text('PROVENAI', margin, margin + 8)
+    
+    // Document metadata
+    doc.setFont('helvetica', 'normal')
+    doc.setFontSize(8)
+    doc.setTextColor(...COLORS.mediumGray)
+    const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+    doc.text(`Generated: ${date}`, pageWidth - margin, margin + 8, { align: 'right' })
+    
+    // Header separator line
+    doc.setDrawColor(...COLORS.mediumGray)
+    doc.setLineWidth(0.5)
+    doc.line(margin, margin + headerHeight - 5, pageWidth - margin, margin + headerHeight - 5)
+    
+    // Footer
+    doc.setFillColor(...COLORS.lightGray)
+    doc.rect(0, pageHeight - footerHeight, pageWidth, footerHeight, 'F')
+    
+    // Footer text
+    doc.setFontSize(8)
+    doc.setTextColor(...COLORS.mediumGray)
+    doc.setFont('helvetica', 'normal')
+    doc.text('ProvenAI - AI Safety & Compliance Certification', margin, pageHeight - 10)
+    doc.text(`Page ${pageNum}${totalPages > 1 ? ` of ${totalPages}` : ''}`, pageWidth - margin, pageHeight - 10, { align: 'right' })
+    doc.text('www.provenai.com', pageWidth / 2, pageHeight - 10, { align: 'center' })
+  }
+
+  // Helper function to add new page
+  const addNewPage = () => {
+    doc.addPage()
+    pageNumber++
+    yPosition = contentTop
+    addHeaderFooter(pageNumber, 0) // Will update total pages later
+  }
+
+  // Helper function to check page break
   const checkPageBreak = (requiredSpace: number) => {
-    if (yPosition + requiredSpace > pageHeight - margin) {
-      doc.addPage()
-      yPosition = margin
+    if (yPosition + requiredSpace > contentBottom) {
+      addNewPage()
       return true
     }
     return false
   }
 
-  // Add title with proper formatting
-  doc.setFontSize(18)
-  doc.setFont('helvetica', 'bold')
-  const titleText = decodeHtmlEntities(guide.title)
-  const titleLines = doc.splitTextToSize(titleText, maxWidth)
-  doc.text(titleLines, leftMargin, yPosition)
-  yPosition += titleLines.length * 7 + 10
+  // Add header to first page
+  addHeaderFooter(1, 0)
 
-  // Add content with proper formatting
+  // Title section with styling
+  doc.setFillColor(...COLORS.lightGray)
+  doc.roundedRect(margin, yPosition - 8, maxWidth, 20, 2, 2, 'F')
+  
+  doc.setFontSize(20)
+  doc.setFont('helvetica', 'bold')
+  doc.setTextColor(...COLORS.black)
+  const titleText = decodeHtmlEntities(guide.title)
+  const titleLines = doc.splitTextToSize(titleText, maxWidth - 10)
+  doc.text(titleLines, margin + 5, yPosition + 5)
+  yPosition += titleLines.length * 8 + 15
+
+  // Content processing
   let prevLineType: string = 'empty'
 
   guide.content.forEach((line) => {
-    // Decode HTML entities
     const decodedLine = decodeHtmlEntities(line)
     const trimmedLine = decodedLine.trim()
     const lineType = getLineType(decodedLine)
 
     // Skip empty lines but add spacing
     if (lineType === 'empty') {
-      // Add spacing based on context
       if (prevLineType === 'header') {
         yPosition += 8
       } else if (prevLineType !== 'empty') {
@@ -446,78 +504,112 @@ export const downloadPDFGuide = async (guideKey: string) => {
       return
     }
 
-    // Check for page break before adding content
-    const estimatedHeight = lineType === 'header' ? 12 : lineType === 'subheader' ? 10 : 7
-    checkPageBreak(estimatedHeight + 2)
-
-    let currentX = leftMargin
+    let currentX = margin
     let fontSize = 11
     let fontStyle: 'normal' | 'bold' = 'normal'
     let lineHeight = 7
+    let textColor = COLORS.black
 
     // Format based on line type
     switch (lineType) {
       case 'header':
-        // Section headers - bold, larger font
+        // Section header with background bar
         fontSize = 14
         fontStyle = 'bold'
         lineHeight = 10
-        currentX = leftMargin
-        // Add extra space before header if previous wasn't empty
-        if (prevLineType !== 'empty' && prevLineType !== 'header') {
-          yPosition += 4
-        }
+        textColor = COLORS.black
+        
+        checkPageBreak(15)
+        
+        // Header background bar
+        doc.setFillColor(...COLORS.darkGray)
+        doc.rect(margin, yPosition - 3, maxWidth, 8, 'F')
+        
+        currentX = margin + 5
+        yPosition += 5
         break
 
       case 'number':
-        // Numbered list items
         fontSize = 11
-        fontStyle = 'normal'
+        fontStyle = 'bold'
         lineHeight = 8
-        currentX = leftMargin
+        textColor = COLORS.black
+        currentX = margin
         break
 
       case 'bullet':
-        // Bullet points with checkbox
         fontSize = 11
         fontStyle = 'normal'
         lineHeight = 8
-        // Remove checkbox symbol and add proper bullet
-        const cleanedBullet = trimmedLine.replace(/^□\s*/, '☐ ')
-        const bulletText = cleanedBullet.length > maxWidth - bulletIndent
-          ? doc.splitTextToSize(cleanedBullet, maxWidth - bulletIndent)
-          : [cleanedBullet]
-        currentX = leftMargin + bulletIndent
-        doc.setFontSize(fontSize)
-        doc.setFont('helvetica', fontStyle)
-        bulletText.forEach((textLine: string, idx: number) => {
-          checkPageBreak(lineHeight)
-          doc.text(textLine, currentX, yPosition)
-          if (idx < bulletText.length - 1) {
-            yPosition += lineHeight
-          }
-        })
-        yPosition += lineHeight
-        prevLineType = lineType
-        return
+        textColor = COLORS.black
+        
+        // Draw checkbox or bullet
+        checkPageBreak(lineHeight + 2)
+        doc.setFillColor(...COLORS.white)
+        doc.setDrawColor(...COLORS.black)
+        doc.setLineWidth(0.5)
+        
+        const isCheckbox = /^□/.test(trimmedLine)
+        if (isCheckbox) {
+          // Draw checkbox
+          doc.rect(margin, yPosition - 3, 4, 4, 'S')
+          const cleanedText = trimmedLine.replace(/^□\s*/, '')
+          currentX = margin + 8
+          const textLines = doc.splitTextToSize(cleanedText, maxWidth - 15)
+          doc.setFontSize(fontSize)
+          doc.setFont('helvetica', fontStyle)
+          doc.setTextColor(...textColor)
+          textLines.forEach((textLine: string, idx: number) => {
+            checkPageBreak(lineHeight)
+            doc.text(textLine, currentX, yPosition)
+            if (idx < textLines.length - 1) {
+              yPosition += lineHeight
+            }
+          })
+          yPosition += lineHeight
+          prevLineType = lineType
+          return
+        } else {
+          // Draw bullet point
+          doc.circle(margin + 2, yPosition - 1, 1, 'F')
+          const cleanedText = trimmedLine.replace(/^[•·-]\s*/, '')
+          currentX = margin + 8
+          const textLines = doc.splitTextToSize(cleanedText, maxWidth - 15)
+          doc.setFontSize(fontSize)
+          doc.setFont('helvetica', fontStyle)
+          doc.setTextColor(...textColor)
+          textLines.forEach((textLine: string, idx: number) => {
+            checkPageBreak(lineHeight)
+            doc.text(textLine, currentX, yPosition)
+            if (idx < textLines.length - 1) {
+              yPosition += lineHeight
+            }
+          })
+          yPosition += lineHeight
+          prevLineType = lineType
+          return
+        }
 
       case 'subbullet':
-        // Sub-bullet points (indented)
         fontSize = 10
         fontStyle = 'normal'
         lineHeight = 7
-        // Clean up indentation and bullet
-        const cleanedSub = trimmedLine.replace(/^[\s•·-]+/, '• ')
-        const subText = cleanedSub.length > maxWidth - subBulletIndent
-          ? doc.splitTextToSize(cleanedSub, maxWidth - subBulletIndent)
-          : [cleanedSub]
-        currentX = leftMargin + subBulletIndent
+        textColor = COLORS.darkGray
+        
+        checkPageBreak(lineHeight + 2)
+        doc.setFillColor(...COLORS.mediumGray)
+        doc.circle(margin + 8, yPosition - 1, 0.8, 'F')
+        
+        const cleanedSub = trimmedLine.replace(/^[\s•·-]+/, '')
+        currentX = margin + 14
+        const subTextLines = doc.splitTextToSize(cleanedSub, maxWidth - 20)
         doc.setFontSize(fontSize)
         doc.setFont('helvetica', fontStyle)
-        subText.forEach((textLine: string, idx: number) => {
+        doc.setTextColor(...textColor)
+        subTextLines.forEach((textLine: string, idx: number) => {
           checkPageBreak(lineHeight)
           doc.text(textLine, currentX, yPosition)
-          if (idx < subText.length - 1) {
+          if (idx < subTextLines.length - 1) {
             yPosition += lineHeight
           }
         })
@@ -527,20 +619,20 @@ export const downloadPDFGuide = async (guideKey: string) => {
 
       case 'text':
       default:
-        // Regular text
         fontSize = 11
         fontStyle = 'normal'
         lineHeight = 7
-        currentX = leftMargin
+        textColor = COLORS.black
+        currentX = margin
         break
     }
 
-    // Set font for current line
+    // Set font and render text
     doc.setFontSize(fontSize)
     doc.setFont('helvetica', fontStyle)
+    doc.setTextColor(...textColor)
 
-    // Handle text wrapping
-    const textLines = doc.splitTextToSize(trimmedLine, maxWidth - (currentX - leftMargin))
+    const textLines = doc.splitTextToSize(trimmedLine, maxWidth - (currentX - margin))
     
     textLines.forEach((textLine: string, idx: number) => {
       checkPageBreak(lineHeight)
@@ -554,7 +646,20 @@ export const downloadPDFGuide = async (guideKey: string) => {
     prevLineType = lineType
   })
 
-  // Save the PDF with proper filename (hyphens, not underscores)
-  const filename = guideKey + '.pdf'
+  // Update footer with total page count
+  const totalPages = doc.internal.pages.length - 1
+  for (let i = 1; i <= totalPages; i++) {
+    doc.setPage(i)
+    doc.setFillColor(...COLORS.lightGray)
+    doc.rect(0, pageHeight - footerHeight, pageWidth, footerHeight, 'F')
+    doc.setFontSize(8)
+    doc.setTextColor(...COLORS.mediumGray)
+    doc.text('ProvenAI - AI Safety & Compliance Certification', margin, pageHeight - 10)
+    doc.text(`Page ${i}${totalPages > 1 ? ` of ${totalPages}` : ''}`, pageWidth - margin, pageHeight - 10, { align: 'right' })
+    doc.text('www.provenai.com', pageWidth / 2, pageHeight - 10, { align: 'center' })
+  }
+
+  // Save the PDF
+  const filename = guideKey.replace(/_/g, '-') + '.pdf'
   doc.save(filename)
 }

@@ -29,7 +29,7 @@ export default function AutoSaveIndicator({
         // Reset to idle after 2 seconds
         setTimeout(() => setSaveStatus('idle'), 2000)
       } catch (error) {
-        console.error('Failed to save form data:', error)
+        // Silently fail - auto-save is non-critical
         setSaveStatus('idle')
       }
     }

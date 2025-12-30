@@ -288,7 +288,7 @@ export default function ResourcesPage() {
                         ...prev,
                         [guide.key]: error?.message || 'Failed to generate PDF. Please try again.',
                       }))
-                      console.error('Error generating PDF:', error)
+                      // Error already handled in state
                     } finally {
                       setTimeout(() => {
                         setGeneratingPDF(null)

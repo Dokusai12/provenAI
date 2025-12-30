@@ -58,7 +58,7 @@ export default function FormErrorSummary({
     <div
       ref={summaryRef}
       className={cn(
-        'border-2 border-red-500 bg-red-50 rounded-lg p-4 mb-6',
+        'border-2 border-error bg-error/5 rounded-lg p-4 mb-6',
         className
       )}
       role="alert"
@@ -66,10 +66,11 @@ export default function FormErrorSummary({
     >
       <div className="flex items-start gap-3">
         <svg
-          className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5"
+          className="w-5 h-5 text-error flex-shrink-0 mt-0.5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"
@@ -79,8 +80,8 @@ export default function FormErrorSummary({
           />
         </svg>
         <div className="flex-1">
-          <h3 className="text-sm font-semibold text-red-800 mb-2">
-            Please fix {errorCount} {errorCount === 1 ? 'error' : 'errors'} before submitting:
+          <h3 className="text-sm font-semibold text-error mb-2">
+            Please fix {errorCount} {errorCount === 1 ? 'error' : 'errors'} before continuing:
           </h3>
           <ul className="list-disc list-inside space-y-1">
             {errorMessages.map((error, index) => (
@@ -88,7 +89,7 @@ export default function FormErrorSummary({
                 <button
                   type="button"
                   onClick={() => scrollToError(error.field)}
-                  className="text-sm text-red-700 hover:underline text-left"
+                  className="text-sm text-error hover:underline text-left focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2 rounded px-1"
                 >
                   {error.message}
                 </button>

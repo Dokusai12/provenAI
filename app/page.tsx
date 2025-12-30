@@ -39,6 +39,7 @@ import StandardsMapper from '@/components/tools/StandardsMapper'
 import AnimatedCounter from '@/components/animations/AnimatedCounter'
 import BeforeAfterScenarios from '@/components/widgets/BeforeAfterScenarios'
 import CertificationDemo from '@/components/widgets/CertificationDemo'
+import Badge from '@/components/ui/Badge'
 
 export default function HomePage() {
   return (
@@ -93,19 +94,19 @@ export default function HomePage() {
             transition={{ delay: 0.75, duration: 0.6 }}
             className="mb-10"
           >
-            <div className="flex flex-wrap items-center justify-center gap-4 max-w-2xl mx-auto">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-very-light border border-gray-medium">
-                <ShieldCheckIcon className="w-5 h-5 text-primary-black" />
-                <span className="text-small font-medium text-gray-dark">Anonymous Auditors</span>
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-very-light border border-gray-medium">
-                <EyeIcon className="w-5 h-5 text-primary-black" />
-                <span className="text-small font-medium text-gray-dark">Public Standards</span>
-              </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-very-light border border-gray-medium">
-                <CheckCircleIcon className="w-5 h-5 text-primary-black" />
-                <span className="text-small font-medium text-gray-dark">Expert Review</span>
-              </div>
+            <div className="flex flex-wrap items-center justify-center gap-3 max-w-2xl mx-auto">
+              <Badge variant="default" size="md" className="flex items-center gap-2">
+                <ShieldCheckIcon className="w-5 h-5" />
+                <span>Anonymous Auditors</span>
+              </Badge>
+              <Badge variant="default" size="md" className="flex items-center gap-2">
+                <EyeIcon className="w-5 h-5" />
+                <span>Public Standards</span>
+              </Badge>
+              <Badge variant="default" size="md" className="flex items-center gap-2">
+                <CheckCircleIcon className="w-5 h-5" />
+                <span>Expert Review</span>
+              </Badge>
             </div>
           </motion.div>
           <motion.div
@@ -126,7 +127,7 @@ export default function HomePage() {
               </Link>
               <Link href="/resources#prescreening">
                 <AnimatedButton variant="secondary" size="lg">
-                  Take Readiness Quiz
+                  Assess Compliance
                 </AnimatedButton>
               </Link>
             </div>
@@ -142,7 +143,7 @@ export default function HomePage() {
               <h2 className="text-h2 text-left mb-6 font-bold tracking-tight">
                 AI Is Everywhere. Trust & Compliance Aren't.
               </h2>
-              <div className="w-16 h-1 bg-primary-black mb-8"></div>
+              <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
             </ScrollReveal>
             <ScrollReveal direction="fade" delay={0.2}>
               <p className="text-body text-gray-dark text-left mb-8 max-w-3xl leading-relaxed">
@@ -266,7 +267,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
               <AnimatedCard revealDirection="up">
                 <div className="mb-4">
-                  <ShieldCheckIcon className="w-12 h-12 text-primary-black" />
+                  <ShieldCheckIcon className="w-8 h-8 text-primary-black" />
                 </div>
                 <h3 className="text-h3 font-bold mb-3">Anonymous Auditors</h3>
                 <p className="text-body text-gray-subtle">
@@ -276,7 +277,7 @@ export default function HomePage() {
               </AnimatedCard>
               <AnimatedCard revealDirection="up" revealDelay={0.1}>
                 <div className="mb-4">
-                  <FileIcon className="w-12 h-12 text-primary-black" />
+                  <FileIcon className="w-8 h-8 text-primary-black" />
                 </div>
                 <h3 className="text-h3 font-bold mb-3">Public Standards</h3>
                 <p className="text-body text-gray-subtle">
@@ -286,7 +287,7 @@ export default function HomePage() {
               </AnimatedCard>
               <AnimatedCard revealDirection="up" revealDelay={0.2}>
                 <div className="mb-4">
-                  <CheckCircleIcon className="w-12 h-12 text-primary-black" />
+                  <CheckCircleIcon className="w-8 h-8 text-primary-black" />
                 </div>
                 <h3 className="text-h3 font-bold mb-3">Expert Review</h3>
                 <p className="text-body text-gray-subtle">
@@ -324,7 +325,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <AnimatedCard revealDirection="up">
                 <div className="mb-4">
-                  <EyeIcon className="w-12 h-12 text-primary-black" />
+                  <EyeIcon className="w-8 h-8 text-primary-black" />
                 </div>
                 <h3 className="text-h3 font-bold mb-3">Truth-in-Marketing</h3>
                 <p className="text-body text-gray-subtle">
@@ -333,7 +334,7 @@ export default function HomePage() {
               </AnimatedCard>
               <AnimatedCard revealDirection="up" revealDelay={0.1}>
                 <div className="mb-4">
-                  <ShieldCheckIcon className="w-12 h-12 text-primary-black" />
+                  <ShieldCheckIcon className="w-8 h-8 text-primary-black" />
                 </div>
                 <h3 className="text-h3 font-bold mb-3">Data Handling & Privacy</h3>
                 <p className="text-body text-gray-subtle">
@@ -342,7 +343,7 @@ export default function HomePage() {
               </AnimatedCard>
               <AnimatedCard revealDirection="up" revealDelay={0.2}>
                 <div className="mb-4">
-                  <GearIcon className="w-12 h-12 text-primary-black" />
+                  <GearIcon className="w-8 h-8 text-primary-black" />
                 </div>
                 <h3 className="text-h3 font-bold mb-3">Model Monitoring & Evaluation</h3>
                 <p className="text-body text-gray-subtle">
@@ -351,7 +352,7 @@ export default function HomePage() {
               </AnimatedCard>
               <AnimatedCard revealDirection="up" revealDelay={0.3}>
                 <div className="mb-4">
-                  <CheckCircleIcon className="w-12 h-12 text-primary-black" />
+                  <CheckCircleIcon className="w-8 h-8 text-primary-black" />
                 </div>
                 <h3 className="text-h3 font-bold mb-3">Security Posture</h3>
                 <p className="text-body text-gray-subtle">
@@ -360,7 +361,7 @@ export default function HomePage() {
               </AnimatedCard>
               <AnimatedCard revealDirection="up" revealDelay={0.4}>
                 <div className="mb-4">
-                  <BriefcaseIcon className="w-12 h-12 text-primary-black" />
+                  <BriefcaseIcon className="w-8 h-8 text-primary-black" />
                 </div>
                 <h3 className="text-h3 font-bold mb-3">Risk Management</h3>
                 <p className="text-body text-gray-subtle">
@@ -369,7 +370,7 @@ export default function HomePage() {
               </AnimatedCard>
               <AnimatedCard revealDirection="up" revealDelay={0.5}>
                 <div className="mb-4">
-                  <FileIcon className="w-12 h-12 text-primary-black" />
+                  <FileIcon className="w-8 h-8 text-primary-black" />
                 </div>
                 <h3 className="text-h3 font-bold mb-3">Governance & Accountability</h3>
                 <p className="text-body text-gray-subtle">
@@ -407,7 +408,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <AnimatedCard revealDirection="up">
                 <div className="mb-4">
-                  <FileIcon className="w-12 h-12 text-primary-black" />
+                  <FileIcon className="w-8 h-8 text-primary-black" />
                 </div>
                 <h3 className="text-h3 font-bold mb-3">ISO/IEC 42001</h3>
                 <p className="text-body text-gray-subtle">
@@ -416,7 +417,7 @@ export default function HomePage() {
               </AnimatedCard>
               <AnimatedCard revealDirection="up" revealDelay={0.1}>
                 <div className="mb-4">
-                  <ShieldCheckIcon className="w-12 h-12 text-primary-black" />
+                  <ShieldCheckIcon className="w-8 h-8 text-primary-black" />
                 </div>
                 <h3 className="text-h3 font-bold mb-3">NIST AI RMF</h3>
                 <p className="text-body text-gray-subtle">
@@ -425,7 +426,7 @@ export default function HomePage() {
               </AnimatedCard>
               <AnimatedCard revealDirection="up" revealDelay={0.2}>
                 <div className="mb-4">
-                  <CheckCircleIcon className="w-12 h-12 text-primary-black" />
+                  <CheckCircleIcon className="w-8 h-8 text-primary-black" />
                 </div>
                 <h3 className="text-h3 font-bold mb-3">EU AI Act</h3>
                 <p className="text-body text-gray-subtle">
@@ -434,7 +435,7 @@ export default function HomePage() {
               </AnimatedCard>
               <AnimatedCard revealDirection="up" revealDelay={0.3}>
                 <div className="mb-4">
-                  <EyeIcon className="w-12 h-12 text-primary-black" />
+                  <EyeIcon className="w-8 h-8 text-primary-black" />
                 </div>
                 <h3 className="text-h3 font-bold mb-3">Transparent Criteria</h3>
                 <p className="text-body text-gray-subtle">
@@ -472,7 +473,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
             <div className="text-center mb-16">
-              <h2 className="text-h2-lg mb-6 font-bold text-primary-white tracking-tight">
+              <h2 className="text-h2 mb-6 font-bold text-primary-white tracking-tight">
                 We Verify. You Trust.
               </h2>
               <div className="w-16 h-1 bg-primary-white mx-auto mb-8"></div>
@@ -608,7 +609,7 @@ export default function HomePage() {
               {/* For AI Companies */}
               <AnimatedCard variant="minimal" className="h-full" revealDirection="left">
                 <h3 className="text-h2 font-bold mb-8 text-left">For AI Companies</h3>
-                <div className="w-12 h-1 bg-primary-black mb-8"></div>
+                <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
                 <ul className="space-y-6">
                   {[
                     { 
@@ -669,7 +670,7 @@ export default function HomePage() {
               {/* For Buyers */}
               <AnimatedCard variant="minimal" className="h-full" revealDirection="right">
                 <h3 className="text-h2 font-bold mb-8 text-left">For Buyers</h3>
-                <div className="w-12 h-1 bg-primary-black mb-8"></div>
+                <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
                 <ul className="space-y-6">
                   {[
                     { 
@@ -752,7 +753,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
             <h2 className="text-h2 text-center mb-6 font-bold">Certified vs Non-Certified</h2>
-            <div className="w-16 h-1 bg-primary-black mx-auto mb-12"></div>
+            <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
           </ScrollReveal>
           <ComparisonTable />
         </div>
@@ -783,7 +784,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
             <h2 className="text-h2 text-center mb-6 font-bold">Why Choose ProvenAI</h2>
-            <div className="w-16 h-1 bg-primary-black mx-auto mb-12"></div>
+            <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
           </ScrollReveal>
           <StaggerContainer staggerDelay={0.15}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -840,7 +841,7 @@ export default function HomePage() {
       <section className="py-20 bg-primary-white border-t border-gray-medium">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
-            <h2 className="text-h2-lg text-center mb-12 font-bold">Quick Facts</h2>
+            <h2 className="text-h2 text-center mb-12 font-bold">Quick Facts</h2>
           </ScrollReveal>
           <StaggerContainer staggerDelay={0.1}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -879,7 +880,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
             <h2 className="text-h2 text-center mb-6 font-bold">Before & After Certification</h2>
-            <div className="w-16 h-1 bg-primary-black mx-auto mb-12"></div>
+            <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <AnimatedCard variant="minimal" revealDirection="right">
@@ -924,7 +925,7 @@ export default function HomePage() {
           <ScrollReveal direction="fade">
             <div className="text-center mb-8">
               <h2 className="text-h2 text-center mb-6 font-bold">Common Questions</h2>
-              <div className="w-16 h-1 bg-primary-black mx-auto mb-8"></div>
+              <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
               <p className="text-body text-gray-dark mb-8">
                 Here are the most frequently asked questions. <Link href="#faq" className="underline">View all FAQs →</Link>
               </p>

@@ -37,7 +37,7 @@ export default function FormProgress({
           className="absolute top-0 left-0 h-full bg-primary-black rounded-full"
           initial={{ width: '0%' }}
           animate={{ width: `${progress}%` }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
+          transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
         />
       </div>
 
@@ -47,7 +47,7 @@ export default function FormProgress({
           <div key={step} className="flex flex-col items-center flex-1">
             <div
               className={cn(
-                'w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300',
+                'w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-200',
                 step < currentStep
                   ? 'bg-primary-black text-primary-white'
                   : step === currentStep

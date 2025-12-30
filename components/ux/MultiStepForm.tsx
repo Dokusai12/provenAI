@@ -34,7 +34,8 @@ export default function MultiStepForm({
 
   const methods = useForm<ApplicationFormData>({
     defaultValues,
-    mode: 'onBlur',
+    mode: 'onChange', // Real-time validation feedback
+    reValidateMode: 'onChange',
   })
 
   const { trigger, getValues } = methods
@@ -192,10 +193,10 @@ export default function MultiStepForm({
           />
         </div>
 
-        {/* Error Summary */}
+        {/* Error Summary - Show on any step with errors */}
         <FormErrorSummary
           errors={errors}
-          show={Object.keys(errors).length > 0 && currentStep === steps.length - 1}
+          show={Object.keys(errors).length > 0}
         />
 
         <AnimatePresence mode="wait">

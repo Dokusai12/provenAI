@@ -67,17 +67,17 @@ export default function Textarea({
           ref={textareaRef}
           id={textareaId}
           className={cn(
-            'w-full px-4 py-3 border rounded-lg transition-all',
+            'w-full px-4 py-3 border rounded-lg transition-all duration-200',
             'bg-primary-white text-primary-black',
             'focus:outline-none focus:ring-2 focus:border-transparent',
-            'disabled:bg-gray-light disabled:cursor-not-allowed',
+            'disabled:bg-gray-light disabled:cursor-not-allowed disabled:opacity-50',
             'resize-y',
             autoResize ? 'overflow-hidden' : '',
             !autoResize && rows === 4 ? 'min-h-[120px]' : '',
             error
-              ? 'border-red-500 focus:ring-red-500'
+              ? 'border-error focus:ring-error'
               : isValid
-              ? 'border-green-500 focus:ring-green-500'
+              ? 'border-success focus:ring-success'
               : isFocused
               ? 'border-primary-black focus:ring-primary-black'
               : 'border-gray-medium',
@@ -104,7 +104,7 @@ export default function Textarea({
         {isValid && (
           <div className="absolute right-3 top-3">
             <svg
-              className="w-5 h-5 text-green-500"
+              className="w-5 h-5 text-success"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -122,7 +122,7 @@ export default function Textarea({
         {error && (
           <div className="absolute right-3 top-3">
             <svg
-              className="w-5 h-5 text-red-500"
+              className="w-5 h-5 text-error"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -141,7 +141,7 @@ export default function Textarea({
       <div className="mt-1 flex items-center justify-between">
         <div>
           {error && (
-            <p id={`${textareaId}-error`} className="text-sm text-red-500" role="alert">
+            <p id={`${textareaId}-error`} className="text-sm text-error" role="alert">
               {error}
             </p>
           )}

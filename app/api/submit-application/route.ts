@@ -3,18 +3,8 @@ import { sendApplicationEmail, sendApplicationConfirmationEmail } from '@/lib/em
 import type { ApplicationFormData } from '@/types'
 
 export async function POST(request: Request) {
-  console.log('=== Application Form API Called ===')
-  
-  // More detailed environment variable checking
   const resendApiKey = process.env.RESEND_API_KEY
   const contactEmail = process.env.CONTACT_EMAIL
-  
-  console.log('Environment check:')
-  console.log('- RESEND_API_KEY exists:', !!resendApiKey)
-  console.log('- RESEND_API_KEY length:', resendApiKey?.length || 0)
-  console.log('- RESEND_API_KEY starts with "re_":', resendApiKey?.startsWith('re_') || false)
-  console.log('- CONTACT_EMAIL:', contactEmail || 'NOT SET')
-  console.log('- All env vars:', Object.keys(process.env).filter(k => k.includes('RESEND') || k.includes('CONTACT')))
   
   try {
     let data: ApplicationFormData
@@ -28,12 +18,6 @@ export async function POST(request: Request) {
       )
     }
 
-    console.log('Form data received:', { 
-      companyName: data.companyName, 
-      email: data.email, 
-      contactName: data.contactName 
-    })
-
     // Basic validation
     if (!data.companyName || !data.email || !data.contactName) {
       console.error('Validation failed: Missing required fields')
@@ -45,10 +29,7 @@ export async function POST(request: Request) {
 
     // Check if Resend API key is configured (check for both undefined and empty string)
     if (!resendApiKey || resendApiKey.trim() === '') {
-      console.error('❌ RESEND_API_KEY not configured or empty')
-      console.error('This means the environment variable is not set in Vercel.')
-      console.error('Please go to Vercel Dashboard → Settings → Environment Variables')
-      console.error('And add: RESEND_API_KEY = re_ZtbdUFUT_CkYUAqgpYk3n9rwpp8tZxvQP')
+      console.error('RESEND_API_KEY not configured')
       return NextResponse.json(
         { 
           error: 'Email service is not configured. Please contact support.',
@@ -58,10 +39,8 @@ export async function POST(request: Request) {
       )
     }
 
-    console.log('Calling sendApplicationEmail...')
     // Send email to admin
     const result = await sendApplicationEmail(data)
-    console.log('sendApplicationEmail result:', result)
 
     if (!result.success) {
       console.error('Failed to send email:', result.error)
@@ -72,23 +51,17 @@ export async function POST(request: Request) {
     }
 
     // Send confirmation email to user
-    console.log('Sending confirmation email to user...')
     const confirmationResult = await sendApplicationConfirmationEmail(data)
-    if (confirmationResult.success) {
-      console.log('✅ Confirmation email sent successfully!')
-    } else {
-      console.warn('⚠️ Failed to send confirmation email (non-critical):', confirmationResult.error)
+    if (!confirmationResult.success) {
+      console.warn('Failed to send confirmation email (non-critical):', confirmationResult.error)
       // Don't fail the request if confirmation email fails
     }
-
-    console.log('✅ Application submitted successfully!')
     return NextResponse.json({ 
       success: true, 
       message: 'Application submitted successfully' 
     })
   } catch (error: any) {
-    console.error('❌ Error processing application:', error)
-    console.error('Error stack:', error?.stack)
+    console.error('Error processing application:', error)
     return NextResponse.json(
       { error: error?.message || 'Internal server error' },
       { status: 500 }

@@ -40,7 +40,7 @@ export default function FloatingCTA() {
           initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 20 }}
           animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
           exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
           className="fixed bottom-6 right-6 z-40 md:bottom-8 md:right-8"
         >
           <Link href="/apply">

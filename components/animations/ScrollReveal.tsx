@@ -63,9 +63,9 @@ export default function ScrollReveal({
       animate={isInView ? 'visible' : 'hidden'}
       variants={variants[direction]}
       transition={{ 
-        duration: prefersReducedMotion ? 0 : 0.6, 
-        delay: prefersReducedMotion ? 0 : delay, 
-        ease: 'easeOut' 
+        duration: prefersReducedMotion ? 0 : 0.5, 
+        delay: prefersReducedMotion ? 0 : Math.round(delay * 10) / 10, // Round to 0.1 increments
+        ease: [0.4, 0, 0.2, 1] // cubic-bezier for smooth easing
       }}
       className={className}
     >

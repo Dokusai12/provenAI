@@ -34,7 +34,7 @@ export default function HowItWorks() {
     <section className="py-20 bg-gray-very-light border-t border-gray-medium">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal direction="fade">
-          <h2 className="text-h2-lg text-center mb-6 font-bold">How It Works</h2>
+          <h2 className="text-h2 text-center mb-6 font-bold">How It Works</h2>
           <div className="w-16 h-1 bg-primary-black mx-auto mb-12"></div>
         </ScrollReveal>
 

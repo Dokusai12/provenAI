@@ -30,7 +30,7 @@ export default function Footer() {
               Stay informed with curated compliance news and regulatory updates
             </p>
             {subscribed ? (
-              <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
+              <div className="p-4 bg-success/10 border border-success/20 rounded-lg text-success">
                 <p className="text-body font-medium">✓ Successfully subscribed!</p>
               </div>
             ) : (
@@ -54,25 +54,25 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           {/* Links */}
           <div className="flex flex-wrap justify-center md:justify-start gap-6 text-small">
-            <Link href="/about" className="hover:text-primary-black transition-colors">
+            <Link href="/about" className="hover:text-primary-black transition-colors duration-200">
               About
             </Link>
-            <Link href="/standards" className="hover:text-primary-black transition-colors">
+            <Link href="/standards" className="hover:text-primary-black transition-colors duration-200">
               Standards
             </Link>
-            <Link href="/resources" className="hover:text-primary-black transition-colors">
+            <Link href="/resources" className="hover:text-primary-black transition-colors duration-200">
               Resources
             </Link>
-            <Link href="/directory" className="hover:text-primary-black transition-colors">
+            <Link href="/directory" className="hover:text-primary-black transition-colors duration-200">
               Directory
             </Link>
-            <Link href="/contact" className="hover:text-primary-black transition-colors">
+            <Link href="/contact" className="hover:text-primary-black transition-colors duration-200">
               Contact
             </Link>
-            <Link href="/terms" className="hover:text-primary-black transition-colors">
+            <Link href="/terms" className="hover:text-primary-black transition-colors duration-200">
               Terms
             </Link>
-            <Link href="/privacy" className="hover:text-primary-black transition-colors">
+            <Link href="/privacy" className="hover:text-primary-black transition-colors duration-200">
               Privacy
             </Link>
           </div>
@@ -81,7 +81,7 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-end space-y-2 text-small">
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="hover:text-primary-black transition-colors"
+              className="hover:text-primary-black transition-colors duration-200"
             >
               {DISPLAY_EMAIL}
             </a>
@@ -89,7 +89,7 @@ export default function Footer() {
               href="https://linkedin.com/company/provenai"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary-black transition-colors"
+              className="hover:text-primary-black transition-colors duration-200"
             >
               LinkedIn
             </a>

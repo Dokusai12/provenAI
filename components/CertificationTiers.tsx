@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { CertificationTier } from '@/types'
+import Badge from './ui/Badge'
 
 interface TierFeature {
   name: string
@@ -60,8 +61,8 @@ export default function CertificationTiers() {
   return (
     <div className="w-full">
       {recommendedTier && (
-        <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <p className="text-body text-blue-900">
+        <div className="mb-6 p-4 bg-info/10 border border-info/20 rounded-lg">
+          <p className="text-body text-info">
             <strong>💡 Recommendation:</strong> Based on your needs, <strong>{recommendedTier}</strong> tier may be the best fit for most companies.
           </p>
         </div>
@@ -85,9 +86,9 @@ export default function CertificationTiers() {
                       onMouseLeave={() => setSelectedTier(null)}
                     >
                       {isRecommended && (
-                        <span className="absolute top-2 right-2 bg-primary-black text-primary-white text-xs px-2 py-1 rounded">
+                        <Badge variant="primary" size="sm" className="absolute top-2 right-2">
                           Recommended
-                        </span>
+                        </Badge>
                       )}
                       <div className={isRecommended ? 'text-primary-black' : ''}>{tier.tier}</div>
                       <div className="text-body text-gray-subtle font-normal mt-1">
@@ -116,7 +117,7 @@ export default function CertificationTiers() {
                 return (
                   <tr
                     key={feature.name}
-                    className={`transition-colors ${
+                    className={`transition-colors duration-200 ${
                       index !== features.length - 1 ? 'border-b border-gray-medium' : ''
                     } ${isHovered ? 'bg-gray-very-light' : ''}`}
                     onMouseEnter={() => setHoveredFeature(feature.name)}
@@ -130,6 +131,7 @@ export default function CertificationTiers() {
                         <motion.div
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                           className="absolute left-0 top-full mt-1 z-10 bg-primary-black text-primary-white text-xs p-2 rounded shadow-lg max-w-xs"
                         >
                           {feature.name === 'ProvenAI Badge' && 'Display verified certification badge on your website'}
@@ -145,6 +147,7 @@ export default function CertificationTiers() {
                           aria-label="Included"
                           whileHover={{ scale: 1.2 }}
                           whileTap={{ scale: 0.9 }}
+                          transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                         >
                           ✓
                         </motion.span>
@@ -159,6 +162,7 @@ export default function CertificationTiers() {
                           aria-label="Included"
                           whileHover={{ scale: 1.2 }}
                           whileTap={{ scale: 0.9 }}
+                          transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                         >
                           ✓
                         </motion.span>
@@ -173,6 +177,7 @@ export default function CertificationTiers() {
                           aria-label="Included"
                           whileHover={{ scale: 1.2 }}
                           whileTap={{ scale: 0.9 }}
+                          transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                         >
                           ✓
                         </motion.span>

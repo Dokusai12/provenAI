@@ -37,7 +37,7 @@ export default function Navigation() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'text-body hover:text-primary-black transition-colors relative',
+                  'text-body hover:text-primary-black transition-colors duration-200 relative',
                   pathname === link.href && 'font-medium'
                 )}
               >
@@ -88,10 +88,11 @@ export default function Navigation() {
           {isOpen && (
             <>
               <motion.div
-                className="fixed inset-0 bg-black/20 z-40 md:hidden"
+                className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
                 onClick={() => setIsOpen(false)}
               />
               <motion.div
@@ -99,7 +100,7 @@ export default function Navigation() {
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
               >
                 <StaggerContainer staggerDelay={0.05}>
                   <div className="flex flex-col space-y-4">

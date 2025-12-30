@@ -154,7 +154,7 @@ function CompanyCard({ company }: { company: any }) {
         <ProvenAIBadge size="small" year={company.certifiedYear} />
       </div>
       <h3 className="text-h3 font-bold mb-2">{company.name}</h3>
-      <span className="text-small text-gray-subtle bg-gray-dark px-2 py-1 rounded inline-block mb-3">
+      <span className="text-small text-primary-white bg-gray-dark px-2 py-1 rounded inline-block mb-3">
         {company.type}
       </span>
       <p className="text-body text-gray-subtle mb-4 line-clamp-2">

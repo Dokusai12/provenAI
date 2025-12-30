@@ -56,14 +56,14 @@ export default function Input({
         <input
           id={inputId}
           className={cn(
-            'w-full px-4 py-3 border rounded-lg transition-all min-h-[44px]',
+            'w-full px-4 py-3 border rounded-lg transition-all duration-200 min-h-[44px]',
             'bg-primary-white text-primary-black',
             'focus:outline-none focus:ring-2 focus:border-transparent',
-            'disabled:bg-gray-light disabled:cursor-not-allowed',
+            'disabled:bg-gray-light disabled:cursor-not-allowed disabled:opacity-50',
             error
-              ? 'border-red-500 focus:ring-red-500'
+              ? 'border-error focus:ring-error'
               : isValid
-              ? 'border-green-500 focus:ring-green-500'
+              ? 'border-success focus:ring-success'
               : isFocused
               ? 'border-primary-black focus:ring-primary-black'
               : 'border-gray-medium',
@@ -89,7 +89,7 @@ export default function Input({
         {isValid && (
           <div className="absolute right-3 top-1/2 -translate-y-1/2">
             <svg
-              className="w-5 h-5 text-green-500"
+              className="w-5 h-5 text-success"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -107,7 +107,7 @@ export default function Input({
         {error && (
           <div className="absolute right-3 top-1/2 -translate-y-1/2">
             <svg
-              className="w-5 h-5 text-red-500"
+              className="w-5 h-5 text-error"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -126,7 +126,7 @@ export default function Input({
       <div className="mt-1 flex items-center justify-between">
         <div>
           {error && (
-            <p id={`${inputId}-error`} className="text-sm text-red-500" role="alert">
+            <p id={`${inputId}-error`} className="text-sm text-error" role="alert">
               {error}
             </p>
           )}

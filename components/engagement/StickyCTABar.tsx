@@ -11,6 +11,35 @@ interface StickyCTABarProps {
 }
 
 const STORAGE_KEY = 'sticky-cta-dismissed'
+const STORAGE_EXPIRY_DAYS = 7 // Dismissal expires after 7 days
+
+const getStoredDismissal = (): boolean => {
+  if (typeof window === 'undefined') return false
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY)
+    if (!stored) return false
+    
+    const { dismissed, expiry } = JSON.parse(stored)
+    if (expiry && Date.now() > expiry) {
+      localStorage.removeItem(STORAGE_KEY)
+      return false
+    }
+    return dismissed === true
+  } catch {
+    return false
+  }
+}
+
+const setStoredDismissal = (dismissed: boolean) => {
+  if (typeof window === 'undefined') return
+  try {
+    const expiry = dismissed ? Date.now() + (STORAGE_EXPIRY_DAYS * 24 * 60 * 60 * 1000) : null
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ dismissed, expiry }))
+  } catch (error) {
+    // Handle quota exceeded or other storage errors
+    console.error('Failed to save dismissal preference:', error)
+  }
+}
 
 export default function StickyCTABar({ ctaText = 'Get Certified', ctaHref = '/apply' }: StickyCTABarProps) {
   const [isVisible, setIsVisible] = useState(false)
@@ -18,14 +47,7 @@ export default function StickyCTABar({ ctaText = 'Get Certified', ctaHref = '/ap
   const [lastScrollY, setLastScrollY] = useState(0)
 
   useEffect(() => {
-    // Check if user previously dismissed the bar
-    if (typeof window !== 'undefined') {
-      const dismissed = localStorage.getItem(STORAGE_KEY)
-      if (dismissed === 'true') {
-        setIsDismissed(true)
-        return
-      }
-    }
+    setIsDismissed(getStoredDismissal())
 
     const handleScroll = () => {
       if (isDismissed) return
@@ -49,9 +71,7 @@ export default function StickyCTABar({ ctaText = 'Get Certified', ctaHref = '/ap
   const handleDismiss = () => {
     setIsVisible(false)
     setIsDismissed(true)
-    if (typeof window !== 'undefined') {
-      localStorage.setItem(STORAGE_KEY, 'true')
-    }
+    setStoredDismissal(true)
   }
 
   return (

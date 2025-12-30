@@ -53,15 +53,15 @@ export default function Select({
         <select
           id={selectId}
           className={cn(
-            'w-full px-4 py-3 border rounded-lg transition-all appearance-none',
+            'w-full px-4 py-3 border rounded-lg transition-all duration-200 appearance-none min-h-[44px]',
             'bg-primary-white text-primary-black',
             'focus:outline-none focus:ring-2 focus:border-transparent',
-            'disabled:bg-gray-light disabled:cursor-not-allowed',
+            'disabled:bg-gray-light disabled:cursor-not-allowed disabled:opacity-50',
             'pr-10',
             error
-              ? 'border-red-500 focus:ring-red-500'
+              ? 'border-error focus:ring-error'
               : isValid
-              ? 'border-green-500 focus:ring-green-500'
+              ? 'border-success focus:ring-success'
               : isFocused
               ? 'border-primary-black focus:ring-primary-black'
               : 'border-gray-medium',
@@ -83,7 +83,7 @@ export default function Select({
         <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
           {isValid ? (
             <svg
-              className="w-5 h-5 text-green-500"
+              className="w-5 h-5 text-success"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -98,7 +98,7 @@ export default function Select({
             </svg>
           ) : error ? (
             <svg
-              className="w-5 h-5 text-red-500"
+              className="w-5 h-5 text-error"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -130,7 +130,7 @@ export default function Select({
         </div>
       </div>
       {error && (
-        <p id={`${selectId}-error`} className="mt-1 text-sm text-red-500" role="alert">
+        <p id={`${selectId}-error`} className="mt-1 text-sm text-error" role="alert">
           {error}
         </p>
       )}

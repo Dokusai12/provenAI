@@ -42,13 +42,13 @@ export default function Checkbox({
             type="checkbox"
             id={checkboxId}
             className={cn(
-              'mt-1 h-5 w-5 rounded border transition-all',
+              'mt-1 h-5 w-5 rounded border transition-all duration-200',
               'text-primary-black focus:ring-2 focus:ring-offset-2',
               'disabled:opacity-50 disabled:cursor-not-allowed',
               error
-                ? 'border-red-500 focus:ring-red-500'
+                ? 'border-error focus:ring-error'
                 : isValid
-                ? 'border-green-500 focus:ring-green-500'
+                ? 'border-success focus:ring-success'
                 : isFocused
                 ? 'border-primary-black focus:ring-primary-black'
                 : 'border-gray-medium focus:ring-primary-black',
@@ -64,7 +64,7 @@ export default function Checkbox({
           {isValid && (
             <div className="absolute -top-0.5 -right-0.5">
               <svg
-                className="w-3 h-3 text-green-500 bg-primary-white rounded-full"
+                className="w-3 h-3 text-success bg-primary-white rounded-full"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -86,14 +86,14 @@ export default function Checkbox({
             className="ml-3 text-sm leading-5 cursor-pointer flex-1"
           >
             {label}
-            {props.required && <span className="text-red-500 ml-1">*</span>}
+            {props.required && <span className="text-error ml-1">*</span>}
           </label>
         )}
       </div>
       {error && (
         <p
           id={`${checkboxId}-error`}
-          className="mt-1 ml-8 text-sm text-red-500"
+          className="mt-1 ml-8 text-sm text-error"
           role="alert"
         >
           {error}
