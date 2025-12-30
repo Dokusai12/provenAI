@@ -33,13 +33,13 @@ export default function AboutPage() {
             <div className="space-y-4 text-body text-gray-subtle mb-8">
               <p>
                 AI is transforming industries, but compliance and safety verification are fragmented. Companies 
-                need to demonstrate EU AI Act readiness, proper risk management, and governance maturity, but 
+                need to demonstrate EU AI Act compliance, proper risk management, and governance maturity, but 
                 lack standardized verification processes. Buyers need assurance of AI safety and compliance posture.
               </p>
               <p>
                 We created ProvenAI to solve this problem. We verify AI safety, compliance, and risk assurance 
                 through comprehensive audits aligned with ISO 42001, NIST AI RMF, and EU AI Act requirements. 
-                Our certification helps AI companies demonstrate regulatory readiness and gives buyers confidence 
+                Our certification helps AI companies demonstrate regulatory compliance and gives buyers confidence 
                 in procurement decisions.
               </p>
             </div>
@@ -65,12 +65,12 @@ export default function AboutPage() {
             <div className="space-y-4 text-body text-gray-light">
               <p>
                 <strong className="text-primary-white">For Buyers:</strong> Procurement risk from unverified 
-                compliance posture. No standardized way to assess AI safety, governance, or EU AI Act readiness 
+                compliance posture. No standardized way to assess AI safety, governance, or EU AI Act compliance 
                 before making vendor decisions.
               </p>
               <p>
                 <strong className="text-primary-white">For AI Companies:</strong> Difficulty demonstrating 
-                compliance and safety maturity. Need to show EU AI Act readiness, proper risk management, 
+                compliance and safety maturity. Need to show EU AI Act compliance, proper risk management, 
                 and governance to win enterprise deals.
               </p>
               <p>

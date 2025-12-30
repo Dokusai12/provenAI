@@ -27,7 +27,7 @@ const tools = [
   {
     id: 'prescreening',
     title: 'Am I Ready? Quiz',
-    description: 'Quick 6-question assessment to gauge your compliance readiness',
+    description: 'Quick 6-question assessment to gauge your compliance status',
     category: 'Quick Start',
     component: PreScreeningQuiz,
   },
@@ -139,7 +139,7 @@ export default function ResourcesPage() {
             <div className="text-center">
               <h1 className="text-h1 font-bold mb-4">AI Compliance Resources & Tools</h1>
               <p className="text-body-lg text-gray-subtle max-w-3xl mx-auto">
-                Everything you need to assess, prepare, and understand AI compliance
+                Everything you need to assess, verify, and maintain AI compliance
               </p>
             </div>
           </ScrollReveal>
@@ -309,7 +309,7 @@ export default function ResourcesPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-h2 font-bold mb-4">Ready to Get Certified?</h2>
           <p className="text-body-lg mb-8 opacity-90">
-            Use these tools to assess your readiness, then apply for ProvenAI certification
+            Use these tools to assess your compliance status, then apply for ProvenAI certification
           </p>
           <Link href="/apply">
             <Button variant="secondary" size="lg">

@@ -85,7 +85,7 @@ export default function HomePage() {
             transition={{ delay: 0.6, duration: 0.6 }}
           >
             <p className="text-body-lg text-gray-dark mb-6 max-w-2xl mx-auto leading-relaxed">
-              Get certified to demonstrate EU AI Act readiness. Aligned with ISO 42001 and NIST AI RMF. Starting at £2,500/year.
+              Get certified to demonstrate EU AI Act compliance. Aligned with ISO 42001 and NIST AI RMF. Starting at £2,500/year.
             </p>
           </motion.div>
           <motion.div
@@ -147,7 +147,7 @@ export default function HomePage() {
             </ScrollReveal>
             <ScrollReveal direction="fade" delay={0.2}>
               <p className="text-body text-gray-dark text-left mb-8 max-w-3xl leading-relaxed">
-                Companies are deploying AI systems with unverified claims, insufficient safety controls, and unclear compliance posture. The EU AI Act creates mandatory requirements, but there's no standardized way to verify AI safety, governance, and regulatory readiness.
+                Companies are deploying AI systems with unverified claims, insufficient safety controls, and unclear compliance posture. The EU AI Act is now in effect with mandatory requirements, but there's no standardized way to verify AI safety, governance, and regulatory compliance.
               </p>
             </ScrollReveal>
           </div>
@@ -201,7 +201,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-h3 font-bold mb-4">Compliance Risk</h3>
                 <p className="text-body text-gray-dark leading-relaxed">
-                  The EU AI Act creates mandatory requirements for AI systems. Companies need to demonstrate compliance, but lack standardized verification processes.
+                  The EU AI Act is now in effect with mandatory requirements for AI systems. Companies must demonstrate compliance, but lack standardized verification processes.
                 </p>
               </AnimatedCard>
 
@@ -235,7 +235,7 @@ export default function HomePage() {
           <ScrollReveal direction="up" delay={0.5}>
             <div className="mt-12 text-center">
               <div className="max-w-3xl mx-auto mb-8">
-                <h3 className="text-h3 font-bold mb-4">Assess Your Compliance Readiness</h3>
+                <h3 className="text-h3 font-bold mb-4">Assess Your Compliance Status</h3>
                 <p className="text-body text-gray-subtle mb-6">
                   Use our free gap analysis tool to identify areas where you need to strengthen your compliance posture.
                 </p>
@@ -430,7 +430,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-h3 font-bold mb-3">EU AI Act</h3>
                 <p className="text-body text-gray-subtle">
-                  Compliance readiness for EU AI Act requirements. Verification of risk categorization, governance, and safety measures.
+                  Compliance with EU AI Act requirements. Verification of risk categorization, governance, and safety measures.
                 </p>
               </AnimatedCard>
               <AnimatedCard revealDirection="up" revealDelay={0.3}>
@@ -613,8 +613,8 @@ export default function HomePage() {
                 <ul className="space-y-6">
                   {[
                     { 
-                      title: 'Demonstrate EU AI Act Readiness',
-                      description: 'Show compliance with EU AI Act requirements and demonstrate regulatory readiness'
+                      title: 'Demonstrate EU AI Act Compliance',
+                      description: 'Show compliance with EU AI Act requirements and verify regulatory adherence'
                     },
                     { 
                       title: 'Stand Out with Verified Safety & Compliance',
@@ -803,7 +803,7 @@ export default function HomePage() {
                 },
                 {
                   title: 'Annual Renewals',
-                  description: 'Ongoing compliance monitoring ensures certified companies maintain safety, governance, and regulatory readiness',
+                  description: 'Ongoing compliance monitoring ensures certified companies maintain safety, governance, and regulatory compliance',
                 },
               ].map((item, index) => (
                 <AnimatedCard
@@ -888,7 +888,7 @@ export default function HomePage() {
               <ul className="space-y-4">
                 {[
                   'Unverified compliance posture',
-                  'No way to demonstrate EU AI Act readiness',
+                  'No way to demonstrate EU AI Act compliance',
                   'Procurement risk concerns from buyers',
                   'Limited evidence of safety and governance',
                 ].map((item) => (
@@ -904,7 +904,7 @@ export default function HomePage() {
               <ul className="space-y-4">
                 {[
                   'Stand out with verified ProvenAI compliance badge',
-                  'Demonstrated EU AI Act readiness',
+                  'Demonstrated EU AI Act compliance',
                   'Reduced buyer procurement risk',
                   'Verified safety, compliance, and governance',
                 ].map((item) => (
@@ -936,11 +936,11 @@ export default function HomePage() {
               {[
                 {
                   question: 'What makes ProvenAI different from other certifications?',
-                  answer: 'ProvenAI focuses specifically on AI safety, compliance, and risk assurance. We verify compliance with recognized standards (ISO 42001, NIST AI RMF, EU AI Act), assess safety and governance practices, and offer affordable pricing for SMBs starting at £2,500/year—unlike enterprise certifications that cost £50,000+. Our certification helps companies demonstrate EU AI Act readiness and reduce procurement risk.',
+                  answer: 'ProvenAI focuses specifically on AI safety, compliance, and risk assurance. We verify compliance with recognized standards (ISO 42001, NIST AI RMF, EU AI Act), assess safety and governance practices, and offer affordable pricing for SMBs starting at £2,500/year—unlike enterprise certifications that cost £50,000+. Our certification helps companies demonstrate EU AI Act compliance and reduce procurement risk.',
                 },
                 {
                   question: 'What standards does ProvenAI align with?',
-                  answer: 'ProvenAI certification is aligned with ISO/IEC 42001 (AI Management System), the NIST AI Risk Management Framework, and EU AI Act compliance requirements. Our certification criteria map to these recognized standards, ensuring verified companies demonstrate proper AI governance, risk management, and regulatory readiness.',
+                  answer: 'ProvenAI certification is aligned with ISO/IEC 42001 (AI Management System), the NIST AI Risk Management Framework, and EU AI Act compliance requirements. Our certification criteria map to these recognized standards, ensuring verified companies demonstrate proper AI governance, risk management, and regulatory compliance.',
                 },
                 {
                   question: 'Why are your auditors anonymous?',
@@ -948,7 +948,7 @@ export default function HomePage() {
                 },
                 {
                   question: 'Can startups or small companies get certified?',
-                  answer: 'Absolutely. ProvenAI is designed specifically for SMBs, including startups. As long as you meet our criteria—including proper safety, compliance, and governance practices—you can be certified regardless of company size. Compliance readiness matters more than company size.',
+                  answer: 'Absolutely. ProvenAI is designed specifically for SMBs, including startups. As long as you meet our criteria—including proper safety, compliance, and governance practices—you can be certified regardless of company size. Compliance status matters more than company size.',
                 },
               ].map((item, index) => (
                 <Card key={index} variant="minimal">
@@ -975,7 +975,7 @@ export default function HomePage() {
             items={[
               {
                 question: 'What makes ProvenAI different from other certifications?',
-                answer: 'ProvenAI focuses specifically on AI safety, compliance, and risk assurance. We verify compliance with recognized standards (ISO 42001, NIST AI RMF, EU AI Act), assess safety and governance practices, and offer affordable pricing for SMBs starting at £2,500/year—unlike enterprise certifications that cost £50,000+. Our certification helps companies demonstrate EU AI Act readiness and reduce procurement risk.',
+                answer: 'ProvenAI focuses specifically on AI safety, compliance, and risk assurance. We verify compliance with recognized standards (ISO 42001, NIST AI RMF, EU AI Act), assess safety and governance practices, and offer affordable pricing for SMBs starting at £2,500/year—unlike enterprise certifications that cost £50,000+. Our certification helps companies demonstrate EU AI Act compliance and reduce procurement risk.',
               },
               {
                 question: 'What standards does ProvenAI align with?',
@@ -995,7 +995,7 @@ export default function HomePage() {
               },
               {
                 question: 'Do I need to renew my certification?',
-                answer: 'Yes, certification is valid for one year and requires annual renewal. This ensures certified companies maintain their safety, compliance, and governance standards. Ongoing monitoring ensures continued regulatory readiness and risk management maturity.',
+                answer: 'Yes, certification is valid for one year and requires annual renewal. This ensures certified companies maintain their safety, compliance, and governance standards. Ongoing monitoring ensures continued regulatory compliance and risk management maturity.',
               },
               {
                 question: 'What documentation do I need to provide?',

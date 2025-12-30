@@ -13,25 +13,25 @@ const milestones = [
   {
     date: '2024-08-01',
     title: 'Entry into Force',
-    description: 'EU AI Act enters into force',
+    description: 'EU AI Act entered into force',
     status: 'completed',
   },
   {
     date: '2025-02-02',
     title: 'Prohibited AI Practices Apply',
-    description: 'Ban on prohibited AI practices takes effect',
-    status: 'upcoming',
+    description: 'Ban on prohibited AI practices now in effect',
+    status: 'completed',
   },
   {
     date: '2025-08-02',
     title: 'General-Purpose AI Rules Apply',
-    description: 'Rules for general-purpose AI models take effect',
-    status: 'upcoming',
+    description: 'Rules for general-purpose AI models now in effect',
+    status: 'completed',
   },
   {
     date: '2026-08-02',
     title: 'High-Risk AI Systems Rules Apply',
-    description: 'Full requirements for high-risk AI systems take effect',
+    description: 'Full requirements for high-risk AI systems will take effect',
     status: 'upcoming',
   },
 ]
@@ -51,15 +51,22 @@ export default function ComplianceCalendar() {
     <Card className="max-w-3xl mx-auto">
       <h3 className="text-h2 font-bold mb-2">EU AI Act Compliance Timeline</h3>
       <p className="text-body text-gray-subtle mb-8">
-        Key dates and milestones for EU AI Act implementation
+        EU AI Act milestones and implementation status
       </p>
 
-      {nextMilestone && (
+      {nextMilestone && daysUntil > 0 && (
         <div className="mb-8 p-6 bg-primary-black text-primary-white rounded-lg text-center">
           <div className="text-4xl font-bold mb-2">{daysUntil}</div>
           <div className="text-body-lg mb-2">Days Until</div>
           <div className="text-h3 font-bold">{nextMilestone.title}</div>
           <div className="text-body opacity-90 mt-2">{nextMilestone.date}</div>
+        </div>
+      )}
+      
+      {nextMilestone && daysUntil <= 0 && (
+        <div className="mb-8 p-6 bg-green-600 text-primary-white rounded-lg text-center">
+          <div className="text-h3 font-bold mb-2">✓ EU AI Act Now in Effect</div>
+          <div className="text-body-lg">Most provisions are now active. Ensure your compliance.</div>
         </div>
       )}
 
@@ -99,8 +106,8 @@ export default function ComplianceCalendar() {
 
       <div className="mt-6 p-4 bg-gray-very-light rounded-lg">
         <p className="text-body text-gray-dark">
-          <strong>Get Ready:</strong> Start your compliance journey now. 
-          ProvenAI certification can help you prepare for upcoming requirements.
+          <strong>Compliance Required:</strong> The EU AI Act is now in effect. 
+          ProvenAI certification can help you demonstrate compliance with current requirements.
         </p>
       </div>
     </Card>

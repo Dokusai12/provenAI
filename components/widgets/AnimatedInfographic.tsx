@@ -51,8 +51,8 @@ export default function AnimatedInfographic({ type }: InfographicProps) {
   if (type === 'timeline') {
     const milestones = [
       { date: '2024', label: 'EU AI Act Published', status: 'completed' },
-      { date: '2025 Q1', label: 'Prohibited Practices Apply', status: 'upcoming' },
-      { date: '2025 Q3', label: 'General Purpose AI Rules', status: 'upcoming' },
+      { date: '2025 Q1', label: 'Prohibited Practices Apply', status: 'completed' },
+      { date: '2025 Q3', label: 'General Purpose AI Rules', status: 'completed' },
       { date: '2026 Q3', label: 'High-Risk Systems Rules', status: 'upcoming' },
     ]
 

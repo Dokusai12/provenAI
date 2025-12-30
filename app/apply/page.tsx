@@ -206,9 +206,9 @@ export default function ApplyPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal direction="fade">
               <div className="text-center mb-8">
-                <h2 className="text-h2 font-bold mb-2">Prepare for Your Application</h2>
+                <h2 className="text-h2 font-bold mb-2">Get Ready for Your Application</h2>
                 <p className="text-body text-gray-subtle">
-                  Use these tools to assess your readiness and prepare your documents
+                  Use these tools to assess your compliance status and prepare your documents
                 </p>
               </div>
               <div className="space-y-12">
