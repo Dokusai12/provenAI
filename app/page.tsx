@@ -32,13 +32,8 @@ import ProgressIndicator from '@/components/animations/ProgressIndicator'
 import Breadcrumbs from '@/components/ux/Breadcrumbs'
 import EarlyAdopterModal from '@/components/ux/EarlyAdopterModal'
 import StickyCTABar from '@/components/engagement/StickyCTABar'
-import PreScreeningQuiz from '@/components/tools/PreScreeningQuiz'
-import ComplianceGapAnalysis from '@/components/tools/ComplianceGapAnalysis'
-import ROICalculator from '@/components/tools/ROICalculator'
-import StandardsMapper from '@/components/tools/StandardsMapper'
 import AnimatedCounter from '@/components/animations/AnimatedCounter'
 import BeforeAfterScenarios from '@/components/widgets/BeforeAfterScenarios'
-import CertificationDemo from '@/components/widgets/CertificationDemo'
 import Badge from '@/components/ui/Badge'
 
 export default function HomePage() {
@@ -234,13 +229,6 @@ export default function HomePage() {
           </StaggerContainer>
           <ScrollReveal direction="up" delay={0.5}>
             <div className="mt-12 text-center">
-              <div className="max-w-3xl mx-auto mb-8">
-                <h3 className="text-h3 font-bold mb-4">Assess Your Compliance Status</h3>
-                <p className="text-body text-gray-subtle mb-6">
-                  Use our free gap analysis tool to identify areas where you need to strengthen your compliance posture.
-                </p>
-                <ComplianceGapAnalysis />
-              </div>
               <Link href="/apply">
                 <AnimatedButton variant="primary" size="lg">
                   Get Certified for Compliance
@@ -445,21 +433,12 @@ export default function HomePage() {
             </div>
           </StaggerContainer>
           <ScrollReveal direction="fade" delay={0.4}>
-            <div className="mt-12">
-              <div className="text-center mb-6">
-                <h3 className="text-h3 font-bold mb-2">See How Our Criteria Map to Standards</h3>
-                <p className="text-body text-gray-subtle">
-                  Explore the interactive standards mapping tool
-                </p>
-              </div>
-              <StandardsMapper />
-              <div className="text-center mt-6">
-                <Link href="/resources">
-                  <Button variant="secondary">
-                    View All Tools & Resources
-                  </Button>
-                </Link>
-              </div>
+            <div className="mt-12 text-center">
+              <Link href="/resources">
+                <Button variant="secondary">
+                  View All Tools & Resources
+                </Button>
+              </Link>
             </div>
           </ScrollReveal>
         </div>
@@ -764,21 +743,6 @@ export default function HomePage() {
         <PricingSection />
       </div>
 
-      {/* ROI Calculator Section */}
-      <section className="py-20 bg-gray-very-light border-t border-gray-medium">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal direction="fade">
-            <div className="text-center mb-8">
-              <h3 className="text-h2 font-bold mb-2">Calculate Your ROI</h3>
-              <p className="text-body text-gray-subtle max-w-2xl mx-auto">
-                Estimate potential savings and time saved with ProvenAI certification
-              </p>
-            </div>
-            <ROICalculator />
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* Why Choose ProvenAI Section */}
       <section className="py-20 bg-gray-very-light border-t border-gray-medium">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -818,22 +782,6 @@ export default function HomePage() {
               ))}
             </div>
           </StaggerContainer>
-        </div>
-      </section>
-
-      {/* Certification Demo Section */}
-      <section className="py-20 bg-primary-white border-t border-gray-medium">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal direction="fade">
-            <div className="text-center mb-12">
-              <h2 className="text-h2 font-bold mb-6">See Certification in Action</h2>
-              <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
-              <p className="text-body-lg text-gray-dark max-w-3xl mx-auto">
-                Preview what you'll receive as a ProvenAI certified company
-              </p>
-            </div>
-          </ScrollReveal>
-          <CertificationDemo />
         </div>
       </section>
 
