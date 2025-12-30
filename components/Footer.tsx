@@ -34,16 +34,16 @@ export default function Footer() {
                 <p className="text-body font-medium">✓ Successfully subscribed!</p>
               </div>
             ) : (
-              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3">
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 items-center sm:items-stretch">
                 <Input
                   type="email"
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="flex-1"
+                  className="flex-1 w-full sm:w-auto"
                 />
-                <Button type="submit" variant="primary" size="md">
+                <Button type="submit" variant="primary" size="md" className="w-full sm:w-auto">
                   Subscribe
                 </Button>
               </form>

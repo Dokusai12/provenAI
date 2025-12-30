@@ -21,6 +21,7 @@ import ComplianceRoadmap from '@/components/tools/ComplianceRoadmap'
 import Glossary from '@/components/resources/Glossary'
 import ComplianceCalendar from '@/components/widgets/ComplianceCalendar'
 import AnimatedInfographic from '@/components/widgets/AnimatedInfographic'
+import { downloadPDFGuide } from '@/lib/pdf-utils'
 
 const tools = [
   {
@@ -224,30 +225,6 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* Newsletter Signup */}
-      <section className="py-12 bg-gray-very-light border-t border-gray-medium">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal direction="fade">
-            <Card className="text-center p-8">
-              <h3 className="text-h2 font-bold mb-2">Get Weekly EU AI Act Updates</h3>
-              <p className="text-body text-gray-subtle mb-6">
-                Stay informed with curated compliance news and regulatory updates
-              </p>
-              <form className="flex flex-col sm:flex-row gap-3">
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1"
-                />
-                <Button variant="primary" size="md">
-                  Subscribe
-                </Button>
-              </form>
-            </Card>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* Guides Section */}
       <section className="py-12 bg-primary-white border-t border-gray-medium">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -257,26 +234,32 @@ export default function ResourcesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
+                key: 'eu-ai-act-compliance-checklist',
                 title: 'EU AI Act Compliance Checklist',
                 description: 'Comprehensive checklist to guide your EU AI Act compliance journey',
               },
               {
+                key: 'nist-ai-rmf-quick-start',
                 title: 'NIST AI RMF Quick Start Guide',
                 description: 'Introduction to the NIST AI Risk Management Framework',
               },
               {
+                key: 'ai-risk-assessment-template',
                 title: 'AI Risk Assessment Template',
                 description: 'Template for conducting AI risk assessments',
               },
               {
+                key: 'iso-42001-mapping',
                 title: 'ISO 42001 Mapping Guide',
                 description: 'How ProvenAI criteria map to ISO/IEC 42001',
               },
               {
+                key: 'vendor-due-diligence-checklist',
                 title: 'Vendor Due Diligence Checklist',
                 description: 'For buyers: assess vendor AI compliance',
               },
               {
+                key: 'ai-governance-best-practices',
                 title: 'AI Governance Best Practices',
                 description: 'Best practices for AI governance and accountability',
               },
@@ -284,7 +267,17 @@ export default function ResourcesPage() {
               <Card key={guide.title} variant="default">
                 <h3 className="text-h3 font-bold mb-2">{guide.title}</h3>
                 <p className="text-body text-gray-subtle mb-4">{guide.description}</p>
-                <Button variant="secondary" size="sm">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={async () => {
+                    try {
+                      await downloadPDFGuide(guide.key)
+                    } catch (error) {
+                      console.error('Error generating PDF:', error)
+                    }
+                  }}
+                >
                   Download PDF
                 </Button>
               </Card>
@@ -301,7 +294,7 @@ export default function ResourcesPage() {
             Use these tools to assess your compliance status, then apply for ProvenAI certification
           </p>
           <Link href="/apply">
-            <Button variant="secondary" size="lg">
+            <Button variant="primary" size="lg">
               Apply for Certification
             </Button>
           </Link>
