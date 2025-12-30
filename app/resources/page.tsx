@@ -21,7 +21,6 @@ import ComplianceRoadmap from '@/components/tools/ComplianceRoadmap'
 import Glossary from '@/components/resources/Glossary'
 import ComplianceCalendar from '@/components/widgets/ComplianceCalendar'
 import AnimatedInfographic from '@/components/widgets/AnimatedInfographic'
-import CertificationDemo from '@/components/widgets/CertificationDemo'
 
 const tools = [
   {
@@ -221,16 +220,6 @@ export default function ResourcesPage() {
               <AnimatedInfographic type="timeline" />
               <AnimatedInfographic type="process" />
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Certification Demo */}
-      <section className="py-12 bg-primary-white border-t border-gray-medium">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal direction="fade">
-            <h2 className="text-h2 font-bold mb-8 text-center">See Certification in Action</h2>
-            <CertificationDemo />
           </ScrollReveal>
         </div>
       </section>
