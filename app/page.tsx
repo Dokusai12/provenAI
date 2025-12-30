@@ -32,7 +32,6 @@ import ProgressIndicator from '@/components/animations/ProgressIndicator'
 import Breadcrumbs from '@/components/ux/Breadcrumbs'
 import EarlyAdopterModal from '@/components/ux/EarlyAdopterModal'
 import StickyCTABar from '@/components/engagement/StickyCTABar'
-import ExitIntentPopup from '@/components/engagement/ExitIntentPopup'
 import PreScreeningQuiz from '@/components/tools/PreScreeningQuiz'
 import ComplianceGapAnalysis from '@/components/tools/ComplianceGapAnalysis'
 import ROICalculator from '@/components/tools/ROICalculator'
@@ -1080,9 +1079,6 @@ export default function HomePage() {
       
       {/* Early Adopter Modal */}
       <EarlyAdopterModal />
-      
-      {/* Exit Intent Popup */}
-      <ExitIntentPopup />
     </>
   )
 }
