@@ -1,11 +1,13 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import Breadcrumbs from '@/components/ux/Breadcrumbs'
 import ScrollReveal from '@/components/animations/ScrollReveal'
-import StaggerContainer from '@/components/animations/StaggerContainer'
-import AnimatedCard from '@/components/animations/AnimatedCard'
 import Card from '@/components/ui/Card'
+import Button from '@/components/ui/Button'
+import Input from '@/components/ui/Input'
+import ToolCard from '@/components/resources/ToolCard'
 import PreScreeningQuiz from '@/components/tools/PreScreeningQuiz'
 import ComplianceGapAnalysis from '@/components/tools/ComplianceGapAnalysis'
 import ROICalculator from '@/components/tools/ROICalculator'
@@ -18,13 +20,115 @@ import VendorAssessment from '@/components/tools/VendorAssessment'
 import ComplianceRoadmap from '@/components/tools/ComplianceRoadmap'
 import Glossary from '@/components/resources/Glossary'
 import ComplianceCalendar from '@/components/widgets/ComplianceCalendar'
-import BadgePreview from '@/components/engagement/BadgePreview'
 import AnimatedInfographic from '@/components/widgets/AnimatedInfographic'
 import CertificationDemo from '@/components/widgets/CertificationDemo'
-import Button from '@/components/ui/Button'
-import Input from '@/components/ui/Input'
+
+const tools = [
+  {
+    id: 'prescreening',
+    title: 'Am I Ready? Quiz',
+    description: 'Quick 6-question assessment to gauge your compliance readiness',
+    category: 'Quick Start',
+    component: PreScreeningQuiz,
+  },
+  {
+    id: 'gap-analysis',
+    title: 'Compliance Gap Analysis',
+    description: 'Self-assessment on all 6 certification criteria with visual scorecard',
+    category: 'Quick Start',
+    component: ComplianceGapAnalysis,
+  },
+  {
+    id: 'readiness-score',
+    title: 'Compliance Readiness Score',
+    description: 'Comprehensive 0-100 assessment with category breakdown',
+    category: 'Assessment',
+    component: ReadinessScore,
+  },
+  {
+    id: 'risk-category',
+    title: 'EU AI Act Risk Category Calculator',
+    description: 'Determine your AI system\'s risk category under EU AI Act',
+    category: 'Assessment',
+    component: RiskCategoryCalculator,
+  },
+  {
+    id: 'vendor-assessment',
+    title: 'Vendor Assessment Tool',
+    description: 'For buyers: Evaluate vendor compliance using ProvenAI standards',
+    category: 'Assessment',
+    component: VendorAssessment,
+  },
+  {
+    id: 'roi-calculator',
+    title: 'ROI Calculator',
+    description: 'Calculate potential savings and time saved with certification',
+    category: 'Planning',
+    component: ROICalculator,
+  },
+  {
+    id: 'timeline',
+    title: 'Certification Timeline Simulator',
+    description: 'Estimate your certification timeline based on readiness level',
+    category: 'Planning',
+    component: TimelineSimulator,
+  },
+  {
+    id: 'checklist',
+    title: 'Document Checklist Generator',
+    description: 'Generate personalized checklist based on company type and tier',
+    category: 'Planning',
+    component: ChecklistGenerator,
+  },
+  {
+    id: 'standards-mapper',
+    title: 'Standards Mapping Visualizer',
+    description: 'See how ProvenAI criteria map to ISO 42001, NIST AI RMF, EU AI Act',
+    category: 'Standards',
+    component: StandardsMapper,
+  },
+  {
+    id: 'roadmap',
+    title: 'EU AI Act Compliance Roadmap',
+    description: 'Interactive roadmap with milestones and personalized checklists',
+    category: 'Standards',
+    component: ComplianceRoadmap,
+  },
+  {
+    id: 'calendar',
+    title: 'Compliance Calendar',
+    description: 'EU AI Act timeline with countdown timer and interactive milestones',
+    category: 'Standards',
+    component: ComplianceCalendar,
+  },
+  {
+    id: 'glossary',
+    title: 'Glossary & Terminology',
+    description: 'Searchable glossary of AI compliance terms and definitions',
+    category: 'Reference',
+    component: Glossary,
+  },
+]
 
 export default function ResourcesPage() {
+  const [expandedTool, setExpandedTool] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState<string>('All')
+
+  const categories = ['All', 'Quick Start', 'Assessment', 'Planning', 'Standards', 'Reference']
+
+  const filteredTools = tools.filter((tool) => {
+    const matchesSearch =
+      tool.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      tool.description.toLowerCase().includes(searchQuery.toLowerCase())
+    const matchesCategory = selectedCategory === 'All' || tool.category === selectedCategory
+    return matchesSearch && matchesCategory
+  })
+
+  const handleExpand = (id: string) => {
+    setExpandedTool(expandedTool === id ? null : id)
+  }
+
   return (
     <div className="min-h-screen">
       {/* Header */}
@@ -42,92 +146,73 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* Quick Start Tools */}
-      <section className="py-12 bg-gray-very-light border-t border-gray-medium">
+      {/* Search and Filter */}
+      <section className="py-8 bg-gray-very-light border-t border-gray-medium">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal direction="fade">
-            <h2 className="text-h2 font-bold mb-4 text-center">Quick Start</h2>
-            <p className="text-body text-gray-subtle text-center mb-8 max-w-2xl mx-auto">
-              Start with these essential assessments to understand your compliance readiness
-            </p>
-          </ScrollReveal>
-          <div className="space-y-12">
-            <PreScreeningQuiz />
-            <ComplianceGapAnalysis />
+          <div className="max-w-2xl mx-auto">
+            <Input
+              type="text"
+              placeholder="Search tools..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="mb-4"
+            />
+            <div className="flex flex-wrap gap-2 justify-center">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                    selectedCategory === cat
+                      ? 'bg-primary-black text-primary-white'
+                      : 'bg-primary-white border border-gray-medium hover:border-primary-black'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Assessment Tools */}
+      {/* Tools Grid */}
       <section className="py-12 bg-primary-white border-t border-gray-medium">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
-            <h2 className="text-h2 font-bold mb-4 text-center">Assessment Tools</h2>
-            <p className="text-body text-gray-subtle text-center mb-8 max-w-2xl mx-auto">
-              Comprehensive tools to evaluate your compliance status
-            </p>
+            <div className="mb-8 text-center">
+              <h2 className="text-h2 font-bold mb-2">Interactive Tools</h2>
+              <p className="text-body text-gray-subtle">
+                Click any tool to expand and use it
+              </p>
+            </div>
           </ScrollReveal>
-          <div className="space-y-12">
-            <ReadinessScore />
-            <RiskCategoryCalculator />
-            <VendorAssessment />
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredTools.map((tool) => (
+              <ToolCard
+                key={tool.id}
+                id={tool.id}
+                title={tool.title}
+                description={tool.description}
+                category={tool.category}
+                component={tool.component}
+                onExpand={handleExpand}
+                isExpanded={expandedTool === tool.id}
+              />
+            ))}
           </div>
+
+          {filteredTools.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-body text-gray-subtle">No tools found matching your search.</p>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Planning & Calculation Tools */}
+      {/* Visual Guides */}
       <section className="py-12 bg-gray-very-light border-t border-gray-medium">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal direction="fade">
-            <h2 className="text-h2 font-bold mb-4 text-center">Planning & Calculations</h2>
-            <p className="text-body text-gray-subtle text-center mb-8 max-w-2xl mx-auto">
-              Tools to help you plan and understand the value of certification
-            </p>
-          </ScrollReveal>
-          <div className="space-y-12">
-            <ROICalculator />
-            <TimelineSimulator />
-            <ChecklistGenerator />
-          </div>
-        </div>
-      </section>
-
-      {/* Standards & Compliance */}
-      <section className="py-12 bg-primary-white border-t border-gray-medium">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal direction="fade">
-            <h2 className="text-h2 font-bold mb-4 text-center">Standards & Compliance</h2>
-            <p className="text-body text-gray-subtle text-center mb-8 max-w-2xl mx-auto">
-              Understand standards alignment and compliance requirements
-            </p>
-          </ScrollReveal>
-          <div className="space-y-12">
-            <StandardsMapper />
-            <ComplianceRoadmap />
-            <ComplianceCalendar />
-          </div>
-        </div>
-      </section>
-
-      {/* Reference & Preview */}
-      <section className="py-12 bg-gray-very-light border-t border-gray-medium">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal direction="fade">
-            <h2 className="text-h2 font-bold mb-4 text-center">Reference & Preview</h2>
-            <p className="text-body text-gray-subtle text-center mb-8 max-w-2xl mx-auto">
-              Glossary of terms, preview your certification badge, and see certification in action
-            </p>
-          </ScrollReveal>
-          <div className="space-y-12">
-            <CertificationDemo />
-            <Glossary />
-            <BadgePreview />
-          </div>
-        </div>
-      </section>
-
-      {/* Animated Infographics */}
-      <section className="py-12 bg-primary-white border-t border-gray-medium">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
             <h2 className="text-h2 font-bold mb-8 text-center">Visual Guides</h2>
@@ -136,6 +221,16 @@ export default function ResourcesPage() {
               <AnimatedInfographic type="timeline" />
               <AnimatedInfographic type="process" />
             </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Certification Demo */}
+      <section className="py-12 bg-primary-white border-t border-gray-medium">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal direction="fade">
+            <h2 className="text-h2 font-bold mb-8 text-center">See Certification in Action</h2>
+            <CertificationDemo />
           </ScrollReveal>
         </div>
       </section>
@@ -171,72 +266,40 @@ export default function ResourcesPage() {
             <h2 className="text-h2 font-bold mb-8 text-center">Guides & Downloads</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatedCard>
-              <Card variant="default">
-                <h3 className="text-h3 font-bold mb-2">EU AI Act Compliance Checklist</h3>
-                <p className="text-body text-gray-subtle mb-4">
-                  Comprehensive checklist to guide your EU AI Act compliance journey
-                </p>
+            {[
+              {
+                title: 'EU AI Act Compliance Checklist',
+                description: 'Comprehensive checklist to guide your EU AI Act compliance journey',
+              },
+              {
+                title: 'NIST AI RMF Quick Start Guide',
+                description: 'Introduction to the NIST AI Risk Management Framework',
+              },
+              {
+                title: 'AI Risk Assessment Template',
+                description: 'Template for conducting AI risk assessments',
+              },
+              {
+                title: 'ISO 42001 Mapping Guide',
+                description: 'How ProvenAI criteria map to ISO/IEC 42001',
+              },
+              {
+                title: 'Vendor Due Diligence Checklist',
+                description: 'For buyers: assess vendor AI compliance',
+              },
+              {
+                title: 'AI Governance Best Practices',
+                description: 'Best practices for AI governance and accountability',
+              },
+            ].map((guide) => (
+              <Card key={guide.title} variant="default">
+                <h3 className="text-h3 font-bold mb-2">{guide.title}</h3>
+                <p className="text-body text-gray-subtle mb-4">{guide.description}</p>
                 <Button variant="secondary" size="sm">
                   Download PDF
                 </Button>
               </Card>
-            </AnimatedCard>
-            <AnimatedCard>
-              <Card variant="default">
-                <h3 className="text-h3 font-bold mb-2">NIST AI RMF Quick Start Guide</h3>
-                <p className="text-body text-gray-subtle mb-4">
-                  Introduction to the NIST AI Risk Management Framework
-                </p>
-                <Button variant="secondary" size="sm">
-                  Download PDF
-                </Button>
-              </Card>
-            </AnimatedCard>
-            <AnimatedCard>
-              <Card variant="default">
-                <h3 className="text-h3 font-bold mb-2">AI Risk Assessment Template</h3>
-                <p className="text-body text-gray-subtle mb-4">
-                  Template for conducting AI risk assessments
-                </p>
-                <Button variant="secondary" size="sm">
-                  Download Template
-                </Button>
-              </Card>
-            </AnimatedCard>
-            <AnimatedCard>
-              <Card variant="default">
-                <h3 className="text-h3 font-bold mb-2">ISO 42001 Mapping Guide</h3>
-                <p className="text-body text-gray-subtle mb-4">
-                  How ProvenAI criteria map to ISO/IEC 42001
-                </p>
-                <Button variant="secondary" size="sm">
-                  Download PDF
-                </Button>
-              </Card>
-            </AnimatedCard>
-            <AnimatedCard>
-              <Card variant="default">
-                <h3 className="text-h3 font-bold mb-2">Vendor Due Diligence Checklist</h3>
-                <p className="text-body text-gray-subtle mb-4">
-                  For buyers: assess vendor AI compliance
-                </p>
-                <Button variant="secondary" size="sm">
-                  Download PDF
-                </Button>
-              </Card>
-            </AnimatedCard>
-            <AnimatedCard>
-              <Card variant="default">
-                <h3 className="text-h3 font-bold mb-2">AI Governance Best Practices</h3>
-                <p className="text-body text-gray-subtle mb-4">
-                  Best practices for AI governance and accountability
-                </p>
-                <Button variant="secondary" size="sm">
-                  Download PDF
-                </Button>
-              </Card>
-            </AnimatedCard>
+            ))}
           </div>
         </div>
       </section>
@@ -258,4 +321,3 @@ export default function ResourcesPage() {
     </div>
   )
 }
-
