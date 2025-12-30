@@ -49,7 +49,7 @@ export default function TermsPage() {
               </p>
               <ul className="list-disc list-inside space-y-2 text-body text-gray-dark mb-6 ml-4">
                 <li>Provide accurate and complete information</li>
-                <li>Meet our certification criteria (4 out of 5 criteria required)</li>
+                <li>Meet our certification criteria (5 out of 6 criteria required)</li>
                 <li>Submit all required documentation</li>
                 <li>Participate in a verification call if requested</li>
                 <li>Pay applicable certification fees</li>

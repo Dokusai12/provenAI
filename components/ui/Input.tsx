@@ -56,7 +56,7 @@ export default function Input({
         <input
           id={inputId}
           className={cn(
-            'w-full px-4 py-3 border rounded-lg transition-all',
+            'w-full px-4 py-3 border rounded-lg transition-all min-h-[44px]',
             'bg-primary-white text-primary-black',
             'focus:outline-none focus:ring-2 focus:border-transparent',
             'disabled:bg-gray-light disabled:cursor-not-allowed',

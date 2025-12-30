@@ -73,7 +73,7 @@ export default function Textarea({
             'disabled:bg-gray-light disabled:cursor-not-allowed',
             'resize-y',
             autoResize ? 'overflow-hidden' : '',
-            !autoResize && `min-h-[${rows * 24 + 24}px]`,
+            !autoResize && rows === 4 ? 'min-h-[120px]' : '',
             error
               ? 'border-red-500 focus:ring-red-500'
               : isValid

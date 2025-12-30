@@ -112,9 +112,9 @@ export default function DirectoryPage() {
                   </div>
                 </ScrollReveal>
                 <ScrollReveal direction="up" delay={0.3}>
-                  <h2 className="text-h2 font-bold mb-4">First certified companies coming soon</h2>
+                  <h2 className="text-h2 font-bold mb-4">Ready to Be Among the First?</h2>
                   <p className="text-body text-gray-subtle mb-8 max-w-2xl mx-auto">
-                    Be among the first verified AI companies.
+                    Join the first cohort of ProvenAI certified companies. Get verified, build trust, and stand out in the AI marketplace.
                   </p>
                 </ScrollReveal>
                 <ScrollReveal direction="up" delay={0.4}>

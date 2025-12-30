@@ -26,7 +26,7 @@ import { downloadPDFGuide } from '@/lib/pdf-utils'
 const tools = [
   {
     id: 'prescreening',
-    title: 'Am I Ready? Quiz',
+    title: 'Am I Compliant? Quiz',
     description: 'Quick 6-question assessment to gauge your compliance status',
     category: 'Quick Start',
     component: PreScreeningQuiz,
@@ -114,6 +114,8 @@ export default function ResourcesPage() {
   const [expandedTool, setExpandedTool] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string>('All')
+  const [generatingPDF, setGeneratingPDF] = useState<string | null>(null)
+  const [pdfErrors, setPdfErrors] = useState<Record<string, string>>({})
 
   const categories = ['All', 'Quick Start', 'Assessment', 'Planning', 'Standards', 'Reference']
 
@@ -267,18 +269,39 @@ export default function ResourcesPage() {
               <Card key={guide.title} variant="default">
                 <h3 className="text-h3 font-bold mb-2">{guide.title}</h3>
                 <p className="text-body text-gray-subtle mb-4">{guide.description}</p>
+                {pdfErrors[guide.key] && (
+                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-sm text-red-600">{pdfErrors[guide.key]}</p>
+                  </div>
+                )}
                 <Button
                   variant="secondary"
                   size="sm"
+                  disabled={generatingPDF !== null}
                   onClick={async () => {
+                    setGeneratingPDF(guide.key)
+                    setPdfErrors((prev) => ({ ...prev, [guide.key]: '' }))
                     try {
                       await downloadPDFGuide(guide.key)
-                    } catch (error) {
+                    } catch (error: any) {
+                      setPdfErrors((prev) => ({
+                        ...prev,
+                        [guide.key]: error?.message || 'Failed to generate PDF. Please try again.',
+                      }))
                       console.error('Error generating PDF:', error)
+                    } finally {
+                      setTimeout(() => {
+                        setGeneratingPDF(null)
+                        setPdfErrors((prev) => {
+                          const newErrors = { ...prev }
+                          delete newErrors[guide.key]
+                          return newErrors
+                        })
+                      }, 3000)
                     }
                   }}
                 >
-                  Download PDF
+                  {generatingPDF === guide.key ? 'Generating...' : 'Download PDF'}
                 </Button>
               </Card>
             ))}

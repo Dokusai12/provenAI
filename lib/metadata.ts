@@ -8,7 +8,7 @@ export const defaultMetadata: Metadata = {
     default: 'AI Safety & Compliance Certification | ProvenAI',
     template: '%s | ProvenAI',
   },
-  description: 'ProvenAI provides AI safety, compliance, and risk assurance certification. Get certified to demonstrate EU AI Act readiness, ISO 42001 alignment, and NIST AI RMF compliance.',
+  description: 'ProvenAI provides AI safety, compliance, and risk assurance certification. Get certified to demonstrate EU AI Act compliance, ISO 42001 alignment, and NIST AI RMF compliance.',
   keywords: ['AI certification', 'AI compliance', 'EU AI Act', 'ISO 42001', 'NIST AI RMF', 'AI safety', 'AI risk management', 'AI governance', 'AI compliance certification'],
   authors: [{ name: 'ProvenAI' }],
   creator: 'ProvenAI',
@@ -18,12 +18,12 @@ export const defaultMetadata: Metadata = {
     url: baseUrl,
     siteName: 'ProvenAI',
     title: 'AI Safety & Compliance Certification | ProvenAI',
-    description: 'ProvenAI provides AI safety, compliance, and risk assurance certification. Get certified to demonstrate EU AI Act readiness and reduce procurement risk.',
+    description: 'ProvenAI provides AI safety, compliance, and risk assurance certification. Get certified to demonstrate EU AI Act compliance and reduce procurement risk.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AI Safety & Compliance Certification | ProvenAI',
-    description: 'ProvenAI provides AI safety, compliance, and risk assurance certification. Get certified to demonstrate EU AI Act readiness and reduce procurement risk.',
+    description: 'ProvenAI provides AI safety, compliance, and risk assurance certification. Get certified to demonstrate EU AI Act compliance and reduce procurement risk.',
   },
   robots: {
     index: true,

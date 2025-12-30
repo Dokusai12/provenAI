@@ -44,7 +44,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-start justify-center grid-background pt-16 pb-24">
+      <section className="relative min-h-[80vh] flex items-center justify-center grid-background pt-16 pb-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
           <ScrollReveal direction="fade" delay={0.1}>
             <div className="flex justify-center mb-4">
@@ -64,7 +64,7 @@ export default function HomePage() {
               mode="word"
               delay={0.4}
               as="h1"
-              className="text-h1-lg md:text-h1-lg font-bold mb-6 tracking-tight leading-tight block"
+              className="text-h1 font-bold mb-6 tracking-tight leading-tight block"
             />
           </ScrollReveal>
           <motion.div
@@ -124,7 +124,7 @@ export default function HomePage() {
                   View Directory
                 </AnimatedButton>
               </Link>
-              <Link href="/resources#quiz">
+              <Link href="/resources#prescreening">
                 <AnimatedButton variant="secondary" size="lg">
                   Take Readiness Quiz
                 </AnimatedButton>
@@ -139,7 +139,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
             <ScrollReveal direction="left">
-              <h2 className="text-h2-lg text-left md:text-left mb-6 font-bold tracking-tight">
+              <h2 className="text-h2 text-left mb-6 font-bold tracking-tight">
                 AI Is Everywhere. Trust & Compliance Aren't.
               </h2>
               <div className="w-16 h-1 bg-primary-black mb-8"></div>
@@ -255,7 +255,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
             <div className="text-center mb-12">
-              <h2 className="text-h2-lg font-bold mb-6">Rigorous Verification You Can Trust</h2>
+              <h2 className="text-h2 font-bold mb-6">Rigorous Verification You Can Trust</h2>
               <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
               <p className="text-body-lg text-gray-dark max-w-3xl mx-auto mb-4">
                 Our certification process is built on transparency and objectivity. Here's how we ensure every audit is credible:
@@ -313,7 +313,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
             <div className="text-center mb-12">
-              <h2 className="text-h2-lg font-bold mb-6">We Verify AI Safety, Claims & Compliance</h2>
+              <h2 className="text-h2 font-bold mb-6">We Verify AI Safety, Claims & Compliance</h2>
               <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
               <p className="text-body-lg text-gray-dark max-w-3xl mx-auto mb-4">
                 Our certification covers six critical pillars of AI safety, compliance, and risk management.
@@ -386,7 +386,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
             <div className="text-center mb-12">
-              <h2 className="text-h2-lg font-bold mb-6">Built on Recognized Standards</h2>
+              <h2 className="text-h2 font-bold mb-6">Built on Recognized Standards</h2>
               <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
               <p className="text-body-lg text-gray-dark max-w-3xl mx-auto mb-4">
                 ProvenAI certification is aligned with internationally recognized standards and frameworks.
@@ -736,7 +736,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
             <div className="text-center mb-12">
-              <h2 className="text-h2-lg font-bold mb-6">The Impact of Certification</h2>
+              <h2 className="text-h2 font-bold mb-6">The Impact of Certification</h2>
               <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
               <p className="text-body-lg text-gray-dark max-w-3xl mx-auto">
                 See how ProvenAI certification transforms your business operations
@@ -751,7 +751,7 @@ export default function HomePage() {
       <section className="py-20 bg-gray-very-light border-t border-gray-medium">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
-            <h2 className="text-h2-lg text-center mb-6 font-bold">Certified vs Non-Certified</h2>
+            <h2 className="text-h2 text-center mb-6 font-bold">Certified vs Non-Certified</h2>
             <div className="w-16 h-1 bg-primary-black mx-auto mb-12"></div>
           </ScrollReveal>
           <ComparisonTable />
@@ -764,7 +764,7 @@ export default function HomePage() {
       </div>
 
       {/* ROI Calculator Section */}
-      <section className="py-12 bg-gray-very-light border-t border-gray-medium">
+      <section className="py-20 bg-gray-very-light border-t border-gray-medium">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
             <div className="text-center mb-8">
@@ -782,7 +782,7 @@ export default function HomePage() {
       <section className="py-20 bg-gray-very-light border-t border-gray-medium">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
-            <h2 className="text-h2-lg text-center mb-6 font-bold">Why Choose ProvenAI</h2>
+            <h2 className="text-h2 text-center mb-6 font-bold">Why Choose ProvenAI</h2>
             <div className="w-16 h-1 bg-primary-black mx-auto mb-12"></div>
           </ScrollReveal>
           <StaggerContainer staggerDelay={0.15}>
@@ -825,7 +825,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
             <div className="text-center mb-12">
-              <h2 className="text-h2-lg font-bold mb-6">See Certification in Action</h2>
+              <h2 className="text-h2 font-bold mb-6">See Certification in Action</h2>
               <div className="w-16 h-1 bg-primary-black mx-auto mb-6"></div>
               <p className="text-body-lg text-gray-dark max-w-3xl mx-auto">
                 Preview what you'll receive as a ProvenAI certified company
@@ -847,7 +847,7 @@ export default function HomePage() {
               {[
                 { number: '£2,500', label: 'Starting Price', description: 'Most affordable certification for SMBs' },
                 { number: '5-7', label: 'Business Days', description: 'Typical review time for applications' },
-                { number: '4/5', label: 'Criteria Required', description: 'Must meet 4 out of 5 certification criteria' },
+                { number: '5/6', label: 'Criteria Required', description: 'Must meet 5 out of 6 certification criteria' },
               ].map((fact, index) => (
                 <AnimatedCard
                   key={fact.label}
@@ -878,7 +878,7 @@ export default function HomePage() {
       <section className="py-20 bg-gray-very-light border-t border-gray-medium">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="fade">
-            <h2 className="text-h2-lg text-center mb-6 font-bold">Before & After Certification</h2>
+            <h2 className="text-h2 text-center mb-6 font-bold">Before & After Certification</h2>
             <div className="w-16 h-1 bg-primary-black mx-auto mb-12"></div>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -978,7 +978,7 @@ export default function HomePage() {
               },
               {
                 question: 'What standards does ProvenAI align with?',
-                answer: 'ProvenAI certification is aligned with ISO/IEC 42001 (AI Management System), the NIST AI Risk Management Framework, and EU AI Act compliance requirements. Our certification criteria map to these recognized standards, ensuring verified companies demonstrate proper AI governance, risk management, and regulatory readiness.',
+                answer: 'ProvenAI certification is aligned with ISO/IEC 42001 (AI Management System), the NIST AI Risk Management Framework, and EU AI Act compliance requirements. Our certification criteria map to these recognized standards, ensuring verified companies demonstrate proper AI governance, risk management, and regulatory compliance.',
               },
               {
                 question: 'Why are your auditors anonymous?',
@@ -1048,7 +1048,7 @@ export default function HomePage() {
               mode="word"
               delay={0.2}
               as="h2"
-              className="text-h2-lg font-bold mb-8 tracking-tight block"
+              className="text-h2 font-bold mb-8 tracking-tight block"
             />
             <div className="w-16 h-1 bg-primary-white mx-auto mb-8"></div>
             <p className="text-body-lg text-gray-light mb-12 leading-relaxed">
@@ -1082,4 +1082,5 @@ export default function HomePage() {
     </>
   )
 }
+
 

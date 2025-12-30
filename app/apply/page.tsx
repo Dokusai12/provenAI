@@ -21,6 +21,7 @@ import TimelineSimulator from '@/components/tools/TimelineSimulator'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import Button from '@/components/ui/Button'
 import Link from 'next/link'
+import Breadcrumbs from '@/components/ux/Breadcrumbs'
 
 const steps = [
   {
@@ -182,6 +183,7 @@ export default function ApplyPage() {
         {/* Header */}
         <section className="py-12 bg-primary-white border-b border-gray-medium">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Breadcrumbs className="mb-6" />
             <h1 className="text-h1 font-bold mb-4">Apply for Certification</h1>
             <p className="text-body-lg text-gray-subtle mb-4">
               Join verified AI companies. Complete your application in 6 simple steps.
