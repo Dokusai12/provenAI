@@ -15,7 +15,8 @@ export default function AnimatedInfographic({ type }: InfographicProps) {
 
   if (type === 'cost') {
     return (
-      <Card ref={ref} className="max-w-4xl mx-auto">
+      <div ref={ref} className="max-w-4xl mx-auto">
+        <Card>
         <h3 className="text-h2 font-bold mb-6 text-center">Cost of Non-Compliance</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
@@ -44,7 +45,8 @@ export default function AnimatedInfographic({ type }: InfographicProps) {
             <strong>Prevent costly penalties.</strong> ProvenAI certification helps demonstrate compliance readiness and reduce risk.
           </p>
         </div>
-      </Card>
+        </Card>
+      </div>
     )
   }
 
@@ -57,7 +59,8 @@ export default function AnimatedInfographic({ type }: InfographicProps) {
     ]
 
     return (
-      <Card ref={ref} className="max-w-4xl mx-auto">
+      <div ref={ref} className="max-w-4xl mx-auto">
+        <Card>
         <h3 className="text-h2 font-bold mb-6 text-center">EU AI Act Timeline</h3>
         <div className="relative">
           {/* Timeline line */}
@@ -96,7 +99,8 @@ export default function AnimatedInfographic({ type }: InfographicProps) {
             ))}
           </div>
         </div>
-      </Card>
+        </Card>
+      </div>
     )
   }
 
@@ -109,7 +113,8 @@ export default function AnimatedInfographic({ type }: InfographicProps) {
     ]
 
     return (
-      <Card ref={ref} className="max-w-4xl mx-auto">
+      <div ref={ref} className="max-w-4xl mx-auto">
+        <Card>
         <h3 className="text-h2 font-bold mb-6 text-center">Certification Process Flow</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {steps.map((step, idx) => (
@@ -141,7 +146,8 @@ export default function AnimatedInfographic({ type }: InfographicProps) {
             </motion.div>
           ))}
         </div>
-      </Card>
+        </Card>
+      </div>
     )
   }
 

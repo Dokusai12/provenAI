@@ -34,7 +34,7 @@ export default async function DirectoryProfilePage({ params }: DirectoryProfileP
                     {company.category}
                   </span>
                   {company.certified && (
-                    <ProvenAIBadge size="default" year={company.certifiedDate ? new Date(company.certifiedDate).getFullYear() : 2024} />
+                    <ProvenAIBadge size="large" year={company.certifiedDate ? new Date(company.certifiedDate).getFullYear() : 2024} />
                   )}
                 </div>
                 <p className="text-body-lg text-gray-subtle max-w-3xl">

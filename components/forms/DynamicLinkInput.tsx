@@ -70,7 +70,6 @@ export default function DynamicLinkInput({
                 })}
                 placeholder={placeholder}
                 error={fieldErrors?.[index]?.message}
-                showSuccess={fieldTouched?.[index] && !fieldErrors?.[index]}
                 className="w-full"
               />
             </div>

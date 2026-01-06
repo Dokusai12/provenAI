@@ -54,7 +54,6 @@ export function CompanyInfoStep() {
           label="Company Name"
           {...register('companyName', validationRules.companyName)}
           error={errors.companyName?.message}
-          showSuccess={touchedFields.companyName && !errors.companyName}
         />
         <Input
           label="Website"
@@ -62,7 +61,6 @@ export function CompanyInfoStep() {
           placeholder="https://example.com"
           {...register('website', validationRules.website)}
           error={errors.website?.message}
-          showSuccess={touchedFields.website && !errors.website}
           helperText="Include https://"
         />
       </div>
@@ -72,14 +70,12 @@ export function CompanyInfoStep() {
           options={companyTypeOptions}
           {...register('companyType', validationRules.companyType)}
           error={errors.companyType?.message}
-          showSuccess={touchedFields.companyType && !errors.companyType}
         />
         <Select
           label="Company Size"
           options={companySizeOptions}
           {...register('companySize', validationRules.companySize)}
           error={errors.companySize?.message}
-          showSuccess={touchedFields.companySize && !errors.companySize}
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -89,14 +85,12 @@ export function CompanyInfoStep() {
           placeholder="2020"
           {...register('yearFounded', validationRules.yearFounded)}
           error={errors.yearFounded?.message}
-          showSuccess={touchedFields.yearFounded && !errors.yearFounded}
         />
         <Input
           label="Location (Country)"
           placeholder="United Kingdom"
           {...register('location', validationRules.location)}
           error={errors.location?.message}
-          showSuccess={touchedFields.location && !errors.location}
         />
       </div>
     </div>
@@ -120,14 +114,12 @@ export function ContactInfoStep() {
           label="Contact Name"
           {...register('contactName', validationRules.contactName)}
           error={errors.contactName?.message}
-          showSuccess={touchedFields.contactName && !errors.contactName}
         />
         <Input
           label="Email"
           type="email"
           {...register('email', validationRules.email)}
           error={errors.email?.message}
-          showSuccess={touchedFields.email && !errors.email}
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -137,14 +129,12 @@ export function ContactInfoStep() {
           placeholder="+44 20 1234 5678"
           {...register('phone', validationRules.phone)}
           error={errors.phone?.message}
-          showSuccess={touchedFields.phone && !errors.phone}
         />
         <Input
           label="Role/Title"
           placeholder="CEO, CTO, etc."
           {...register('role', validationRules.role)}
           error={errors.role?.message}
-          showSuccess={touchedFields.role && !errors.role}
         />
       </div>
     </div>
@@ -167,7 +157,6 @@ export function TechnicalDetailsStep() {
         label="Brief Description of AI Services/Products"
         {...register('aiServicesDescription', validationRules.aiServicesDescription)}
         error={errors.aiServicesDescription?.message}
-        showSuccess={touchedFields.aiServicesDescription && !errors.aiServicesDescription}
         maxLength={500}
         helperText="Describe your AI services or products"
         rows={4}
@@ -176,7 +165,6 @@ export function TechnicalDetailsStep() {
         label="AI Technologies Used"
         {...register('aiTechnologies', validationRules.aiTechnologies)}
         error={errors.aiTechnologies?.message}
-        showSuccess={touchedFields.aiTechnologies && !errors.aiTechnologies}
         helperText="List models, frameworks, platforms, or custom development"
         rows={4}
       />
@@ -186,7 +174,6 @@ export function TechnicalDetailsStep() {
         placeholder="5"
         {...register('technicalTeamSize', validationRules.technicalTeamSize)}
         error={errors.technicalTeamSize?.message}
-        showSuccess={touchedFields.technicalTeamSize && !errors.technicalTeamSize}
       />
       <DynamicLinkInput
         name="portfolioLinks"
@@ -214,7 +201,6 @@ export function SupportingMaterialsStep() {
         label="LinkedIn Profiles of Technical Team Members"
         {...register('linkedInProfiles', validationRules.linkedInProfiles)}
         error={errors.linkedInProfiles?.message}
-        showSuccess={touchedFields.linkedInProfiles && !errors.linkedInProfiles}
         helperText="Please provide LinkedIn profile URLs (one per line)"
         rows={4}
       />
@@ -393,25 +379,21 @@ export function ReviewStep() {
             }
             {...register('agreeToTerms', validationRules.agreeToTerms)}
             error={errors.agreeToTerms?.message}
-            showSuccess={touchedFields.agreeToTerms && !errors.agreeToTerms}
           />
           <Checkbox
             label="I confirm all information provided is accurate"
             {...register('confirmAccuracy', validationRules.confirmAccuracy)}
             error={errors.confirmAccuracy?.message}
-            showSuccess={touchedFields.confirmAccuracy && !errors.confirmAccuracy}
           />
           <Checkbox
             label="I agree to annual review process"
             {...register('agreeToReview', validationRules.agreeToReview)}
             error={errors.agreeToReview?.message}
-            showSuccess={touchedFields.agreeToReview && !errors.agreeToReview}
           />
           <Checkbox
             label="I understand certification criteria and standards"
             {...register('understandCriteria', validationRules.understandCriteria)}
             error={errors.understandCriteria?.message}
-            showSuccess={touchedFields.understandCriteria && !errors.understandCriteria}
           />
         </div>
       </div>

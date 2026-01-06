@@ -63,15 +63,6 @@ const config: Config = {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-jetbrains)', 'monospace'],
       },
-      fontSize: {
-        'h1': ['3rem', { lineHeight: '1.2', fontWeight: '700', letterSpacing: '-0.02em' }], // 48px
-        'h2': ['2.25rem', { lineHeight: '1.3', fontWeight: '700', letterSpacing: '-0.01em' }], // 36px
-        'h3': ['1.5rem', { lineHeight: '1.4', fontWeight: '700', letterSpacing: '0' }], // 24px
-        'body': ['1rem', { lineHeight: '1.6', fontWeight: '400' }], // 16px
-        'body-lg': ['1.125rem', { lineHeight: '1.6', fontWeight: '400' }], // 18px
-        'small': ['0.875rem', { lineHeight: '1.5', fontWeight: '400' }], // 14px
-        'caption': ['0.75rem', { lineHeight: '1.4', fontWeight: '400' }], // 12px
-      },
       screens: {
         // Standard breakpoints (Tailwind defaults)
         // sm: '640px'  - Mobile landscape / Small tablet
