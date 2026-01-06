@@ -51,8 +51,8 @@ export default function StaggerContainer({
       opacity: 1, 
       y: 0,
       transition: {
-        duration: prefersReducedMotion ? 0 : 0.5,
-        ease: [0.04, 0.62, 0.23, 0.98] as const,
+        duration: prefersReducedMotion ? 0 : 0.3,
+        ease: [0.4, 0, 0.2, 1] as const, // Standard cubic-bezier
       },
     },
   }

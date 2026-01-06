@@ -54,7 +54,7 @@ export default function AnimatedCard({
       rotateY: enable3DTilt && !prefersReducedMotion ? 2 : 0,
       boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.1)',
       transition: {
-        duration: 0.3,
+        duration: 0.2,
         ease: [0.04, 0.62, 0.23, 0.98] as const,
       },
     },

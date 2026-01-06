@@ -43,7 +43,7 @@ export default function TextReveal({
         ref={ref}
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: prefersReducedMotion ? 0 : 0.6, delay }}
+        transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: Math.round(delay * 10) / 10, ease: [0.4, 0, 0.2, 1] }}
       >
         <Component className={className}>{text}</Component>
       </motion.div>
@@ -69,7 +69,7 @@ export default function TextReveal({
               visible: { opacity: 1, y: 0 },
             }}
             transition={{
-              duration: 0.3,
+              duration: 0.2,
               delay: delay + index * 0.05,
             }}
             className="inline-block mr-2"

@@ -38,6 +38,7 @@ export default function Breadcrumbs({ className }: { className?: string }) {
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -52,7 +53,7 @@ export default function Breadcrumbs({ className }: { className?: string }) {
           ) : (
             <Link
               href={crumb.href}
-              className="hover:text-primary-black transition-colors"
+              className="hover:text-primary-black transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-black focus:ring-offset-2 rounded px-1"
             >
               {crumb.label}
             </Link>

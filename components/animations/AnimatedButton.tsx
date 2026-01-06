@@ -56,7 +56,7 @@ export default function AnimatedButton({
     <motion.div
       whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
       whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
-      transition={{ duration: 0.2 }}
+      transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
       className="relative inline-block"
     >
       <Button
@@ -74,7 +74,7 @@ export default function AnimatedButton({
               initial={{ width: 0, height: 0, x: ripple.x, y: ripple.y }}
               animate={{ width: 200, height: 200, x: ripple.x - 100, y: ripple.y - 100 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
               style={{ pointerEvents: 'none' }}
             />
           ))}

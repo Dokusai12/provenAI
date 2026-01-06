@@ -12,19 +12,19 @@ const steps = [
   {
     number: 1,
     title: 'Apply',
-    description: 'Submit your application with company information, technical details, and supporting materials.',
+    description: 'Submit your application with company information, safety and compliance documentation, and governance materials.',
     Icon: FileIcon,
   },
   {
     number: 2,
     title: 'Verify',
-    description: 'Our team reviews your application, audits technical capabilities, and verifies your claims.',
+    description: 'Our team reviews your application, audits safety practices, compliance posture, and verifies your claims against recognized standards.',
     Icon: SearchIcon,
   },
   {
     number: 3,
     title: 'Certified',
-    description: 'Receive your ProvenAI certification, badge, and get listed in our verified directory.',
+    description: 'Receive your ProvenAI certification, badge, and get listed in our verified directory with demonstrated compliance and safety posture.',
     Icon: CheckBadgeIcon,
   },
 ]
@@ -34,7 +34,7 @@ export default function HowItWorks() {
     <section className="py-20 bg-gray-very-light border-t border-gray-medium">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal direction="fade">
-          <h2 className="text-h2-lg text-center mb-6 font-bold">How It Works</h2>
+          <h2 className="text-h2 text-center mb-6 font-bold">How It Works</h2>
           <div className="w-16 h-1 bg-primary-black mx-auto mb-12"></div>
         </ScrollReveal>
 

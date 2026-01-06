@@ -44,7 +44,7 @@ export default function ProgressIndicator() {
         className="h-full bg-primary-black"
         initial={{ width: '0%' }}
         animate={{ width: `${scrollProgress}%` }}
-        transition={{ duration: 0.1, ease: 'linear' }}
+        transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
       />
     </div>
   )
