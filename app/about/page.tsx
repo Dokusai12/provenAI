@@ -120,14 +120,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* About Section */}
       <section className="py-12 bg-primary-white border-t border-gray-medium">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Card>
-            <h2 className="text-h2 font-bold mb-4">Built by Engineers and AI Practitioners</h2>
+            <h2 className="text-h2 font-bold mb-4">About ProvenAI</h2>
             <p className="text-body text-gray-subtle">
-              ProvenAI is built by people who understand AI technology and the challenges facing the industry. 
-              We're backed by industry experts who share our mission to stop AI washing.
+              ProvenAI helps companies turn scattered AI usage into procurement-ready proof. We produce and maintain AI inventories, ownership structures, risk classifications, and exportable Evidence Packs that buyers can review.
             </p>
           </Card>
         </div>

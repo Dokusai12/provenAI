@@ -97,3 +97,48 @@ ${data.message}
   }
 }
 
+export async function sendSamplePackRequestEmail(data: {
+  email: string
+  companyName: string
+  website: string
+  industry: string
+  aiUsage: string
+  region: string
+  question?: string
+}) {
+  const contactEmail = process.env.CONTACT_EMAIL || CONTACT_EMAIL
+
+  const emailContent = `
+New Sample Pack Request
+
+Company Information:
+- Company Name: ${data.companyName}
+- Website: ${data.website}
+- Industry: ${data.industry}
+- AI Usage: ${data.aiUsage}
+- Region: ${data.region}
+
+Contact:
+- Email: ${data.email}
+
+Biggest Buyer Question:
+${data.question || 'Not provided'}
+`
+
+  try {
+    const resend = getResend()
+    await resend.emails.send({
+      from: 'ProvenAI <noreply@provenai.io>',
+      to: contactEmail,
+      replyTo: data.email,
+      subject: `Sample Pack Request: ${data.companyName}`,
+      text: emailContent,
+    })
+
+    return { success: true }
+  } catch (error) {
+    console.error('Error sending sample pack request email:', error)
+    return { success: false, error: 'Failed to send email' }
+  }
+}
+

@@ -31,11 +31,12 @@ export default function Textarea({
       <textarea
         id={textareaId}
         className={cn(
-          'w-full px-4 py-3 border border-gray-medium rounded-lg',
+          'w-full px-4 py-3 border border-[rgba(0,0,0,0.08)] rounded-soft',
           'bg-primary-white text-primary-black',
           'focus:outline-none focus:ring-2 focus:ring-primary-black focus:border-transparent',
-          'disabled:bg-gray-light disabled:cursor-not-allowed',
+          'disabled:bg-gray-very-light disabled:cursor-not-allowed',
           'resize-y min-h-[100px]',
+          'transition-all duration-200',
           error && 'border-red-500 focus:ring-red-500',
           className
         )}
@@ -56,4 +57,6 @@ export default function Textarea({
     </div>
   )
 }
+
+
 

@@ -11,14 +11,23 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           {/* Links */}
           <div className="flex flex-wrap justify-center md:justify-start gap-6 text-small">
-            <Link href="/about" className="hover:text-primary-black transition-colors">
-              About
+            <Link href="/evidence-engine" className="hover:text-primary-black transition-colors">
+              Evidence Engine
+            </Link>
+            <Link href="/evidence-pack" className="hover:text-primary-black transition-colors">
+              Evidence Pack
+            </Link>
+            <Link href="/certification" className="hover:text-primary-black transition-colors">
+              Certification
+            </Link>
+            <Link href="/directory" className="hover:text-primary-black transition-colors">
+              Directory
             </Link>
             <Link href="/standards" className="hover:text-primary-black transition-colors">
               Standards
             </Link>
-            <Link href="/directory" className="hover:text-primary-black transition-colors">
-              Directory
+            <Link href="/resources" className="hover:text-primary-black transition-colors">
+              Resources
             </Link>
             <Link href="/contact" className="hover:text-primary-black transition-colors">
               Contact
@@ -51,8 +60,8 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-gray-medium text-center text-caption text-gray-subtle">
-          <p>ProvenAI © {currentYear} | Verifying Legitimate AI</p>
+        <div className="mt-8 pt-8 border-t border-[rgba(0,0,0,0.08)] text-center text-small text-gray-subtle">
+          <p>ProvenAI © {currentYear} | AI Governance Evidence for Procurement</p>
         </div>
       </div>
     </footer>

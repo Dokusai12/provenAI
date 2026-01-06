@@ -6,6 +6,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { defaultMetadata } from '@/lib/metadata'
 import ProgressIndicator from '@/components/animations/ProgressIndicator'
+import StructuredDataServer from '@/components/StructuredDataServer'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -29,6 +30,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="font-sans antialiased">
+        <StructuredDataServer type="organization" />
+        <StructuredDataServer type="website" />
         <ProgressIndicator />
         <Navigation />
         <main>{children}</main>

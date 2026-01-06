@@ -9,11 +9,12 @@ import { cn } from '@/lib/utils'
 import StaggerContainer from './animations/StaggerContainer'
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/standards', label: 'Standards' },
+  { href: '/evidence-engine', label: 'Evidence Engine' },
+  { href: '/evidence-pack', label: 'Evidence Pack' },
+  { href: '/certification', label: 'Certification' },
   { href: '/directory', label: 'Directory' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/standards', label: 'Standards' },
+  { href: '/resources', label: 'Resources' },
 ]
 
 export default function Navigation() {
@@ -30,7 +31,7 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -50,11 +51,18 @@ export default function Navigation() {
                 )}
               </Link>
             ))}
-            <Link href="/apply">
-              <Button variant="primary" size="sm">
-                Get Certified
-              </Button>
-            </Link>
+            <div className="flex items-center gap-3 ml-4">
+              <Link href="/contact">
+                <Button variant="secondary" size="sm">
+                  Talk to us
+                </Button>
+              </Link>
+              <Link href="/evidence-pack">
+                <Button variant="primary" size="sm">
+                  Generate a sample pack
+                </Button>
+              </Link>
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -125,10 +133,16 @@ export default function Navigation() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: navLinks.length * 0.05 }}
+                      className="space-y-3 pt-2"
                     >
-                      <Link href="/apply" onClick={() => setIsOpen(false)}>
+                      <Link href="/contact" onClick={() => setIsOpen(false)}>
+                        <Button variant="secondary" size="sm" className="w-full min-h-[44px]">
+                          Talk to us
+                        </Button>
+                      </Link>
+                      <Link href="/evidence-pack" onClick={() => setIsOpen(false)}>
                         <Button variant="primary" size="sm" className="w-full min-h-[44px]">
-                          Get Certified
+                          Generate a sample pack
                         </Button>
                       </Link>
                     </motion.div>

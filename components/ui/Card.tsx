@@ -13,20 +13,20 @@ export default function Card({
   ...props
 }: CardProps) {
   const variants = {
-    default: 'bg-primary-white border border-gray-medium',
-    elevated: 'bg-gray-dark border border-gray-medium shadow-lg',
+    default: 'bg-primary-white border border-[rgba(0,0,0,0.08)]',
+    elevated: 'bg-gray-dark border border-[rgba(0,0,0,0.08)] shadow-medium',
     minimal: 'bg-gray-very-light border-0',
-    featured: 'bg-primary-white border-2 border-primary-black shadow-xl',
+    featured: 'bg-primary-white border border-primary-black shadow-soft',
   }
 
   return (
     <div
       className={cn(
-        'rounded-lg p-6 transition-all duration-300',
-        variant === 'default' && 'hover:shadow-md hover:-translate-y-1',
-        variant === 'elevated' && 'hover:shadow-xl',
+        'rounded-soft p-6 transition-all duration-200',
+        variant === 'default' && 'hover:shadow-soft',
+        variant === 'elevated' && 'hover:shadow-large',
         variant === 'minimal' && 'hover:bg-gray-very-light-alt',
-        variant === 'featured' && 'hover:shadow-2xl',
+        variant === 'featured' && 'hover:shadow-medium',
         variants[variant],
         className
       )}
